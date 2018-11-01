@@ -1,0 +1,82 @@
+.dabaocao
+{
+	width: 150px;
+    padding: 2px, 2px, 2px, 2px;
+    border: 2px solid green;
+    margin: 0;
+    background-color: green;
+    color: white;
+}
+
+.chuabaocao
+{
+	width: 150px;
+    padding: 2px, 2px, 2px, 2px;
+    border: 2px solid red;
+    margin: 0;
+    background-color: red;
+    color: white;
+}
+
+.phuc_button {
+    background-color: green; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.phuc_button1 {
+    background-color: green; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.line1L{
+    font-size: 40px;
+}
+
+.line1R{
+    font-size: 40px;
+    padding-left:120px;
+    color: yellow;
+}
+
+.line2L{
+    font-size: 18px;
+
+}
+
+.line2R{
+    font-size: 18px;
+    padding-left:80px;
+    color: yellow;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
