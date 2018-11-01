@@ -1,7 +1,6 @@
 Adding an existing project to GitHub using the command line •	WINDOWS
 
-1.
-Create a new repository on GitHub. To avoid errors, do not initialize the new repository with README, license, or gitignore files. You can add these files after your project has been pushed to GitHub.
+1. Create a new repository on GitHub. To avoid errors, do not initialize the new repository with README, license, or gitignore files. You can add these files after your project has been pushed to GitHub.
 2.	Open Git Bash.
 3.	Change the current working directory to your local project.
 4.	Initialize the local directory as a Git repository.
