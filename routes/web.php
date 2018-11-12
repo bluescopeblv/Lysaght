@@ -155,6 +155,73 @@ Route::group(['prefix' => 'admin','middleware'=> 'adminLogin'], function() {
         Route::get('xoa/{id}','UserController@getXoa');
     });
 
+    Route::group(['prefix' => 'fives'], function() {
+        //admin/loaitin/danh sach
+        Route::group(['prefix' => 'question'], function() {
+            Route::get('/','FiveSController@getListCauHoi_Admin');
+
+            Route::get('add','FiveSController@getAddCauHoi_Admin');
+            Route::post('add','FiveSController@postAddCauHoi_Admin');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Admin');
+            Route::post('edit/{id}','FiveSController@postEdit_Admin');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Admin');
+        });
+
+        Route::group(['prefix' => 'question-group'], function() {
+            Route::get('/','FiveSController@getList_Group_CauHoi_Admin');
+
+            Route::get('add','FiveSController@getAdd_Group_CauHoi_Admin');
+            Route::post('add','FiveSController@postAdd_Group_CauHoi_Admin');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Group_CauHoi_Admin');
+            Route::post('edit/{id}','FiveSController@postEdit_Group_CauHoi_Admin');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Group_CauHoi_Admin');
+            
+            
+
+            Route::get('xoa/{id}','UserController@getXoa');
+        });
+
+        Route::group(['prefix' => 'nhanvien-group'], function() {
+            Route::get('/','FiveSController@getList_Group_Nhanvien_Admin');
+
+            Route::get('add','FiveSController@getAdd_Group_Nhanvien_Admin');
+            Route::post('add','FiveSController@postAdd_Group_Nhanvien_Admin');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Group_Nhanvien_Admin');
+            Route::post('edit/{id}','FiveSController@postEdit_Group_Nhanvien_Admin');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Group_Nhanvien_Admin');
+        });
+
+        Route::group(['prefix' => 'nhanvien'], function() {
+            Route::get('/','FiveSController@getList_Nhanvien_Admin');
+
+            Route::get('add','FiveSController@getAdd_Nhanvien_Admin');
+            Route::post('add','FiveSController@postAdd_Nhanvien_Admin');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Nhanvien_Admin');
+            Route::post('edit/{id}','FiveSController@postEdit_Nhanvien_Admin');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Nhanvien_Admin');
+        });
+
+        Route::group(['prefix' => 'campaign'], function() {
+            Route::get('/','FiveSController@getList_Campaign_Admin');
+
+            Route::get('add','FiveSController@getAdd_Campaign_Admin');
+            Route::post('add','FiveSController@postAdd_Campaign_Admin');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Campaign_Admin');
+            Route::post('edit/{id}','FiveSController@postEdit_Campaign_Admin');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Campaign_Admin');
+        });
+    });
+
     Route::group(['prefix' => 'ajax'], function() {
     	//admin/loaitin/danh sach
         Route::get('loaitin/{idTheLoai}','AjaxController@getLoaiTin');
@@ -213,6 +280,46 @@ Route::group(['prefix' => 'fives'], function() {
         Route::get('/','FiveSController@getThongKe5S');
 
     });
+
+    // fives/export
+    Route::group(['prefix' => 'export'], function() {
+        Route::get('excel','FiveSController@getExportExcel');
+
+        Route::get('export-list/{type}', 'FiveSController@get5sList')->name('export.5s.list');
+
+    });
+    //evaluate
+    Route::group(['prefix' => 'evaluate'], function() {
+        Route::get('/','FiveSController@getList_AllFunction');
+        //--campaign
+        Route::group(['prefix' => 'campaign'], function() {
+            Route::get('/','FiveSController@getList_Campaign');
+
+            Route::get('add','FiveSController@getAdd_Campaign');
+            Route::post('add','FiveSController@postAdd_Campaign');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Campaign');
+            Route::post('edit/{id}','FiveSController@postEdit_Campaign');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Campaign');
+        });
+        //main - chấm điểm
+        Route::group(['prefix' => 'main'], function() {
+            Route::get('/{id}','FiveSController@getList_Main');
+
+            Route::get('add/{id}','FiveSController@getAdd_Main');
+            Route::post('add/{id}','FiveSController@postAdd_Main');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Main');
+            Route::post('edit/{id}','FiveSController@postEdit_Main');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Main');
+
+            Route::get('question/{id}','FiveSController@getQuestion_Main');
+        });
+    });
+    
+
 });
 
 Route::get('baoloi-danhsach','BaoLoiController@getBaoLoi');

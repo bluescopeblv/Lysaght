@@ -103,7 +103,29 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                
+                        <li>
+                            <a href="admin/fives/question"><i class="fa fa-bar-chart-o fa-fw"></i> 5S<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                
+                                <li>
+                                    <a href="admin/fives/question-group">Group câu hỏi</a>
+                                </li>
+                                <li>
+                                    <a href="admin/fives/question">Câu hỏi</a>
+                                </li>
+                                <li>
+                                    <a href="admin/fives/nhanvien-group">Group Nhân viên</a>
+                                </li>
+                                <li>
+                                    <a href="admin/fives/nhanvien">Nhân viên</a>
+                                </li>
+                                <li>
+                                    <a href="admin/fives/campaign">Campaign</a>
+                                </li>
+                                
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                         <li>
                             <a href="admin/user/danhsach"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

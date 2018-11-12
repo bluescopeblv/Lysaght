@@ -12,7 +12,14 @@
             <!-- FEEDBACK -->
             <div class="col-md-12">
                 <div class="panel panel-primary ">
-				  	<div class="panel-heading">DANH SÁCH RECORD KHIẾM KHUYẾT 5S | DEFECT LIST | <a href="fives/thongke/">Thống kê</a></div>
+				  	<div class="panel-heading">DANH SÁCH RECORD KHIẾM KHUYẾT 5S | DEFECT LIST | <a href="fives/thongke/">Thống kê</a>
+				  		@if(Auth::user())
+                            @if(Auth::user()->quyen_5s >= 2)
+	                            <a href="fives/evaluate">| Đánh giá 5S</a>
+                            @endif
+                        @endif
+
+				  	</div>
 				  	<div class="panel-body">
 				  		<div class="row">
 				  			<marquee>
@@ -66,20 +73,12 @@
                                 {{session('thongbao')}}           
                             </div>
                         @endif
-
-                        <form action="" method="">
-		                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-		                    
-		                    <input  type="date" id="myDate" class="form-control" name="DateFind" value="{{ date('Y-m-d') }}" style="display: inline;width: 20%">
-		
-		                    <button type="" class="btn btn-default">Tìm kiếm</button>
-		                    <hr>
-		                </form>
-
-		                @if(isset($ngayTimKiem))
-		               		<h4>Ngày {{date('d-m-Y',strtotime($ngayTimKiem))}} </h4>
-		               	@endif
-
+                        @if(Auth::user())
+                            @if(Auth::user()->quyen_5s >= 2)
+	                            <h4>Tải danh sách khiếm khuyết <a href="fives/export/excel"> >> Tải...</a></h4>
+                            @endif
+                        @endif
+                        
 				    	<!-- Thông báo -->
 				    	<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 		                    <thead>

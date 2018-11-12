@@ -135,4 +135,16 @@ function getDeliveryStatus($status)
     
 }
 
+function get5Sdanhgia($id)
+{
+	//$thongtinxe = App\DeliveryThongTinXe::find($id);
+	return count(App\Chamdiem::where('campaign_id',$id)->get());
+}
+
+function get5Scauhoi($id)
+{
+	//$thongtinxe = App\DeliveryThongTinXe::find($id);
+	return App\Question::find($id);
+}
+
 ?>
