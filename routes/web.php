@@ -317,6 +317,72 @@ Route::group(['prefix' => 'fives'], function() {
 
             Route::get('question/{id}','FiveSController@getQuestion_Main');
         });
+
+        Route::group(['prefix' => 'question'], function() {
+            Route::get('/','FiveSController@getListCauHoi_Admin');
+
+            Route::get('add','FiveSController@getAddCauHoi_Admin');
+            Route::post('add','FiveSController@postAddCauHoi_Admin');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Admin');
+            Route::post('edit/{id}','FiveSController@postEdit_Admin');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Admin');
+        });
+
+        Route::group(['prefix' => 'question-group'], function() {
+            Route::get('/','FiveSController@getList_Group_CauHoi_Admin');
+
+            Route::get('add','FiveSController@getAdd_Group_CauHoi_Admin');
+            Route::post('add','FiveSController@postAdd_Group_CauHoi_Admin');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Group_CauHoi_Admin');
+            Route::post('edit/{id}','FiveSController@postEdit_Group_CauHoi_Admin');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Group_CauHoi_Admin');
+            
+            
+
+            Route::get('xoa/{id}','UserController@getXoa');
+        });
+
+        Route::group(['prefix' => 'nhanvien-group'], function() {
+            Route::get('/','FiveSController@getList_Group_Nhanvien');
+
+            Route::get('add','FiveSController@getAdd_Group_Nhanvien');
+            Route::post('add','FiveSController@postAdd_Group_Nhanvien');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Group_Nhanvien');
+            Route::post('edit/{id}','FiveSController@postEdit_Group_Nhanvien');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Group_Nhanvien');
+        });
+
+        Route::group(['prefix' => 'nhanvien'], function() {
+            Route::get('/','FiveSController@getList_Nhanvien');
+
+            Route::get('add','FiveSController@getAdd_Nhanvien');
+            Route::post('add','FiveSController@postAdd_Nhanvien');
+
+            Route::get('edit/{id}','FiveSController@getEdit_Nhanvien');
+            Route::post('edit/{id}','FiveSController@postEdit_Nhanvien');
+            
+            Route::get('delete/{id}','FiveSController@getDelete_Nhanvien');
+        });
+    });
+
+    Route::group(['prefix' => 'report'], function() {
+        Route::get('/','FiveSReportController@getList_Main_Report');
+
+        Route::get('chart-campaign','FiveSReportController@get_chart_campaign');
+        Route::get('chart-group','FiveSReportController@get_chart_group');
+
+        Route::get('edit/{id}','FiveSReportController@getEdit_Main');
+        Route::post('edit/{id}','FiveSReportController@postEdit_Main');
+        
+        Route::get('delete/{id}','FiveSReportController@getDelete_Main');
+
+        Route::get('question/{id}','FiveSReportController@getQuestion_Main');
     });
     
 
@@ -499,7 +565,56 @@ Route::group(['prefix' => 'delivery'], function() {
     });
 
 });
+
+
+
 //------------------------------------------------------------------
 Route::group(['prefix' => 'training'], function() {
     Route::get('/','TrainingController@getList');
+});
+
+//------------------------------------------------------------------
+// Dashboard
+Route::group(['prefix' => 'dashboard'], function() {
+    Route::group(['prefix' => 'mfg'], function() {
+        Route::get('/','DB_Controller@getListBV');
+
+        Route::get('/add', 'DeliveryController@getAddBV');
+        Route::post('/add', 'DeliveryController@postAddBV');
+
+        Route::get('/edit/{id}','DeliveryController@getEditBV');
+        Route::post('/edit/{id}','DeliveryController@postEditBV');
+
+        Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+
+        Route::get('/in/{id}','DeliveryController@getIn_BV');
+        Route::get('/out/{id}','DeliveryController@getOutBV');
+    });
+
+    Route::group(['prefix' => 'hr'], function() {
+        Route::get('/','DS_HR_Controller@get_List');
+
+        Route::get('/add', 'DS_HR_Controller@getAddBV');
+        Route::post('/add', 'DS_HR_Controller@postAddBV');
+
+        Route::get('/edit/{id}','DS_HR_Controller@getEditBV');
+        Route::post('/edit/{id}','DS_HR_Controller@postEditBV');
+
+        Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+
+        Route::get('/in/{id}','DeliveryController@getIn_BV');
+        Route::get('/out/{id}','DeliveryController@getOutBV');
+    });
+
+
+    
+    Route::group(['prefix' => 'interface'], function() {
+        Route::get('/','DeliveryController@getList_IF');
+
+        Route::get('/office', 'DeliveryController@getInterface_Office_IF');
+        Route::get('/driver', 'DeliveryController@getInterface_Driver_IF');
+        
+        Route::get('time','AjaxController@getRealTime');
+    });
+
 });

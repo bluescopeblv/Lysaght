@@ -93,7 +93,7 @@ class FiveSController extends Controller
         return redirect()->back()->with('thongbao','Đã xóa thành công');;
     }
     
-    // admin - group
+    // admin - Question group 
     public function getList_Group_CauHoi_Admin()
     {
         $question_group = QuestionGroup::all();        
@@ -768,4 +768,132 @@ class FiveSController extends Controller
             echo'</tbody>   
         </table>';
     }
+
+
+    //Pages Group Nhan Vien
+    public function getList_Group_Nhanvien()
+    {
+        $nhanvien_group = NhanvienGroup::all();        
+        return view('pages.5S.evaluate.nhanvien-group.list',compact('nhanvien_group'));
+    }
+
+    public function getAdd_Group_Nhanvien()
+    {
+        return view('pages.5S.evaluate.nhanvien-group.add');
+    }
+
+    public function postAdd_Group_Nhanvien(Request $request)
+    {
+        $this->validate($request,[
+            'name'=>'required',
+        ],
+        [
+            'name.required'=>'* Bạn chưa nhập tên',
+        ]);
+
+        $nhanvien_group = new NhanvienGroup;
+        $nhanvien_group->name = $request->name;
+        $nhanvien_group->note = $request->note;
+        $nhanvien_group->save();
+
+        return redirect()->back()->with('thongbao','Đã thêm thành công');
+    }
+
+    public function getEdit_Group_Nhanvien($id)
+    {
+        $nhanvien_group = NhanvienGroup::find($id);
+        return view('pages.5S.evaluate.nhanvien-group.edit',compact('nhanvien_group'));
+    }
+
+    public function postEdit_Group_Nhanvien($id, Request $request)
+    {
+        $this->validate($request,[
+            'name'=>'required',
+        ],
+        [
+            'name.required'=>'* Bạn chưa nhập tên',
+        ]);
+
+        $nhanvien_group = NhanvienGroup::find($id);
+        $nhanvien_group->name = $request->name;
+        $nhanvien_group->note = $request->note;
+        $nhanvien_group->save();
+
+        return redirect()->back()->with('thongbao','Đã sửa thành công');
+    }
+
+    public function getDelete_Group_Nhanvien($id)
+    {
+        $nhanvien_group = NhanvienGroup::find($id);
+        $nhanvien_group->delete();
+
+        return redirect()->back()->with('thongbao','Đã xóa thành công');
+    }
+
+    //---------------------------------------------------------
+    //-Pages nhan vien
+    public function getList_Nhanvien()
+    {
+        $nhanvien = Nhanvien::all();        
+        return view('pages.5S.evaluate.nhanvien.list',compact('nhanvien'));
+    }
+    
+    public function getAdd_Nhanvien()
+    {
+        $nhanvien_group = NhanvienGroup::all();
+        return view('pages.5S.evaluate.nhanvien.add',compact('nhanvien_group'));
+    }
+
+    public function postAdd_Nhanvien(Request $request)
+    {
+        $this->validate($request,[
+            'name'=>'required',
+        ],
+        [
+            'name.required'=>'* Bạn chưa nhập nội dung',
+        ]);
+
+        $nhanvien = new Nhanvien;
+        $nhanvien->name = $request->name;
+        $nhanvien->phone = $request->phone;
+        $nhanvien->group_id = $request->group_id;
+        $nhanvien->save();
+
+        return redirect()->back()->with('thongbao','Đã thêm thành công');
+    }
+
+    public function getEdit_Nhanvien($id)
+    {
+        $nhanvien = Nhanvien::find($id);
+        $nhanvien_group = NhanvienGroup::all();
+        return view('pages.5S.evaluate.nhanvien.edit',compact('nhanvien','nhanvien_group'));
+    }
+
+    public function postEdit_Nhanvien($id, Request $request)
+    {
+        $this->validate($request,[
+            'name'=>'required',
+        ],
+        [
+            'noidung.required'=>'* Bạn chưa nhập nội dung',
+        ]);
+
+        $nhanvien = Nhanvien::find($id);
+
+        $nhanvien->name = $request->name;
+        $nhanvien->phone = $request->phone;
+        $nhanvien->group_id = $request->group_id;
+        $nhanvien->save();
+
+        return redirect()->back()->with('thongbao','Đã sửa thành công');
+    }
+
+    public function getDelete_Nhanvien($id)
+    {
+        $nhanvien = Nhanvien::find($id);
+        $nhanvien->delete();
+        return redirect()->back()->with('thongbao','Đã xóa thành công');;
+    }
+
+    //---------------------------------------------------------
 }

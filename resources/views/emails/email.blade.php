@@ -6,7 +6,7 @@
 	<hr>
 	<p>Nội dung: <span style="color: blue;font-size: 20px">{{$noidung}}</span></p>
 
-	<p style="background-color: #00004d; color: white">Đây là email được gửi tự động từ hệ thống PRE-L3. Vui lòng không reply email này. Nếu có thắc mắc vui lòng liên hệ Phúc.</p>
+	<p style="background-color: #00004d; color: white">Đây là email được gửi tự động từ hệ thống PRE-L3. Vui lòng không reply email này.</p>
 </div>
 
 

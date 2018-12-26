@@ -107,7 +107,6 @@
 			                </div>
 			                </div>
 		                    <button type="submit" class="btn btn-default">Thêm</button>
-		                    <button type="reset" class="btn btn-default">Làm mới</button>
 		                
 		                </form>
 		                <!-- END RECORD CHI PHÍ -->

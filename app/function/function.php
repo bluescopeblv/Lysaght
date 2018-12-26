@@ -147,4 +147,13 @@ function get5Scauhoi($id)
 	return App\Question::find($id);
 }
 
+function getDiem_5S_Nhom($chamdiem_id)
+{
+	//$thongtinxe = App\DeliveryThongTinXe::find($id);
+	//$campaign = App\Campaign::find($campaign_id);
+    $tongdiem = 5*count(App\Chitiet::where('chamdiem_id',$chamdiem_id)->get());
+    $diem = App\Chitiet::where('chamdiem_id',$chamdiem_id)->sum('diem');
+	return $diem*100/$tongdiem;
+}
+
 ?>
