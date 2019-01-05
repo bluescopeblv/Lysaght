@@ -12,7 +12,7 @@
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                     <li class="breadcrumb-item active">Data</li>
                 
-                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/logistic/"> Thêm mới</a> </button>
+                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="dashboard/hr/add"> Thêm mới</a> </button>
 
                 </ol>
             </div>
@@ -33,7 +33,7 @@
                             <th>Male</th>
                             <th>Female</th>
                             <th>Total employee</th>
-                            <th>Note</th>
+                            <th>Updated at</th>
 
                             <th>Status</th>
                             <th>Action</th>
@@ -42,19 +42,27 @@
                     <tbody>
                     	@foreach($hr as $key => $val)
                         <tr>
-                            <td></td>
-                        
-                            
                             <td>{{ $val->id }}</td>
-                            <td>{{ $ttx->id }}</td>
-                            <td>{{ $ttx->id }}</td>
-                            
-                            
+                            <td>{{ $val->total_employees -   $val->female_employees }}</td>
+                            <td>{{ $val->female_employees }}</td>
+                            <td>{{ $val->total_employees }}</td>
+                            <td>{{ date('d-M-Y',strtotime($val->updated_at)) }}</td>
                             <td>
-                            	<span class="label label-warning">
-                            		<a href="delivery/giaohang/edit/{{$val->id}}"><span class="glyphicon glyphicon-edit">Sửa</span></a>
-                            	</span><span>  </span>
-                            	
+                                @if($key == 0)
+                                    <span class="label label-success">Display</span>
+                                @endif
+                            </td>
+                           
+                            <td>
+                                @if( date('d-M-Y',strtotime($val->updated_at)) == date('d-M-Y'))
+                            	<span class="label label-info">
+                            		<a href="dashboard/hr/edit/{{$val->id}}"><span class="glyphicon glyphicon-edit">Edit</span></a>
+                            	</span>
+                                <span style="margin-left: 5px">  </span>
+                                <span class="label label-warning">
+                                    <a href="dashboard/hr/delete/{{$val->id}}"><span class="glyphicon glyphicon-edit">Delete</span></a>
+                                </span>
+                            	@endif
 				            </td>
                         </tr>
                         @endforeach

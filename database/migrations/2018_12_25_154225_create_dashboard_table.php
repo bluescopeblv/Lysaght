@@ -42,8 +42,8 @@ class CreateDashboardTable extends Migration
 
         Schema::create('dashboard_safety', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('LTI');
-            $table->unsignedInteger('MTI');
+            $table->date('LTI');
+            $table->date('MTI');
             $table->timestamps();
         });
     }

@@ -436,7 +436,7 @@ Route::get('test', 'ChartsController@chart');
 Route::get('chart_bar', 'ChartsController@chart_bar');
 //------------------------------------------------------------------------------
 // Delivery
-Route::get('delivery', 'DeliveryController@getDanhSach');
+Route::get('delivery1', 'DeliveryController@getDanhSach');
 Route::get('delivery_danhsach', 'DeliveryController@getDanhSach');
 Route::get('delivery_themthongtin', 'DeliveryController@getThemThongTin');
 Route::post('delivery_themthongtin', 'DeliveryController@postThemThongTin');
@@ -469,6 +469,8 @@ Route::group(['prefix' => 'activity'], function() {
 //------------------------------------------------------------------
 // Delivery
 Route::group(['prefix' => 'delivery'], function() {
+    Route::get('/', 'DeliveryController@getDanhSach');
+
     Route::group(['prefix' => 'baove'], function() {
         Route::get('/','DeliveryController@getListBV');
 
@@ -539,8 +541,6 @@ Route::group(['prefix' => 'delivery'], function() {
         Route::get('/hltaixe/{id}','DeliveryController@getHuanLuyenTaiXe');
         Route::get('/bangiaodn/{id}','DeliveryController@getBanGiaoDN');
 
-        
-
     });
 
     Route::group(['prefix' => 'warehouse'], function() {
@@ -594,20 +594,27 @@ Route::group(['prefix' => 'dashboard'], function() {
     Route::group(['prefix' => 'hr'], function() {
         Route::get('/','DS_HR_Controller@get_List');
 
-        Route::get('/add', 'DS_HR_Controller@getAddBV');
-        Route::post('/add', 'DS_HR_Controller@postAddBV');
+        Route::get('/add', 'DS_HR_Controller@get_Add');
+        Route::post('/add', 'DS_HR_Controller@post_Add');
 
-        Route::get('/edit/{id}','DS_HR_Controller@getEditBV');
-        Route::post('/edit/{id}','DS_HR_Controller@postEditBV');
+        Route::get('/edit/{id}','DS_HR_Controller@get_Edit');
+        Route::post('/edit/{id}','DS_HR_Controller@post_Edit');
 
-        Route::get('/delete/{id}','DeliveryController@getDeleteBV');
-
-        Route::get('/in/{id}','DeliveryController@getIn_BV');
-        Route::get('/out/{id}','DeliveryController@getOutBV');
+        Route::get('/delete/{id}','DS_HR_Controller@get_Delete');
     });
 
+    Route::group(['prefix' => 'safety'], function() {
+        Route::get('/','DS_Safety_Controller@get_List');
 
-    
+        Route::get('/add', 'DS_Safety_Controller@get_Add');
+        Route::post('/add', 'DS_Safety_Controller@post_Add');
+
+        Route::get('/edit/{id}','DS_Safety_Controller@get_Edit');
+        Route::post('/edit/{id}','DS_Safety_Controller@post_Edit');
+
+        Route::get('/delete/{id}','DS_Safety_Controller@get_Delete');
+    });
+
     Route::group(['prefix' => 'interface'], function() {
         Route::get('/','DeliveryController@getList_IF');
 

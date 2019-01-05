@@ -694,7 +694,7 @@ class DeliveryController extends Controller
     public function getList_IF()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
-        return view('pages.delivery.interface.list',compact('thongtinxe'));
+        return view('pages.delivery.interface.interface1',compact('thongtinxe'));
     }
 
     public function getInterface_Office_IF()
