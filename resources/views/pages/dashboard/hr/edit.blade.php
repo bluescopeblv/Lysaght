@@ -26,7 +26,7 @@
                         {{session('thongbao')}}           
                     </div>
                 @endif
-                <form action="dashboard/safety/edit/{{$hr->id}}" method="post">
+                <form action="dashboard/hr/edit/{{$hr->id}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         <h3 class="card-title">Thông tin</h3>

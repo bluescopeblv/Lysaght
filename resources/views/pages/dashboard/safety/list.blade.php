@@ -42,10 +42,8 @@
                     	@foreach($safety as $key => $val)
                         <tr>
                             <td>{{ $val->id }}</td>
-                            <td>{{ date('d-m-Y')
-                                - date('d-m-Y',strtotime($val->LTI)) }}</td>
-                            <td>{{ $val->id }}</td>
-                            <td>{{ $val->id }}</td>
+                            <td>{{ get_DS_Safety_Date_LTI($val->LTI) }}</td>
+                            <td>{{ get_DS_Safety_Date_MTI($val->MTI) }}</td>
                             <td>{{ date('d-m-Y',strtotime($val->updated_at)) }}</td>
                             <td>
                                 @if($key == 0)
@@ -56,11 +54,11 @@
                             <td>
                                 @if( date('d-M-Y',strtotime($val->updated_at)) == date('d-M-Y'))
                             	<span class="label label-info">
-                            		<a href="dashboard/hr/edit/{{$val->id}}"><span class="glyphicon glyphicon-edit">Edit</span></a>
+                            		<a href="dashboard/safety/edit/{{$val->id}}"><span class="glyphicon glyphicon-edit">Edit</span></a>
                             	</span>
                                 <span style="margin-left: 5px">  </span>
                                 <span class="label label-warning">
-                                    <a href="dashboard/hr/delete/{{$val->id}}"><span class="glyphicon glyphicon-edit">Delete</span></a>
+                                    <a href="dashboard/safety/delete/{{$val->id}}"><span class="glyphicon glyphicon-edit">Delete</span></a>
                                 </span>
                             	@endif
 				            </td>

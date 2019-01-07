@@ -14,8 +14,8 @@
                     Giao hàng bởi: <span style="color: blue"> {{ $thongtinxe->giaohangboi }}</span> |
                     <a href="delivery/logistic">Quay lại</a>  
 
-                
-                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/logistic/detailco/{{$thongtinxe->id}}/add"> Thêm mới</a> </button>
+                <a href="delivery/logistic/detailco/{{$thongtinxe->id}}/add">
+                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm mới </button></a>
 
                 </ol>
             </div>

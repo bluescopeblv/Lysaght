@@ -12,7 +12,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-info">
-                <h4 class="m-b-0 text-white"><a href="dashboard/hr">Danh sách</a></h4>
+                <h4 class="m-b-0 text-white"><a href="dashboard/safety">Danh sách</a></h4>
             </div>
             <div class="card-body">
             	@if(count($errors)>0)

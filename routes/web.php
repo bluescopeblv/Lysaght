@@ -616,12 +616,8 @@ Route::group(['prefix' => 'dashboard'], function() {
     });
 
     Route::group(['prefix' => 'interface'], function() {
-        Route::get('/','DeliveryController@getList_IF');
+        Route::get('/','DS_Interface_Controller@getInterface1');
 
-        Route::get('/office', 'DeliveryController@getInterface_Office_IF');
-        Route::get('/driver', 'DeliveryController@getInterface_Driver_IF');
-        
-        Route::get('time','AjaxController@getRealTime');
     });
 
 });

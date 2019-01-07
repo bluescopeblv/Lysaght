@@ -8,6 +8,9 @@
 
 // Chạy cmd : composer  dumpautoload
 
+use Carbon\Carbon;
+
+
 function changeTitle($str,$strSymbol='-',$case=MB_CASE_LOWER){// MB_CASE_UPPER / MB_CASE_TITLE / MB_CASE_LOWER
 	$str=trim($str);
 	if ($str=="") return "";
@@ -154,6 +157,16 @@ function getDiem_5S_Nhom($chamdiem_id)
     $tongdiem = 5*count(App\Chitiet::where('chamdiem_id',$chamdiem_id)->get());
     $diem = App\Chitiet::where('chamdiem_id',$chamdiem_id)->sum('diem');
 	return $diem*100/$tongdiem;
+}
+
+function get_DS_Safety_Date_LTI($LTI_date)
+{
+	return Carbon::parse($LTI_date)->diffInDays(Carbon::now());
+}
+
+function get_DS_Safety_Date_MTI($MTI_date)
+{
+	return Carbon::parse($MTI_date)->diffInDays(Carbon::now());
 }
 
 ?>

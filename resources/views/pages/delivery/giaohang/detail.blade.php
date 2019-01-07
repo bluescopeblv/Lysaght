@@ -48,7 +48,7 @@
             </div>
             
             <!-- Column -->
-            <div class="col-md-6 col-lg-3 col-xlg-2">
+            <div class="col-md-6 col-lg-2 col-xlg-2">
                 <div class="card">
                     <div class="box bg-info text-center">
                         <h3 class="font-small text-blue">{{ $thongtinxe->chieudaixe }}</h3>
@@ -62,6 +62,15 @@
                     <div class="box bg-info text-center">
                         <h3 class="font-small text-blue">{{ $thongtinxe->giaohangboi }}</h3>
                         <h6 class="text-yellow">Giao hàng bởi</h6>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <div class="col-md-6 col-lg-4 col-xlg-2">
+                <div class="card">
+                    <div class="box bg-info text-center">
+                        <h3 class="font-small text-blue">{{ $thongtinxe->tentaixe }}</h3>
+                        <h6 class="text-yellow">Tên tài xế</h6>
                     </div>
                 </div>
             </div>

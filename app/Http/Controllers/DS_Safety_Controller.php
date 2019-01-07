@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DS_Safety;
+use Carbon\Carbon;
 
 class DS_Safety_Controller extends Controller
 {
@@ -67,26 +68,26 @@ class DS_Safety_Controller extends Controller
 
     public function get_Edit($id)
     {
-    	$hr = DS_Safety::find($id);
-    	return view('pages.dashboard.hr.edit',compact('hr'));
+    	$safety = DS_Safety::find($id);
+    	return view('pages.dashboard.safety.edit',compact('safety'));
     }
 
     public function post_Edit($id, Request $request)
     {
     	$this->validate($request,[
-            'total_employees' => 'required',
-            'female_employees'=>'required',
+            'LTI' => 'required',
+            'MTI'=>'required',
         ],
         [
-            'total_employees.required'=>'Bạn chưa nhập tổng nhân viên',
-            'female_employees.required'=>'Bạn chưa nhập số nhân viên nữ',
+            'LTI.required'=>'Bạn chưa nhập LTI',
+            'MTI.required'=>'Bạn chưa nhập MTI',
         ]);
 
-        $hr = DS_Safety::find($id);
-        $hr->total_employees = date('Y-m-d', $request->total_employees);
-        $hr->female_employees = $request->female_employees;
+        $safety = DS_Safety::find($id);
+        $safety->LTI = date('Y-m-d', strtotime($request->LTI));
+        $safety->MTI = date('Y-m-d', strtotime($request->MTI));
           
-        $hr->save();
+        $safety->save();
         //------------------------------------------------------------------
         //Gửi mail
         // $data['title'] = "GIAO HÀNG - THÔNG BÁO XE ĐẾN Ở CỔNG BẢO VỆ SỐ 1";
