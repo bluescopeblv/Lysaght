@@ -84,7 +84,7 @@
 					                            <td>{{$kh->Litem}}</td>
 					                            <td>{{$kh->NgayGH}}</td>
 					                            
-					                            <td class="center"><i class="glyphicon glyphicon-th-list"></i> <a href="chitiet/{{$kh->CO}}/{{$kh->Litem}}"> Chi tiết...</a></td>
+					                            <td class="center"><i class="glyphicon glyphicon-th-list"></i> <a href="chitiet/{{$kh->CO}}/{{$kh->Litem}}/{{$wc1}}"> Chi tiết...</a></td>
 					                        </tr>
 					                        @endforeach
 					                    @endif

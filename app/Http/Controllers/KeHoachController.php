@@ -55,10 +55,14 @@ class KeHoachController extends Controller
             return redirect('kehoach')->with('thongbao','Bạn chưa đăng nhập');
         }
     }
-    function getChiTiet($CO,$LItem)
+    function getChiTiet($CO,$LItem,$wc)
     {   
 
-        $chitietCO = KeHoach::where('CO',$CO)->where('Litem',$LItem)->orderBy('Priority1')->orderBy('ChieuDai','desc')->orderBy('MO')->paginate(15);
+        $chitietCO = KeHoach::where('CO',$CO)
+                            ->where('WorkCenter','like',"$wc")
+                            ->where('Litem',$LItem)
+                            ->orderBy('Priority1')
+                            ->orderBy('ChieuDai','desc')->orderBy('MO')->paginate(15);
         //$loaitin = LoaiTin::find($id);
         //$tintuc = TinTuc::where('idLoaiTin',$id)->paginate(5);
         //echo "string ".$chitietCO;

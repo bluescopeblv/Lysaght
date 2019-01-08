@@ -6,6 +6,8 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <base href="{{asset('')}}">
+    <link rel="shortcut icon" type="image/png" href="image/icon/congty.png"/>
+
     <!-- Bootstrap 3.3.4 -->
     <link href="delivery_inteface/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
@@ -45,7 +47,17 @@
       <div class="content-wrapper">
         <!-- Main content -->
         <section class="row1">
-          <div id="chartContainer" class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin: 0px auto;"></div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin: 0px auto;">
+          	<p class="title" style="text-align: center;">OEE</p>
+          	{!! $chart->container() !!}
+			<script src="js/Chart.min.js" charset="utf-8"></script>
+	
+			{!! $chart->script() !!}
+
+          </div>
+
+          
+
           <div id="ytd" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <!-- chart circle -->
             <div id="piechart"></div>
@@ -58,25 +70,30 @@
                   <p class="text-target">Target</p>
                 </div><!-- ./target -->
                 <div class="actual">
-                  <p class="percent">60%</p><!-- ./percent -->
+                  <p class="percent">42%</p><!-- ./percent -->
                   <p class="text-target">Actual</p>
                 </div><!-- ./actual -->
               </div><!-- ./multiskill-content -->
             </div><!-- #multiskill -->
           </div><!-- #ytd -->
-          <div id="chartLU" class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin: 0px auto;"></div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin: 0px auto;">
+          	<p class="title" style="text-align: center;">LABOR UTILIZATION</p>
+          	{!! $chart2->container() !!}
+          	<script src="js/Chart.min.js" charset="utf-8"></script>
+          	{!! $chart2->script() !!}
+          </div>
         </section><!-- ./content-area -->
        <section class="row2">
         <div class="dlt-cod col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
          <div id="dlt" >
             <p class="name-title">Dispatch lead-time </p>
            <div class="target col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <p class="percent">6</p>
+              <p class="percent">5</p>
               <p class="text-minpack">min/ pack</p>
               <p class="text-target">Target</p>
             </div><!-- ./target -->
             <div class="actual col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <p class="percent">6</p>
+              <p class="percent">5.5</p>
               <p class="text-minpack">min/ pack</p>
               <p class="text-target">Actual</p>
             </div><!-- ./actual -->
@@ -84,27 +101,34 @@
          <div id="cod">
             <p class="name-title">Cost of defect</p>
            <div class="target col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <p class="percent">0.03</p>
+              <p class="percent">0.02%</p>
               <p class="text-target">Target</p>
             </div><!-- ./target -->
             <div class="actual col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <p class="percent">0.02</p>
+              <p class="percent">0.02%</p>
               <p class="text-target">Actual</p>
             </div><!-- ./actual -->
          </div><!-- #/cod -->
          </div><!-- ./dlt-cod -->
-         <div id="record_revenue" class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+         <div id="" class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin: 0px auto;">
+         	<p class="title" style="text-align: center;">Record revenue</p>
+          	{!! $chart3->container() !!}
+			<script src="js/Chart.min.js" charset="utf-8"></script>
+	
+			{!! $chart3->script() !!}
+
+         </div>
          <div id="backlog" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
           <div class=" box-backlog col-lg-12">
           <p class="name-title">Backlog</p>
            <div class="col-left">
-             <p class="percent">80</p>
+             <p class="percent">NA</p>
              <p class="text-target">tấn</p>
              <p class="text-target">ACTUAL</p>
            </div><!-- ./col-left -->
            <div class="col-right">
-             <p>Finish good<span>40</span></p>
-             <p>Remain<span class="spannth2">30</span></p>
+             <p>Finish good<span>NA</span></p>
+             <p>Remain<span class="spannth2">NA</span></p>
            </div><!-- ./col-right -->
            </div>
          </div><!-- #backlog -->
@@ -133,12 +157,12 @@
          <div id="delivery">
             <p class="name-title">Delivery service</p>
            <div class="target col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <p class="percent">120</p>
+              <p class="percent">NA</p>
               <p class="money">tỷ</p>
               <p class="text-target">Target</p>
             </div><!-- ./target -->
             <div class="actual col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <p class="percent">150</p>
+              <p class="percent">NA</p>
               <p class="money">tỷ</p>
               <p class="text-target">Actual</p>
             </div><!-- ./actual -->
@@ -174,11 +198,11 @@
             <p class="name-title">Actual delivery </p>
             <div class="box-row1">
             <div class="target col-lg-6 col-md-6 col-sm-6 col-xs-6">
-              <p class="percent">40</p>
+              <p class="percent">NA</p>
               <p class="text-minpack">tỷ</p>
             </div><!-- ./target -->
             <div class="target col-lg-6 col-md-6 col-sm-6 col-xs-6">
-              <p class="percent">40</p>
+              <p class="percent">NA</p>
               <p class="text-minpack">tỷ</p>
             </div><!-- ./target -->
             </div>
@@ -199,10 +223,10 @@
             <p class="name-title">Customer complaint</p>
             <div class="box-row1">
             <div class="target col-lg-6 col-md-6 col-sm-6 col-xs-6">
-              <p class="percent">000</p>
+              <p class="percent">NA</p>
             </div><!-- ./target -->
             <div class="target col-lg-6 col-md-6 col-sm-6 col-xs-6">
-              <p class="percent">002</p>
+              <p class="percent">NA</p>
             </div><!-- ./target -->
             </div>
             <div class="icon-center">
@@ -222,7 +246,7 @@
        </section><!-- ./row3 -->
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
-        <p>COPPYRIGHT 2018 @ALL RIGHT BY BLUESCOPE LYSAGHT</p>
+        <p>COPPYRIGHT 2019 @ALL RIGHT BY BLUESCOPE LYSAGHT</p>
       </footer>
     </div><!-- ./wrapper -->
 
