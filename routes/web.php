@@ -257,7 +257,7 @@ Route::get('chitiet/{CO}/{LItem}/{wc}','KeHoachController@getChiTiet');
 
 Route::get('chitiet/{id}','AjaxController@getChiTietCO');
 Route::get('reportXong/{id}','AjaxController@getReportXong');
-Route::get('chitiet/{CO}/{LItem}/{reportall}','KeHoachController@getReportAll');
+Route::get('chitiet/{CO}/{LItem}/{wc}/reportall','KeHoachController@getReportAll');
 
 Route::post('reportMotPhan/{id}','AjaxController@postReportMotPhan');
 

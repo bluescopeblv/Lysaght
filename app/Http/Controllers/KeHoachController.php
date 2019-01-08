@@ -66,13 +66,16 @@ class KeHoachController extends Controller
         //$loaitin = LoaiTin::find($id);
         //$tintuc = TinTuc::where('idLoaiTin',$id)->paginate(5);
         //echo "string ".$chitietCO;
-        return view('pages.chitiet',['chitietCO'=>$chitietCO,'CO'=>$CO,'Litem'=>$LItem]);
+        return view('pages.chitiet',['chitietCO'=>$chitietCO,'CO'=>$CO,'Litem'=>$LItem, 'wc'=>$wc]);
     }
 
 
-    function getReportAll($CO,$LItem)
+    function getReportAll($CO,$LItem,$wc)
     {   
-        $reportall = KeHoach::where('CO',$CO)->where('Litem',$LItem)->get();
+        $reportall = KeHoach::where('WorkCenter','like',"$wc")
+                            ->where('CO',$CO)
+                            ->where('Litem',$LItem)
+                            ->get();
         //$loaitin = LoaiTin::find($id);
         //$tintuc = TinTuc::where('idLoaiTin',$id)->paginate(5);
         foreach ($reportall as $rp) {
@@ -85,7 +88,7 @@ class KeHoachController extends Controller
             $rp->NgaySX_TT = date('Y-m-d');
             $rp->save();
         }
-        return redirect("chitiet/".$CO."/".$LItem)->with('thongbao','Bạn đã báo cáo thành công');
+        return redirect()->back()->with('thongbao','Bạn đã báo cáo thành công');
     }
 
     function postNguoiDung(Request $request)

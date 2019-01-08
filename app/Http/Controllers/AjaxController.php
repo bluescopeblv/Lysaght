@@ -52,7 +52,7 @@ class AjaxController extends Controller
         $chitiet->NgaySX_TT = date('Y-m-d');
     	$chitiet->save();
 
-    	return redirect("chitiet/".$chitiet->CO."/".$chitiet->Litem)->with('thongbao','Bạn đã báo cáo thành công');
+    	return redirect()->back()->with('thongbao','Bạn đã báo cáo thành công');
     }
 
     public function postReportMotPhan(Request $request,$id)

@@ -94,7 +94,7 @@
 				            </div>			   
 				  	</div>
 				  	<div class="panel-footer">
-				  		<a href="chitiet/{{$CO}}/{{$Litem}}/reportall">REPORT ALL</a> 
+				  		<a href="chitiet/{{$CO}}/{{$Litem}}/{{$wc}}/reportall">REPORT ALL</a> 
 				  	</div>
 				</div>
             </div>
