@@ -27,7 +27,8 @@
                     </div>
                 @endif
                 <form action="delivery/logistic/detailco/{{$thongtinxe->id}}/add" method="post">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    {{ csrf_field() }}
+
                     <div class="form-body">
                         <h3 class="card-title">{{$thongtinxe->khachhang}} | <small> Thêm mới  </small> </h3>
                         <hr>
@@ -78,7 +79,6 @@
 @endsection
 
 @section('script')
-  <script>
-       
-  </script>
+   
+    <script src="js/flash_notification.js"></script>
 @endsection

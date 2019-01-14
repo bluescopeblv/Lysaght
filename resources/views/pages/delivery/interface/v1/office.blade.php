@@ -34,7 +34,7 @@
         <!-- Logo -->
         <div class="img-logo">
         <a href="#">
-          <img src="img/logo.png">
+          <img src="delivery_inteface/img/logo.png">
         </a>
         </div>
       </header>
@@ -124,7 +124,7 @@
 
               <div class="box-item">
               <div class="img-truck">
-                  <img src="img/truck.png">
+                  <img src="delivery_inteface/img/truck.png">
               </div>
             </div>
             </div><!-- ./item -->
@@ -152,7 +152,7 @@
 
               <div class="box-item">
               <div class="img-truck">
-                  <img src="img/truck.png">
+                  <img src="delivery_inteface/img/truck.png">
               </div>
             </div>
             </div><!-- ./item -->
@@ -197,7 +197,7 @@
               <div class="box">
                 <div class="box-header">
                   <p class="box-title">Thông tin giao hàng</p>
-                  <p class="hour">02-01-2019 14:30</p>
+                  <p class="hour">{{ date('d-M-Y') }}</p>
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">

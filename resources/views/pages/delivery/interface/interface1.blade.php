@@ -6,6 +6,8 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <base href="{{asset('')}}">
+    <link rel="shortcut icon" type="image/png" href="image/icon/congty.png"/>
+
     <!-- Bootstrap 3.3.4 -->
     <link href="delivery_inteface/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
