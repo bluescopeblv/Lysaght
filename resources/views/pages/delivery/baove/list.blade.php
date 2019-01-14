@@ -11,7 +11,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                 
-                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/baove/add"> Thêm mới</a> </button>
+                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/baove "> Danh sách</a> </button>
 
                 </ol>
             </div>
@@ -79,9 +79,9 @@
                             		<a href="delivery/baove/edit/{{$ttx->id}}"><span class="glyphicon glyphicon-edit">Sửa</span></a>
                             	</span><span>  </span>
                                 
-                            	<span class="label label-danger">
+                            	<!-- <span class="label label-danger">
                             		<a href="delivery/baove/delete/{{$ttx->id}}"><span class="glyphicon glyphicon-remove-sign">Xóa</span></a>
-                            	</span>
+                            	</span> -->
                                 @endif
 				            </td>
                         </tr>

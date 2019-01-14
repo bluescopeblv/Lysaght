@@ -496,6 +496,8 @@ Route::group(['prefix' => 'delivery'], function() {
 
         Route::get('/delete/{id}','DeliveryController@getDeleteBV');
 
+        Route::get('/reset/{id}','DeliveryController@getResetLG');
+
         Route::get('/wait/{id}','DeliveryController@getWait_LG');
         Route::get('/confirm/{id}','DeliveryController@getConfirm_LG');
         Route::get('/pay/{id}','DeliveryController@getPay_LG');
@@ -510,9 +512,9 @@ Route::group(['prefix' => 'delivery'], function() {
             Route::get('/{id}/edit/{CO_id}','DeliveryController@getEditCO_LG');
             Route::post('/{id}/edit/{CO_id}','DeliveryController@postEditCO_LG');
 
-            Route::get('/{id}/delete/{CO_id}','DeliveryController@getDetailCO_LG');
+            Route::get('/{id}/delete/{CO_id}','DeliveryController@getDeleteCO_LG');
 
-            Route::post('/{id}/delivery_import_CO', 'DeliveryController@import_CO')->name('import.CO');;
+            Route::post('/{id}/delivery_import_CO', 'DeliveryController@import_CO')->name('import.CO');
 
             Route::get('export-delivery/{type}', 'DeliveryController@export_CO')->name('export.CO');
 
@@ -618,6 +620,115 @@ Route::group(['prefix' => 'dashboard'], function() {
     Route::group(['prefix' => 'interface'], function() {
         Route::get('/','DS_Interface_Controller@getInterface1');
 
+    });
+
+});
+
+
+Route::group(['prefix' => 'Test'], function() {
+    Route::get('/', function() {
+        return view('v2.member.layout.index');
+    });
+
+    Route::get('/delivery', function() {
+        return view('v2.member.delivery.list');
+    });
+});
+// V2 - Delivery
+Route::group(['prefix' => 'delivery2'], function() {
+    Route::get('/', 'DeliveryController@getDanhSach');
+
+    Route::group(['prefix' => 'baove'], function() {
+        Route::get('/','Delivery2Controller@getListBV');
+
+        Route::get('/add', 'Delivery2Controller@getAddBV');
+        Route::post('/add', 'Delivery2Controller@postAddBV');
+
+        Route::get('/edit/{id}','Delivery2Controller@getEditBV');
+        Route::post('/edit/{id}','DeliveryController@postEditBV');
+
+        Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+
+        Route::get('/in/{id}','DeliveryController@getIn_BV');
+        Route::get('/out/{id}','DeliveryController@getOutBV');
+    });
+    Route::group(['prefix' => 'logistic'], function() {
+        Route::get('/','Delivery2Controller@getListLG');
+
+        Route::get('/add', 'Delivery2Controller@getAdd_LG');
+        Route::post('/add', 'Delivery2Controller@postAdd_LG');
+
+        Route::get('/edit/{id}','Delivery2Controller@getEditLG');
+        Route::post('/edit/{id}','Delivery2Controller@postEditLG');
+
+        Route::get('/delete/{id}','Delivery2Controller@getDeleteBV');
+
+        Route::get('/wait/{id}','Delivery2Controller@getWait_LG');
+        Route::get('/confirm/{id}','Delivery2Controller@getConfirm_LG');
+        Route::get('/pay/{id}','Delivery2Controller@getPay_LG');
+        Route::get('/xongdn/{id}','Delivery2Controller@getXongDN_LG');
+        Route::get('/xongpxk/{id}','Delivery2Controller@getXongPXK_LG');
+        Route::group(['prefix' => 'detailco'], function() {
+            Route::get('/{id}','Delivery2Controller@getDetailCO_LG');
+
+            Route::get('/{id}/add','Delivery2Controller@getAddCO_LG');
+            Route::post('/{id}/add','DeliveryController@postAddCO_LG');
+
+            Route::get('/{id}/edit/{CO_id}','Delivery2Controller@getEditCO_LG');
+            Route::post('/{id}/edit/{CO_id}','Delivery2Controller@postEditCO_LG');
+
+            Route::get('/{id}/delete/{CO_id}','Delivery2Controller@getDetailCO_LG');
+
+            Route::post('/{id}/delivery_import_CO', 'Delivery2Controller@import_CO')->name('import.v2.CO');;
+
+            Route::get('export-delivery/{type}', 'Delivery2Controller@export_CO')->name('export.v2.CO');
+
+        });
+    });
+
+    Route::group(['prefix' => 'giaohang'], function() {
+        Route::get('/','Delivery2Controller@getListGH');
+
+        Route::get('/add', 'Delivery2Controller@getAddBV');
+        Route::post('/add', 'DeliveryController@postAddBV');
+
+        Route::get('/edit/{id}','DeliveryController@getEditGH');
+        Route::post('/edit/{id}','DeliveryController@postEditGH');
+
+        Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+
+        Route::get('/detail/{id}', 'DeliveryController@getDetail_GH');
+        //Route::get('/detail/{id}/add', 'DeliveryController@getAddPicture_GH');
+        Route::post('/detail/{id}/add', 'DeliveryController@postAddPicture_GH');
+
+        Route::get('/detail/{id}/delete/{picture_id}','DeliveryController@getDeletePicture_GH');
+
+        Route::get('/bdchathang/{id}','DeliveryController@getBatDauChatHang');
+        Route::get('/ktchathang/{id}','DeliveryController@getKetThucChatHang');
+        Route::get('/hltaixe/{id}','DeliveryController@getHuanLuyenTaiXe');
+        Route::get('/bangiaodn/{id}','DeliveryController@getBanGiaoDN');
+
+    });
+
+    Route::group(['prefix' => 'warehouse'], function() {
+        Route::get('/','DeliveryController@getList_WH');
+
+        Route::get('/add', 'DeliveryController@getAddBV');
+        Route::post('/add', 'DeliveryController@postAddBV');
+
+        Route::get('/edit/{id}','DeliveryController@getEditGH');
+        Route::post('/edit/{id}','DeliveryController@postEditGH');
+
+        Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+    });
+
+    Route::group(['prefix' => 'interface'], function() {
+        Route::get('/','DeliveryController@getList_IF');
+
+        Route::get('/office', 'DeliveryController@getInterface_Office_IF');
+        Route::get('/driver', 'DeliveryController@getInterface_Driver_IF');
+        
+        Route::get('time','AjaxController@getRealTime');
     });
 
 });

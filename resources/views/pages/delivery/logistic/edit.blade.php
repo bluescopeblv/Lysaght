@@ -197,9 +197,10 @@
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Sửa</button>
-                        <button type="button" class="btn btn-inverse">Cancel</button>
+                        
                     </div>
                 </form>
+
                 <hr>
                 <div class="row">
                     <!-- column -->

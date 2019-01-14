@@ -38,8 +38,20 @@
                                     <input type="text" name="CO" class="form-control" placeholder="Nhập tên CO">
                                      </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Sản phẩm</label>
+                                    <input type="text" name="sanpham" class="form-control" placeholder="Nhập tên Sản phẩm">
+                                     </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">Số đơn hàng</label>
+                                    <input type="text" name="sodonhang" class="form-control" placeholder="Nhập Số đơn hàng">
+                                     </div>
+                            </div>
                             <!--/span-->
-                            <div class="col-md-9">
+                            <div class="col-md-10">
                                 <div class="form-group has-danger">
                                     <label class="control-label">Chi tiết giao hàng</label>
                                     <input type="text" name="chitietgiaohang" class="form-control form-control-danger" placeholder="Chi tiết giao hàng">

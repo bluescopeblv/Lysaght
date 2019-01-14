@@ -32,14 +32,26 @@
                         <h3 class="card-title">Dự án: {{$thongtinxe->khachhang}}, CO: {{$CO->CO}} |<small> Sửa</small>  <span></span></h3>
                         <hr>
                         <div class="row p-t-20">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">CO</label>
                                     <input type="text" name="CO" class="form-control" placeholder="Nhập tên CO" value="{{ $CO->CO }}">
                                      </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Sản phẩm</label>
+                                    <input type="text" name="sanpham" class="form-control" placeholder="Nhập tên Sản phẩm" value="{{ $CO->sanpham }}">
+                                     </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">Số đơn hàng</label>
+                                    <input type="text" name="sodonhang" class="form-control" placeholder="Nhập Số đơn hàng" value="{{ $CO->sodonhang }}">
+                                     </div>
+                            </div>
                             <!--/span-->
-                            <div class="col-md-8">
+                            <div class="col-md-10">
                                 <div class="form-group has-danger">
                                     <label class="control-label">Chi tiết giao hàng</label>
                                     <input type="text" name="chitietgiaohang" class="form-control form-control-danger" placeholder="Nhập tên tài xế" value="{{ $CO->chitietgiaohang }}">

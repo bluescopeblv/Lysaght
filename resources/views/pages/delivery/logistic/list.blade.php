@@ -107,8 +107,10 @@
                             <td>
                             	<span class="label label-warning">
                             		<a href="delivery/logistic/edit/{{$ttx->id}}"><span class="glyphicon glyphicon-edit">Sửa</span></a>
-                            	</span><span>  </span>
-                            	
+                            	</span>
+                            	<span class="label label-warning">
+                                    <a href="delivery/logistic/reset/{{$ttx->id}}"><span class="glyphicon glyphicon-edit">Reset</span></a>
+                                </span>
 				            </td>
                         </tr>
                         @endforeach

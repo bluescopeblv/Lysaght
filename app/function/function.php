@@ -125,13 +125,16 @@ function getDeliveryStatus($status)
     elseif($status == 40)
         return '<span class="label label-success">Cho phép chất hàng</span>';
     elseif($status == 50)
-        return '<span class="label label-success">Đang chất hàng</span>';
+        return '<span class="label label-info">Đang chất hàng</span>';
     elseif($status == 60)
         return '<span class="label label-success">Đã chất hàng xong</span>';
+    elseif($status == 70)
+        return '<span class="label label-danger">Reject</span>';
     elseif($status == 80)
         return '<span class="label label-success">Xong thủ tục</span>';
     elseif($status == 90)
         return '<span class="label label-danger">Xe đã ra</span>';
+    
     else{
         return '<span class="label label-danger">NO DEFINE</span>';
     }

@@ -62,8 +62,9 @@
                                 @if($ttx->thoigianbatdauchathang != NULL)
                                     {{date('H:i',strtotime($ttx->thoigianbatdauchathang))}}
                                 @else
+                                    @if($ttx->status != 70)
                                     <span class="label label-info"><a href="delivery/giaohang/bdchathang/{{$ttx->id}}">Chất hàng ?</a></span>
-                                    
+                                    @endif
                                 @endif
                             </td>
                             <td>

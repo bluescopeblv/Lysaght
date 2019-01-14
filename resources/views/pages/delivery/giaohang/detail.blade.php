@@ -86,33 +86,17 @@
 		                    <thead>
 		                        <tr>	                            
 		                            <th>CO</th>
+		                            <th>Sản phẩm</th>	                            
 		                            <th>Chi tiết</th>	                            
-		                            <th>Status</th>	                            
 		                        </tr>
 		                    </thead>
 		                    <tbody>
 		                        @foreach($CO as $key => $val)
 		                        <tr>	                           
 		                            <td>{{$val->CO}}</td>
-		                            <td>{{$val->chitietgiaohang}}</td>
+		                            <td>{{$val->sanpham}}</td>
 		                            <td>
-		                                @if($thongtinxe->status == 20 )
-		                                    <span class="label label-info">Xe vào</span>
-		                                @elseif($thongtinxe->status == 30)
-		                                    <span class="label label-warning">CHỜ</span>
-		                                @elseif($thongtinxe->status == 40)
-		                                    <span class="label label-success">OK</span>
-		                                @elseif($thongtinxe->status == 50)
-		                                    <span class="label label-success">Đang chất hàng</span>
-		                                @elseif($thongtinxe->status == 60)
-		                                    <span class="label label-success">Chất hàng xong</span>
-		                                @elseif($thongtinxe->status == 80)
-		                                    <span class="label label-success">Xong thủ tục</span>
-		                                @elseif($thongtinxe->status == 90)
-		                                    <span class="label label-danger">Xe đã ra</span>
-		                                @else
-		                                    <span class="label label-danger">NO DEFINE</span>
-		                                @endif
+		                                {{$val->chitietgiaohang}}
 		                            </td>                           
 		                        </tr>
 		                        @endforeach

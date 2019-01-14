@@ -35,6 +35,8 @@
                         <tr>
                             <th>ID</th>
                             <th>CO</th>
+                            <th>Sản phẩm</th>
+                            <th>Số đơn hàng</th>
                             <th>Chi tiết</th>
                             
                             <th>Status</th>
@@ -46,6 +48,8 @@
                         <tr>
                             <td>{{$val->id}}</td>
                             <td>{{$val->CO}}</td>
+                            <td>{{$val->sanpham}}</td>
+                            <td>{{$val->sodonhang}}</td>
                             <td>{{$val->chitietgiaohang}}</td>
                             <td>
                                {!! getDeliveryStatus($thongtinxe->status)  !!}

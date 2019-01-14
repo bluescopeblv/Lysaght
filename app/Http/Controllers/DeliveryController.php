@@ -408,6 +408,15 @@ class DeliveryController extends Controller
         return redirect()->back()->with('thongbao','Sửa thành công');
     }
 
+    public function getResetLG($id)
+    {
+        $thongtinxe = DeliveryThongTinXe::find($id);
+        //$thongtinxe->thoigianxevao = NULL;
+        $thongtinxe->status = 70;
+        $thongtinxe->save();
+        return redirect()->back()->with('thongbao','Đã Reset thành công');
+    }
+
     public function getWait_LG($id)
     {
         $thongtinxe = DeliveryThongTinXe::find($id);
@@ -615,12 +624,23 @@ class DeliveryController extends Controller
 
         $CO = DeliveryDetail::find($CO_id);
         $CO->CO = $request->CO;
+        $CO->sanpham = $request->sanpham;
+        $CO->sodonhang = $request->sodonhang;
         $CO->chitietgiaohang = $request->chitietgiaohang;
         $CO->thongtinxe_id = $id;
         $CO->save();
         
         return redirect()->back()->with('thongbao','Sửa thành công');
     }
+
+    public function getDeleteCO_LG($id, $CO_id)
+    {
+        $thongtinxe = DeliveryThongTinXe::find($id);
+        $CO = DeliveryDetail::find($CO_id);
+        $CO->delete();
+        return redirect()->back()->with('thongbao','Sửa thành công');
+    }
+    
 
     public function getAddCO_LG($id)
     {
@@ -639,6 +659,8 @@ class DeliveryController extends Controller
 
         $CO = new DeliveryDetail;
         $CO->CO = $request->CO;
+        $CO->sanpham = $request->sanpham;
+        $CO->sodonhang = $request->sodonhang;
         $CO->chitietgiaohang = $request->chitietgiaohang;
         $CO->thongtinxe_id = $id;
         $CO->save();
@@ -658,6 +680,8 @@ class DeliveryController extends Controller
                 foreach ($data as $key => $value) {
                     $arr[] = [
                         'CO' => $value->co,
+                        'sanpham' => $value->sanpham,
+                        'sodonhang' => $value->sodonhang,
                         'chitietgiaohang' => $value->chitietgiaohang,
                         'thongtinxe_id' => $id,
                         ];
@@ -673,10 +697,10 @@ class DeliveryController extends Controller
 
     public function export_CO($type)
     {
-        $CO = DeliveryDetail::select('CO', 'chitietgiaohang')->take(2)->get()->toArray();
+        $CO = DeliveryDetail::select('CO','sanpham','sodonhang','chitietgiaohang')->take(2)->get()->toArray();
         //var_dump($thongtinxe);
 
-        return \Excel::create('Sample', function($excel) use ($CO) {
+        return \Excel::create('Import_Sample', function($excel) use ($CO) {
             $excel->sheet('Sheet 1', function($sheet) use ($CO)
             {
                 $sheet->fromArray($CO);
@@ -697,9 +721,18 @@ class DeliveryController extends Controller
         return view('pages.delivery.interface.interface1',compact('thongtinxe'));
     }
 
-    public function getInterface_Office_IF()
+    public function getList_2_IF()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
+        return view('pages.delivery.interface.interface1',compact('thongtinxe'));
+    }
+
+    public function getInterface_Office_IF()
+    {
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('status','<=',80)
+                    ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->get();
         return view('pages.delivery.interface.office',compact('thongtinxe'));
     }
     
