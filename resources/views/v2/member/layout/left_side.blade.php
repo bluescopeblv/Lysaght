@@ -16,15 +16,11 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-basket fa-fw"></i> <span class="hide-menu"> eCommerce </span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-basket fa-fw"></i> <span class="hide-menu"> Help </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li> <a href="index4.html">Dashboard</a> </li>
-                        <li> <a href="products.html">Products</a> </li>
-                        <li> <a href="product-detail.html">Product Detail</a> </li>
-                        <li> <a href="product-edit.html">Product Edit</a> </li>
-                        <li> <a href="product-orders.html">Product Orders</a> </li>
-                        <li> <a href="product-cart.html">Product Cart</a> </li>
-                        <li> <a href="product-checkout.html">Product Checkout</a> </li>
+                        <li> <a href="index4.html">Báo lỗi</a> </li>
+                        <li> <a href="products.html">Danh bạ</a> </li>
+
                     </ul>
                 </li>
                 <li>
@@ -38,9 +34,9 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-equalizer fa-fw"></i> <span class="hide-menu"> UI Elements<span class="label label-rounded label-danger pull-right">18</span></span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-equalizer fa-fw"></i> <span class="hide-menu"> Hoạt động<span class="label label-rounded label-danger pull-right">1</span></span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="panels-wells.html">Panels and Wells</a></li>
+                        <li><a href="panels-wells.html">Danh sách</a></li>
                         <li><a href="panel-ui-block.html">Panels With BlockUI</a></li>
                         <li><a href="portlet-draggable.html">Draggable Portlet</a></li>
                         
@@ -58,47 +54,33 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-grid fa-fw"></i> <span class="hide-menu"> Tables</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-grid fa-fw"></i> <span class="hide-menu"> KPI</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="basic-table.html">Basic Tables</a></li>
-                        <li><a href="table-layouts.html">Table Layouts</a></li>
-                        
+                        <li><a href="basic-table.html">All Function</a></li>
+                        <li><a href="table-layouts.html">QC</a></li>
+                        <li><a href="table-layouts.html">Maintenance</a></li>
+                        <li><a href="table-layouts.html">Outsource</a></li>
+                        <li><a href="table-layouts.html">Operation</a></li>
 
                     </ul>
                 </li>
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu"> Charts</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu"> 5S</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="morris-chart.html">Morris Chart</a></li>
-                        <li><a href="peity-chart.html">Peity Charts</a></li>
-                        <li><a href="knob-chart.html">Knob Charts</a></li>
-                        <li><a href="sparkline-chart.html">Sparkline charts</a></li>
+                        <li><a href="morris-chart.html">Thống kê</a></li>
+                        <li><a href="peity-chart.html">Đánh giá</a></li>
+                        <li><a href="knob-chart.html">Danh sách</a></li>
+                        <li><a href="sparkline-chart.html">Raise Khiếm khuyết</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="widgets.html" aria-expanded="false"><i class="icon-settings fa-fw"></i> <span class="hide-menu"> Widgets </span></a>
-                </li>
-                
-
-
-
-                <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-docs fa-fw"></i> <span class="hide-menu"> Pages<span class="label label-rounded label-success pull-right">18</span></span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-settings fa-fw"></i> <span class="hide-menu"> Maintenance<span class="label label-rounded label-success pull-right"></span></span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li> <a href="javascript:void(0);">Error Pages</a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li> <a href="400.html">400</a> </li>
-                                <li> <a href="403.html">403</a> </li>
-                                
-                            </ul>
+                        <li> <a href="javascript:void(0);">Các chỉ số</a>
                         </li>
-                        <li><a href="starter-page.html">Starter Page</a></li>
+                        <li><a href="starter-page.html">Quản lí chi phí</a></li>
                         <li><a href="blank.html">Blank Page</a></li>
-                        <li><a href="search-result.html">Search Result</a></li>
-                        <li><a href="custom-scroll.html">Custom Scrolls</a></li>
-                        <li><a href="login.html">Login Page</a></li>
                         
-
                     </ul>
                 </li>
                 <li>

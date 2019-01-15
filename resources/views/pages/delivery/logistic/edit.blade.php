@@ -10,7 +10,10 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-info">
-                <h4 class="m-b-0 text-white"><a href="delivery/logistic/">Danh sách xe</a></h4>
+                <span><a href="delivery/logistic/">Danh sách xe</a></span>
+                <span class="label label-warning" style="float: right;">
+                    <a href="delivery/logistic/reset/{{$thongtinxe->id}}"><span class="glyphicon glyphicon-edit">Reject</span></a>
+                </span>
             </div>
             <div class="card-body">
             	@if(count($errors)>0)

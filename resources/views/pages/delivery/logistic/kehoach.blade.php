@@ -11,8 +11,8 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                     <li class="breadcrumb-item active">Data</li>
-                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/giaohang/kehoach"> Xem kế hoạch</a> </button>
-                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/giaohang/"> Danh sách</a> </button>
+                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/logistic/kehoach"> Xem kế hoạch</a> </button>
+                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/logistic/"> Danh sách</a> </button>
 
                 </ol>
             </div>
@@ -25,6 +25,19 @@
                     {{session('thongbao')}}           
                 </div>
             @endif
+            <form action="delivery/logistic/kehoach" method="POST">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                
+                <input  type="date" id="myDate" class="form-control" name="DateFind" value="{{ date('Y-m-d',strtotime( $today->addDay() )) }}" style="display: inline;width: 15%">
+                <input  type="date" class="form-control" name="DateFind2" value="{{ date('Y-m-d',strtotime( $today )) }}" style="display: inline;width: 15%">
+                
+                <button type="submit" class="btn btn-default">Tìm kiếm</button>
+                @if(isset($ngay))
+                <h4>Ngày <span style="color: blue">{{date('d-m-Y',strtotime($ngay))}}</span> đến <span style="color: blue">{{date('d-m-Y',strtotime($ngay2))}}</span> </h4>
+                @endif
+
+                <hr>
+            </form>
             <div class="table-responsive m-t-40">
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead>

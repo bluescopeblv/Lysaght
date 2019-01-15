@@ -10,6 +10,7 @@ use App\DeliveryPicture;
 use DB;
 use Mail;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 
 class DeliveryController extends Controller
@@ -469,6 +470,28 @@ class DeliveryController extends Controller
         return view('pages.delivery.giaohang.list',compact('thongtinxe'));
     }
 
+    public function getKeHoach_GH()
+    {
+        $today = Carbon::now();
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
+        return view('pages.delivery.giaohang.kehoach',compact('thongtinxe', 'today'));
+    }
+
+    public function postKeHoach_GH(Request $request)
+    {
+        $ngay = $request->DateFind;
+        $ngay2 = $request->DateFind2;
+        
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('thoigiankehoach','>=',"$ngay")
+                    ->where('thoigiankehoach','<=',"$ngay2")
+                    ->orderBy('thoigiankehoach')
+                    ->get();
+        $today = Carbon::now();
+        return view('pages.delivery.giaohang.kehoach',compact('thongtinxe','today','ngay','ngay2'));
+    }
+    
+
     public function getEditGH($id)
     {
         $thongtinxe = DeliveryThongTinXe::find($id);
@@ -479,16 +502,16 @@ class DeliveryController extends Controller
     public function postEditGH($id, Request $request)
     {
         $this->validate($request,[
-            'tentaixe' => 'required',
-            'bienso'=>'required',
-            'taitrongxe' => 'required',
-            'chieudaixe'=>'required',
+            'chieudai' => 'required',
+            'khoiluong'=>'required',
+            'sokien' => 'required',
+            
         ],
         [
-            'tentaixe.required'=>'Bạn chưa nhập tên tài xế',
-            'bienso.required'=>'Bạn chưa nhập biển số xe',
-            'taitrongxe.required'=>'Bạn chưa nhập tải trọng xe',
-            'chieudaixe.required'=>'Bạn chưa nhập chiều dài xe'
+            'chieudai.required'=>'Bạn chưa nhập chiều dài',
+            'khoiluong.required'=>'Bạn chưa nhập khối lượng',
+            'sokien.required'=>'Bạn chưa nhập số kiện',
+           
         ]);
 
         $thongtinxe = DeliveryThongTinXe::find($id);
@@ -707,6 +730,27 @@ class DeliveryController extends Controller
 
             });
         })->download($type);
+    }
+
+    public function getKeHoach_LG()
+    {
+        $today = Carbon::now();
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
+        return view('pages.delivery.logistic.kehoach',compact('thongtinxe', 'today'));
+    }
+
+    public function postKeHoach_LG(Request $request)
+    {
+        $ngay = $request->DateFind;
+        $ngay2 = $request->DateFind2;
+        
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('thoigiankehoach','>=',"$ngay")
+                    ->where('thoigiankehoach','<=',"$ngay2")
+                    ->orderBy('thoigiankehoach')
+                    ->get();
+        $today = Carbon::now();
+        return view('pages.delivery.logistic.kehoach',compact('thongtinxe','today','ngay','ngay2'));
     }
 
     public function getList_WH()

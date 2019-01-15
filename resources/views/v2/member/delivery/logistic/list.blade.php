@@ -7,6 +7,12 @@
 #myTable{
     font-family: "Arial";
     color: black;
+    font-size: 12px;
+}
+
+myTable.tbody{
+    color: black;
+    font-size: 10px;
 }
 
 .tieude{

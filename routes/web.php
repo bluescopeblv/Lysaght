@@ -494,7 +494,10 @@ Route::group(['prefix' => 'delivery'], function() {
         Route::get('/edit/{id}','DeliveryController@getEditLG');
         Route::post('/edit/{id}','DeliveryController@postEditLG');
 
-        Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+        Route::get('/delete/{id}','DeliveryController@getDeleteLG');
+
+        Route::get('/kehoach', 'DeliveryController@getKeHoach_LG');
+        Route::post('/kehoach', 'DeliveryController@postKeHoach_LG');
 
         Route::get('/reset/{id}','DeliveryController@getResetLG');
 
@@ -533,6 +536,9 @@ Route::group(['prefix' => 'delivery'], function() {
         Route::get('/delete/{id}','DeliveryController@getDeleteBV');
 
         Route::get('/detail/{id}', 'DeliveryController@getDetail_GH');
+
+        Route::get('/kehoach', 'DeliveryController@getKeHoach_GH');
+        Route::post('/kehoach', 'DeliveryController@postKeHoach_GH');
         //Route::get('/detail/{id}/add', 'DeliveryController@getAddPicture_GH');
         Route::post('/detail/{id}/add', 'DeliveryController@postAddPicture_GH');
 
