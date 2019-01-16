@@ -735,8 +735,14 @@ class DeliveryController extends Controller
     public function getKeHoach_LG()
     {
         $today = Carbon::now();
-        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
-        return view('pages.delivery.logistic.kehoach',compact('thongtinxe', 'today'));
+        $ngay = Carbon::now()->addDay();
+        $ngay2 = Carbon::now()->addDay();
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('thoigiankehoach','>=',"$ngay")
+                    ->where('thoigiankehoach','<=',"$ngay2")
+                    ->orderBy('thoigiankehoach')
+                    ->get();
+        return view('pages.delivery.logistic.kehoach',compact('thongtinxe', 'today','ngay','ngay2'));
     }
 
     public function postKeHoach_LG(Request $request)

@@ -172,4 +172,8 @@ function get_DS_Safety_Date_MTI($MTI_date)
 	return Carbon::parse($MTI_date)->diffInDays(Carbon::now());
 }
 
+function get_Delivery_Minute($date) //Car in factory
+{
+	return Carbon::parse($date)->diffInMinutes(Carbon::now()); //diffInHours
+}
 ?>

@@ -43,94 +43,63 @@
         <!-- Main content -->
         <section class="content-area">
 			<div class="box box-1">
-			<p class="text-title">Khu vực xe chờ giao hàng</p>
-			<div class="thumb-box">
-			  <div class="content-thumb-box">
-			<div class="item">
-			  <div class="box-item">
-			    <div class="img-truck">
-			        <img src="delivery_inteface/img/truck.png">
-			    </div>
-			    <p class="text-number-truck">52c 2903</p>
-			    <div class="text-time">
-			      <p>13:05</p>
-			      <p>20 phút</p>
-			    </div>
-			  </div><!-- ./box-item -->
-			</div><!-- ./item -->
-			<div class="item">
+  			<p class="text-title">Khu vực xe chờ giao hàng</p>
+  			<div class="thumb-box">
+  			  <div class="content-thumb-box">
 
-			  <div class="box-item">
-			  <div class="img-truck">
-			      <img src="delivery_inteface/img/truck.png">
-			  </div>
-			  <p class="text-number-truck">52c 2903</p>
-			  <div class="text-time">
-			    <p>14:05</p>
-			    <p>80 phút</p>
-			  </div>
-			</div>
-			</div><!-- ./item -->
-			<div class="item">
 
-			  <div class="box-item">
-			  <div class="img-truck">
-			      <img src="delivery_inteface/img/truck.png">
-			  </div>
-			</div>
-			</div><!-- ./item -->
-			</div><!-- ./content-thumb-box-1 -->
-			</div><!-- ./thumb-box-1 -->
+                          
+                            
+          @foreach($thongtinxe as $ttx)
+          @if($ttx->status >= 20 & $ttx->status <= 30 )
+      			<div class="item">
+      			  <div class="box-item">
+      			    <div class="img-truck">
+      			        <img src="delivery_inteface/img/truck.png">
+      			    </div>
+      			    <p class="text-number-truck">{{$ttx->bienso}}</p>
+      			    <div class="text-time">
+      			      <p>
+                    @if($ttx->thoigianxevao != NULL)
+                      {{ date('H:i',strtotime($ttx->thoigianxevao)) }}
+                    @endif
+                    
+                  </p>
+      			      <p>{{ get_Delivery_Minute($ttx->thoigianxevao) }} phút</p>
+      			    </div>
+      			  </div><!-- ./box-item -->
+      			</div><!-- ./item -->
+          @endif
+          @endforeach
+          </div><!-- ./content-thumb-box-1 -->
+  			</div><!-- ./thumb-box-1 -->
 			</div><!-- ./box-1 -->
-           <div class="box box-2">
+      <div class="box box-2">
             <p class="text-title">Khu vực giao hàng</p>
             <div class="thumb-box">
               <div class="content-thumb-box">
+            @foreach($thongtinxe as $ttx)
+            @if($ttx->status >= 40 & $ttx->status <= 60 )
             <div class="item">
-
               <div class="box-item">
               <div class="img-truck">
                   <img src="delivery_inteface/img/truck.png">
               </div>
-              <p class="text-number-truck">52c 2903</p>
+              <p class="text-number-truck">{{$ttx->bienso}}</p>
               <div class="text-time">
-                <p>14:05</p>
-                <p>200 phút</p>
+                <p>@if($ttx->thoigianxevao != NULL)
+                      {{ date('H:i',strtotime($ttx->thoigianxevao)) }}
+                    @endif</p>
+                <p>{{ get_Delivery_Minute($ttx->thoigianxevao) }} phút</p>
               </div>
             </div>
             </div><!-- ./item -->
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-              <p class="text-number-truck">52c 2903</p>
-              <div class="text-time">
-                <p>14:05</p>
-                <p>80 phút</p>
-              </div>
-            </div>
-            </div><!-- ./item -->
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-            </div>
-            </div><!-- ./item -->
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-            </div>
-            </div><!-- ./item -->
+            @endif
+            @endforeach
+            
           </div>
         </div>
-          </div><!-- ./box-2 -->
+      </div><!-- ./box-2 -->
           <div class="box box-3">
             <p class="text-title">Khu vực chờ giao nhận thép </p>
             <div class="thumb-box">
@@ -141,10 +110,10 @@
               <div class="img-truck">
                   <img src="delivery_inteface/img/truck.png">
               </div>
-              <p class="text-number-truck">52c 2903</p>
+              <p class="text-number-truck"></p>
               <div class="text-time">
-                <p>14:05</p>
-                <p>80 phút</p>
+                <p> </p>
+                <p> </p>
               </div>
             </div>
             </div><!-- ./item -->
@@ -163,11 +132,13 @@
             <p class="text-title">Khu vực giao nhận thép </p>
             <div class="thumb-box">
               <div class="content-thumb-box">
+            
+
             <div class="item">
 
               <div class="box-item">
               <div class="img-truck">
-                  <img src="img/truck.png">
+                  <img src="delivery_inteface/img/truck.png">
               </div>
             </div>
             </div><!-- ./item -->
@@ -175,15 +146,7 @@
 
               <div class="box-item">
               <div class="img-truck">
-                  <img src="img/truck.png">
-              </div>
-            </div>
-            </div><!-- ./item -->
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="img/truck.png">
+                  <img src="delivery_inteface/img/truck.png">
               </div>
             </div>
             </div><!-- ./item -->
@@ -202,71 +165,54 @@
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tr>
-                      <th>STT</th>
                       <th>Kế hoạch</th>
-                      <th>Thời gian xe vào</th>
+                      <th>Xe vào</th>
                       <th>Khách hàng</th>
                       <th>Biển số</th>
                       <th>Trọng tải xe</th>
                       <th>Số CO</th>
-                      <th>Chi tiết</th>
+                      
                       <th>Trạng thái</th>
+                      <th>Chi tiết</th>
                     </tr>
+                    @foreach($thongtinxe as $ttx)
                     <tr>
-                      <td>1</td>
-                      <td></td>
-                      <td>09:10</td>
-                      <td>Kiều Hưng</td>
-                      <td>60v 7770</td>
-                      <td>8 tấn</td>
-                      <td>0</td>
-                      <td></td>
-                      <td><span class="label label-warning">Xe đã vào</span></td>
+                        <td>
+                            @if($ttx->thoigiankehoach == NULL)
+
+                            @else
+                            <span><i class="fa fa-clock-o"></i> {{ date('d-m-Y H:i',strtotime($ttx->thoigiankehoach)) }}</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if($ttx->thoigianxevao == NULL)
+
+                            @else
+                            <span><i class="fa fa-clock-o"></i> {{ date('H:i',strtotime($ttx->thoigianxevao)) }}</span>
+                            @endif
+                        </td>
+                        <td>
+                            <span class="">{{ $ttx->khachhang }}</span>
+                        </td>
+                        <td>
+                            <span class=""><i class="fa fa-car"></i> {{ $ttx->bienso }}</span>
+                        </td>
+                        <td>{{$ttx->taitrongxe}} Tấn</td>
+                        <td> 
+                            <a href="delivery/logistic/detailco/{{$ttx->id}}">{{ getSoLuongCO($ttx->id) }}</a> 
+                        </td>
+                        
+
+                        <!-- <td>
+                            <div class="label label-table label-success">Paid</div>
+                        </td> -->
+                        <td>
+                            {!! getDeliveryStatus($ttx->status) !!}
+                        </td>
+                        <td>{{ $ttx->notelogistic }}</td>
                     </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>12/11/2018 09:11</td>
-                      <td>09:10</td>
-                      <td>Lai Châu</td>
-                      <td>59z 8805</td>
-                      <td>16 tấn</td>
-                      <td>0</td>
-                      <td></td>
-                      <td><span class="label label-accept">Cho phép chất hàng</span></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>28/11/2018 10:15</td>
-                      <td>10:10</td>
-                      <td>Hoàng Lộc</td>
-                      <td>59l 59050</td>
-                      <td>4 tấn</td>
-                      <td>0</td>
-                      <td></td>
-                      <td><span class="label label-accept">Cho phép chất hàng</span></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>30/11/2018 08:00</td>
-                      <td>08:05</td>
-                      <td>Việt Mỹ</td>
-                      <td>62K 9866</td>
-                      <td>2 tấn</td>
-                      <td>0</td>
-                      <td></td>
-                      <td><span class="label label-accept">Cho phép chất hàng</span></td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>30/11/2018 16:00</td>
-                      <td>16:00</td>
-                      <td>Việt Kiều Hưng Phú</td>
-                      <td>51U 75677</td>
-                      <td>3 tấn</td>
-                      <td>0</td>
-                      <td></td>
-                      <td><span class="label label-accept">Cho phép chất hàng</span></td>
-                    </tr>
+                    @endforeach
+                    
                     
                   </table>
                 </div><!-- /.box-body -->
