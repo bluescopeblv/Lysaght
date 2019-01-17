@@ -45,11 +45,7 @@
 			<div class="box box-1">
   			<p class="text-title">Khu vực xe chờ giao hàng</p>
   			<div class="thumb-box">
-  			  <div class="content-thumb-box">
-
-
-                          
-                            
+  			  <div class="content-thumb-box">                 
           @foreach($thongtinxe as $ttx)
           @if($ttx->status >= 20 & $ttx->status <= 30 )
       			<div class="item">
@@ -75,16 +71,16 @@
   			</div><!-- ./thumb-box-1 -->
 			</div><!-- ./box-1 -->
       <div class="box box-2">
-            <p class="text-title">Khu vực giao hàng</p>
-            <div class="thumb-box">
-              <div class="content-thumb-box">
+        <p class="text-title">Khu vực giao hàng</p>
+          <div class="thumb-box">
+            <div class="content-thumb-box">
             @foreach($thongtinxe as $ttx)
             @if($ttx->status >= 40 & $ttx->status <= 60 )
             <div class="item">
               <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
+                <div class="img-truck">
+                    <img src="delivery_inteface/img/truck.png">
+                </div>
               <p class="text-number-truck">{{$ttx->bienso}}</p>
               <div class="text-time">
                 <p>@if($ttx->thoigianxevao != NULL)
