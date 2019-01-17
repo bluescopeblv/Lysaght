@@ -68,7 +68,7 @@
                                     {{date('H:i',strtotime($ttx->thoigianhuanluyen))}}
                                 @else
                                     @if($ttx->status != 70)
-                                    <span class="label label-info"><a href="delivery/giaohang/hltaixe/{{$ttx->id}}">HL xong?</a></span>
+                                    
                                     @endif
                                 @endif
                             </td>
@@ -78,7 +78,7 @@
                                     {{date('H:i',strtotime($ttx->thoigianbatdauchathang))}}
                                 @else
                                     @if($ttx->status != 70)
-                                    <span class="label label-info"><a href="delivery/giaohang/bdchathang/{{$ttx->id}}">Chất hàng ?</a></span>
+                                    
                                     @endif
                                 @endif
                             </td>
@@ -87,7 +87,7 @@
                                     {{date('H:i',strtotime($ttx->thoigianketthucchathang))}}
                                 @else
                                     @if($ttx->status >= 50 & $ttx->status != 70)
-                                    <span class="label label-info"><a href="delivery/giaohang/ktchathang/{{$ttx->id}}">Đã xong ?</a></span>
+                                    
                                     @endif
                                 @endif
                             </td>
@@ -96,7 +96,7 @@
                                     {{date('H:i',strtotime($ttx->thoigianbagiaoDN))}}
                                 @else
                                     @if($ttx->status >= 60 & $ttx->status != 70)
-                                    <span class="label label-info"><a href="delivery/giaohang/bangiaodn/{{$ttx->id}}">Bàn giao DN ?</a></span>
+                                    
                                     @endif
                                 @endif
                             </td>

@@ -795,5 +795,12 @@ class DeliveryController extends Controller
         return view('pages.delivery.interface.v1.office',compact('thongtinxe'));
     }
     
-    
+    public function getInterface_v1_Office2_IF()
+    {
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('status','<=',80)
+                    ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->get();
+        return view('pages.delivery.interface.v1.office2',compact('thongtinxe'));
+    }
 }

@@ -566,6 +566,7 @@ Route::group(['prefix' => 'delivery'], function() {
     Route::group(['prefix' => 'interface'], function() {
         Route::group(['prefix' => 'v1'], function() {
             Route::get('/office', 'DeliveryController@getInterface_v1_Office_IF');
+            Route::get('/office2', 'DeliveryController@getInterface_v1_Office2_IF');
         });
         Route::get('/','DeliveryController@getList_IF');
 

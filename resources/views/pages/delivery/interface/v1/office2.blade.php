@@ -19,7 +19,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link href="delivery_inteface/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="delivery_inteface/css/thongtingiaohang.css">
+    <link rel="stylesheet" type="text/css" href="delivery_inteface/css_fix/thongtingiaohang.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
                           
                             
           @foreach($thongtinxe as $ttx)
-          @if($ttx->status >= 20 & $ttx->status <= 40 )
+          @if($ttx->status >= 20 & $ttx->status <= 30 )
       			<div class="item">
       			  <div class="box-item">
       			    <div class="img-truck">
@@ -79,7 +79,7 @@
             <div class="thumb-box">
               <div class="content-thumb-box">
             @foreach($thongtinxe as $ttx)
-            @if($ttx->status >= 50 & $ttx->status <= 60 )
+            @if($ttx->status >= 40 & $ttx->status <= 60 )
             <div class="item">
               <div class="box-item">
               <div class="img-truck">
