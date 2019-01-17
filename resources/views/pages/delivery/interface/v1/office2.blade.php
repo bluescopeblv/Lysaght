@@ -100,59 +100,8 @@
           </div>
         </div>
       </div><!-- ./box-2 -->
-          <div class="box box-3">
-            <p class="text-title">Khu vực chờ giao nhận thép </p>
-            <div class="thumb-box">
-              <div class="content-thumb-box">
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-              <p class="text-number-truck"></p>
-              <div class="text-time">
-                <p> </p>
-                <p> </p>
-              </div>
-            </div>
-            </div><!-- ./item -->
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-            </div>
-            </div><!-- ./item -->
-          </div>
-        </div>
-          </div><!-- ./box-3 -->
-          <div class="box box-4">
-            <p class="text-title">Khu vực giao nhận thép </p>
-            <div class="thumb-box">
-              <div class="content-thumb-box">
-            
-
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-            </div>
-            </div><!-- ./item -->
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-            </div>
-            </div><!-- ./item -->
-          </div>
-        </div>
-          </div><!-- ./box-4 -->
+         
+          
         </section><!-- ./content-area -->
         <section class="content content-table">
           <div class="row">
