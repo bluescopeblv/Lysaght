@@ -337,8 +337,8 @@ class DeliveryController extends Controller
     {
         $thongtinxe = DeliveryThongTinXe::find($id);
         $pictures = DeliveryPicture::where('thongtinxe_id',$id)->get();
-
-        return view('pages.delivery.logistic.view',compact('thongtinxe','pictures'));
+        $CO = DeliveryDetail::where('thongtinxe_id',$id)->get();
+        return view('pages.delivery.logistic.view',compact('thongtinxe','CO','pictures'));
     }
 
     public function getEditLG($id)
@@ -812,10 +812,20 @@ class DeliveryController extends Controller
         return view('pages.delivery.interface.v1.office2',compact('thongtinxe'));
     }
 
-    //------------
+    //==========================================================================
     public function getList_GU()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
         return view('pages.delivery.guest.list',compact('thongtinxe'));
     }
+
+    public function getView_GU($id)
+    {
+        $thongtinxe = DeliveryThongTinXe::find($id);
+        $pictures = DeliveryPicture::where('thongtinxe_id',$id)->get();
+        $CO = DeliveryDetail::where('thongtinxe_id',$id)->get();
+        return view('pages.delivery.guest.view',compact('thongtinxe','CO','pictures'));
+    }
+
+    //==========================================================================
 }

@@ -12,8 +12,8 @@
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Hôm nay {{ date('d-M-Y')}}</a></li>
                     
                         <li class="breadcrumb-item active"><a href="delivery">Quay lại</a></li>
-                <a href="delivery/guest/add">
-                    <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm mới </button>
+                <a href="delivery/guest/kehoach">
+                    <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Xem lịch sử </button>
                 </a>
                 <a href="delivery/guest/kehoach">
                     <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Xem kế hoạch </button>
@@ -62,12 +62,7 @@
                             @if($ttx->thoigianlogisticConfirm != NULL)
                                 {{ date('H:i',strtotime($ttx->thoigianlogisticConfirm)) }}
                             @else
-                                @if($ttx->status != 70)
-                                <span class="label label-info"><a href="delivery/logistic/confirm/{{$ttx->id}}">OK</a></span>
-                                    @if($ttx->status < 30)
-                                    <span class="label label-info"><a href="delivery/logistic/wait/{{$ttx->id}}">Chờ</a></span>
-                                    @endif
-                                @endif
+                                
                             @endif
                         </td>
                         
@@ -82,31 +77,25 @@
                             @if($ttx->thoigianthanhtoan != NULL)
                                 {{ date('H:i',strtotime($ttx->thoigianthanhtoan)) }}
                             @else
-                                @if($ttx->status != 70)
-                                <span class="label label-info"><a href="delivery/logistic/pay/{{$ttx->id}}">Thanh toán ?</a></span>
-                                @endif
+                                
                             @endif
                         </td>
                         <td>
                             @if($ttx->thoigianxongDN != NULL)
                                 {{ date('H:i',strtotime($ttx->thoigianxongDN)) }}
                             @else
-                                @if($ttx->status != 70)
-                                <span class="label label-info"><a href="delivery/logistic/xongdn/{{$ttx->id}}">Xong DN ?</a></span>
-                                @endif
+                                
                             @endif
                         </td>
                         <td>
                             @if($ttx->thoigianxongPXK != NULL)
                                 {{ date('H:i',strtotime($ttx->thoigianxongPXK)) }}
                             @else
-                                @if($ttx->status != 70)
-                                <span class="label label-info"><a href="delivery/logistic/xongpxk/{{$ttx->id}}">Xong PXK ?</a></span>
-                                @endif
+                                
                             @endif
                         </td>
                         <td> 
-                            <a href="delivery/logistic/detailco/{{$ttx->id}}">{{ getSoLuongCO($ttx->id) }}</a> 
+                            {{ getSoLuongCO($ttx->id) }} 
                         </td>
                         <td>
                             {{ getDeliverySoAnh($ttx->id) }}

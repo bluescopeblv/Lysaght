@@ -10,7 +10,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-info">
-                <span><a href="delivery/logistic/">Danh sách xe</a></span>
+                <span><a href="delivery/logistic/">Quay lại</a></span>
                  
             </div>
             <div class="card-body">
@@ -30,7 +30,7 @@
                 <form action="" method="post" enctype="multipart/form-data">
                 	<input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
-                        <h3 class="card-title">Chỉnh sửa dự án:  <span style="color: blue">{{$thongtinxe->khachhang}}</span> {!! getDeliveryStatus($thongtinxe->status) !!}</h3>
+                        <h3 class="card-title">Dự án:  <span style="color: blue">{{$thongtinxe->khachhang}}</span> {!! getDeliveryStatus($thongtinxe->status) !!}</h3>
                         <hr>
                         <div class="row">
                         <div class="col-md-6">
@@ -81,6 +81,30 @@
                               
                             </tbody>
                           </table>
+                        </div>
+                        
+
+                        <div class="col-md-6">
+                            <table id="myTable" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>                                
+                                        <th>CO</th>
+                                        <th>Sản phẩm</th>                               
+                                        <th>Chi tiết</th>                               
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($CO as $key => $val)
+                                    <tr>                               
+                                        <td>{{$val->CO}}</td>
+                                        <td>{{$val->sanpham}}</td>
+                                        <td>
+                                            {{$val->chitietgiaohang}}
+                                        </td>                           
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                         </div>
                         <hr>
@@ -166,7 +190,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="control-label">Loại hàng</label>
-                                    <select class="form-control" name="loaihang">
+                                    <select class="form-control" name="loaihang" disabled="">
                                         <option value="DA" 
                                             @if($thongtinxe->giaohangboi == "DA")
                                                 selected=""

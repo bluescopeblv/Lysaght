@@ -537,7 +537,7 @@ Route::group(['prefix' => 'delivery'], function() {
         Route::get('/kehoach', 'DeliveryController@getKeHoach_LG');
         Route::post('/kehoach', 'DeliveryController@postKeHoach_LG');
 
-        Route::get('/view/{id}','DeliveryController@getViewLG');
+        Route::get('/view/{id}','DeliveryController@getView_GU');
 
         Route::get('/reset/{id}','DeliveryController@getResetLG');
 

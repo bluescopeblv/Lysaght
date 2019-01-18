@@ -10,11 +10,11 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-info">
-                <span><a href="delivery/guest/">Danh sách xe</a></span>
+                <span><a href="delivery/guest/">Quay lại</a></span>
                  
             </div>
             <div class="card-body">
-            	@if(count($errors)>0)
+                @if(count($errors)>0)
                     <div class="alert alert-danger">
                         @foreach($errors->all() as $err)
                             {{$err}}<br>
@@ -28,9 +28,9 @@
                     </div>
                 @endif
                 <form action="" method="post" enctype="multipart/form-data">
-                	<input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
-                        <h3 class="card-title">Chỉnh sửa dự án:  <span style="color: blue">{{$thongtinxe->khachhang}}</span> {!! getDeliveryStatus($thongtinxe->status) !!}</h3>
+                        <h3 class="card-title">Dự án:  <span style="color: blue">{{$thongtinxe->khachhang}}</span> {!! getDeliveryStatus($thongtinxe->status) !!}</h3>
                         <hr>
                         <div class="row">
                         <div class="col-md-6">
@@ -82,6 +82,30 @@
                             </tbody>
                           </table>
                         </div>
+                        
+
+                        <div class="col-md-6">
+                            <table id="myTable" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>                                
+                                        <th>CO</th>
+                                        <th>Sản phẩm</th>                               
+                                        <th>Chi tiết</th>                               
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($CO as $key => $val)
+                                    <tr>                               
+                                        <td>{{$val->CO}}</td>
+                                        <td>{{$val->sanpham}}</td>
+                                        <td>
+                                            {{$val->chitietgiaohang}}
+                                        </td>                           
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         </div>
                         <hr>
                         <div class="row p-t-20">
@@ -118,7 +142,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label">Tải trọng xe (Tấn)</label>
-                            	<input type="text" name="taitrongxe" class="form-control form-control-danger" placeholder="Nhập tải trọng xe" value="{{ $thongtinxe->taitrongxe }}" disabled="">
+                                <input type="text" name="taitrongxe" class="form-control form-control-danger" placeholder="Nhập tải trọng xe" value="{{ $thongtinxe->taitrongxe }}" disabled="">
                             </div>    
                         </div>
                         
@@ -134,13 +158,13 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Thời gian xe vào <span><small>(dd-mm-yyyy hh:ii:ss)</small></span></label>
-                                	<input type="text" name="thoigianxevao" class="form-control form-control-danger" placeholder="Thời gian xe vào" value="{{ $thongtinxe->thoigianxevao }}" disabled="">
+                                    <input type="text" name="thoigianxevao" class="form-control form-control-danger" placeholder="Thời gian xe vào" value="{{ $thongtinxe->thoigianxevao }}" disabled="">
                                 </div>    
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Thời gian xe ra <span><small>(dd-mm-yyyy hh:ii:ss)</small></span></label>
-                                	<input type="text" name="thoigianxera" class="form-control form-control-danger" placeholder="Nhập thời gian xe ra" value="{{ $thongtinxe->thoigianxera }}" disabled="" >
+                                    <input type="text" name="thoigianxera" class="form-control form-control-danger" placeholder="Nhập thời gian xe ra" value="{{ $thongtinxe->thoigianxera }}" disabled="" >
                                 </div>    
                             </div>
                         </div>
@@ -166,7 +190,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="control-label">Loại hàng</label>
-                                    <select class="form-control" name="loaihang">
+                                    <select class="form-control" name="loaihang" disabled="">
                                         <option value="DA" 
                                             @if($thongtinxe->giaohangboi == "DA")
                                                 selected=""
@@ -285,6 +309,6 @@
 
 @section('script')
   <script>
-	   
+       
   </script>
 @endsection
