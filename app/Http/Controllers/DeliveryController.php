@@ -138,6 +138,7 @@ class DeliveryController extends Controller
     {
     	$thongtinxe = DeliveryThongTinXe::where('status','<',22)
                     ->where('status','<=',80)
+                    ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
                     ->get();
     	return view('pages.delivery.baove.list',compact('thongtinxe'));
@@ -270,6 +271,7 @@ class DeliveryController extends Controller
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
                         ->where('status','<=',80)
+                        ->where('status','!=',70)
                         ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
                         ->get();
         //dd($thongtinxe);
@@ -483,6 +485,7 @@ class DeliveryController extends Controller
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',30)
                     ->where('status','<=',80)
+                    ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
                     ->get();
         return view('pages.delivery.giaohang.list',compact('thongtinxe'));
@@ -802,6 +805,7 @@ class DeliveryController extends Controller
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
                     ->where('status','<=',80)
+                    ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
                     ->get();
         return view('pages.delivery.interface.office',compact('thongtinxe'));
@@ -811,6 +815,7 @@ class DeliveryController extends Controller
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
                     ->where('status','<=',80)
+                    ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
                     ->get();
         return view('pages.delivery.interface.v1.office',compact('thongtinxe'));
@@ -820,6 +825,7 @@ class DeliveryController extends Controller
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
                     ->where('status','<=',80)
+                    ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
                     ->get();
         return view('pages.delivery.interface.v1.office2',compact('thongtinxe'));
@@ -832,6 +838,7 @@ class DeliveryController extends Controller
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
                     ->where('status','<=',80)
+                    ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
                     ->get();
         return view('pages.delivery.guest.list',compact('thongtinxe'));
