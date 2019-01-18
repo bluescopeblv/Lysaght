@@ -136,7 +136,10 @@ class DeliveryController extends Controller
 
     public function getListBV()
     {
-    	$thongtinxe = DeliveryThongTinXe::where('status','<',22)->orWhere('status','>=',80)->get();
+    	$thongtinxe = DeliveryThongTinXe::where('status','<',22)
+                    ->where('status','<=',80)
+                    ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->get();
     	return view('pages.delivery.baove.list',compact('thongtinxe'));
     }
 
@@ -265,7 +268,11 @@ class DeliveryController extends Controller
 
     public function getListLG()
     {
-        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                        ->where('status','<=',80)
+                        ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                        ->get();
+        //dd($thongtinxe);
         return view('pages.delivery.logistic.list',compact('thongtinxe'));
     }
 
@@ -474,7 +481,10 @@ class DeliveryController extends Controller
 
     public function getListGH()
     {
-        $thongtinxe = DeliveryThongTinXe::where('status','>=',30)->get();
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',30)
+                    ->where('status','<=',80)
+                    ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->get();
         return view('pages.delivery.giaohang.list',compact('thongtinxe'));
     }
 
@@ -773,6 +783,9 @@ class DeliveryController extends Controller
         return view('pages.delivery.warehouse.list',compact('thongtinxe'));
     }
 
+    //==========================================================================
+    //         INTEFACE
+    //==========================================================================
     public function getList_IF()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
@@ -813,9 +826,14 @@ class DeliveryController extends Controller
     }
 
     //==========================================================================
+    //         GUEST
+    //==========================================================================
     public function getList_GU()
     {
-        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('status','<=',80)
+                    ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->get();
         return view('pages.delivery.guest.list',compact('thongtinxe'));
     }
 
