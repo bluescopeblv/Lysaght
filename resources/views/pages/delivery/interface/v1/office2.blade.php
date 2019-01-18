@@ -67,6 +67,22 @@
       			</div><!-- ./item -->
           @endif
           @endforeach
+            <div class="item" style="background: white">
+              <div class="box-item" style="background: white">
+                <div class="img-truck">
+                    
+                </div>
+                <p class="text-number-truck"></p>
+                <div class="text-time">
+                  <p>
+                    
+                    
+                  </p>
+                  <p></p>
+                </div>
+              </div><!-- ./box-item -->
+            </div><!-- ./item -->
+
           </div><!-- ./content-thumb-box-1 -->
   			</div><!-- ./thumb-box-1 -->
 			</div><!-- ./box-1 -->
@@ -92,7 +108,12 @@
             </div><!-- ./item -->
             @endif
             @endforeach
-            
+            <div class="item">
+              <div class="box-item" style="background:white">
+                
+
+              </div>
+            </div><!-- ./item -->
           </div>
         </div>
       </div><!-- ./box-2 -->
@@ -118,6 +139,7 @@
                       <th>Số CO</th>
                       
                       <th>Trạng thái</th>
+                      <th>DN</th>
                       <th>Chi tiết</th>
                     </tr>
                     @foreach($thongtinxe as $ttx)
@@ -153,6 +175,11 @@
                         </td> -->
                         <td>
                             {!! getDeliveryStatus($ttx->status) !!}
+                        </td>
+                        <td>
+                          @if($ttx->thoigianxongDN)
+                            <span class="label label-warning">Đã có DN</span>
+                          @endif
                         </td>
                         <td>{{ $ttx->notelogistic }}</td>
                     </tr>
