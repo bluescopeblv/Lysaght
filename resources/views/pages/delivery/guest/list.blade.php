@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row page-titles">
         <div class="col-md-2 align-self-center">
-            <h4 class="text-themecolor">LOGISTIC</h4>
+            <h4 class="text-themecolor">GUEST</h4>
         </div>
         <div class="col-md-10 align-self-center text-right">
             <div class="d-flex justify-content-end align-items-center">
@@ -12,10 +12,10 @@
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Hôm nay {{ date('d-M-Y')}}</a></li>
                     
                         <li class="breadcrumb-item active"><a href="delivery">Quay lại</a></li>
-                <a href="delivery/logistic/add">
+                <a href="delivery/guest/add">
                     <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm mới </button>
                 </a>
-                <a href="delivery/logistic/kehoach">
+                <a href="delivery/guest/kehoach">
                     <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Xem kế hoạch </button>
                 </a>
 
@@ -118,12 +118,9 @@
                         <td>
                             @if($ttx->status != 70)
                         	<span class="label label-warning">
-                        		<a href="delivery/logistic/edit/{{$ttx->id}}"><span class="glyphicon glyphicon-edit">Sửa</span></a>
+                        		<a href="delivery/guest/view/{{$ttx->id}}"><span class="glyphicon glyphicon-edit">Detail..</span></a>
                         	</span>
                         	@endif
-                            <span class="label label-warning">
-                                <a href="delivery/logistic/view/{{$ttx->id}}"><span class="glyphicon glyphicon-edit">Xem</span></a>
-                            </span>
 			            </td>
                     </tr>
                     @endforeach

@@ -499,6 +499,46 @@ Route::group(['prefix' => 'delivery'], function() {
         Route::get('/kehoach', 'DeliveryController@getKeHoach_LG');
         Route::post('/kehoach', 'DeliveryController@postKeHoach_LG');
 
+        Route::get('/view/{id}','DeliveryController@getViewLG');
+
+        Route::get('/reset/{id}','DeliveryController@getResetLG');
+
+        Route::get('/wait/{id}','DeliveryController@getWait_LG');
+        Route::get('/confirm/{id}','DeliveryController@getConfirm_LG');
+        Route::get('/pay/{id}','DeliveryController@getPay_LG');
+        Route::get('/xongdn/{id}','DeliveryController@getXongDN_LG');
+        Route::get('/xongpxk/{id}','DeliveryController@getXongPXK_LG');
+        Route::group(['prefix' => 'detailco'], function() {
+            Route::get('/{id}','DeliveryController@getDetailCO_LG');
+
+            Route::get('/{id}/add','DeliveryController@getAddCO_LG');
+            Route::post('/{id}/add','DeliveryController@postAddCO_LG');
+
+            Route::get('/{id}/edit/{CO_id}','DeliveryController@getEditCO_LG');
+            Route::post('/{id}/edit/{CO_id}','DeliveryController@postEditCO_LG');
+
+            Route::get('/{id}/delete/{CO_id}','DeliveryController@getDeleteCO_LG');
+
+            Route::post('/{id}/delivery_import_CO', 'DeliveryController@import_CO')->name('import.CO');
+
+            Route::get('export-delivery/{type}', 'DeliveryController@export_CO')->name('export.CO');
+
+        });
+    });
+
+    Route::group(['prefix' => 'guest'], function() {
+        Route::get('/','DeliveryController@getList_GU');
+
+        Route::get('/edit/{id}','DeliveryController@getEditLG');
+        Route::post('/edit/{id}','DeliveryController@postEditLG');
+
+        Route::get('/delete/{id}','DeliveryController@getDeleteLG');
+
+        Route::get('/kehoach', 'DeliveryController@getKeHoach_LG');
+        Route::post('/kehoach', 'DeliveryController@postKeHoach_LG');
+
+        Route::get('/view/{id}','DeliveryController@getViewLG');
+
         Route::get('/reset/{id}','DeliveryController@getResetLG');
 
         Route::get('/wait/{id}','DeliveryController@getWait_LG');

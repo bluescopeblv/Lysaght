@@ -10,10 +10,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-info">
-                <span><a href="delivery/logistic/">Danh sách xe</a></span>
-                <span class="label label-warning" style="float: right;">
-                    <a href="delivery/logistic/reset/{{$thongtinxe->id}}"><span class="glyphicon glyphicon-edit">Reject</span></a>
-                </span>
+                <h4 class="m-b-0 text-white"><a href="delivery/logistic/">Danh sách xe</a></h4>
             </div>
             <div class="card-body">
             	@if(count($errors)>0)
@@ -29,10 +26,10 @@
                         {{session('thongbao')}}           
                     </div>
                 @endif
-                <form action="delivery/logistic/edit/{{$thongtinxe->id}}" method="post" enctype="multipart/form-data">
+                <form action="delivery/logistic/edit/{{$thongtinxe->id}}" method="post">
                 	<input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
-                        <h3 class="card-title">Chỉnh sửa dự án:  <span style="color: blue">{{$thongtinxe->khachhang}}</span></h3>
+                        <h3 class="card-title">Chỉnh sửa id:  <span>{{$thongtinxe->id}}</span></h3>
                         <hr>
                         <div class="row p-t-20">
                             <div class="col-md-4">
@@ -64,51 +61,46 @@
                             </div>
                         </div>
                         <!--/row-->
-                    
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="control-label">Tải trọng xe (Tấn)</label>
-                            	<input type="text" name="taitrongxe" class="form-control form-control-danger" placeholder="Nhập tải trọng xe" value="{{ $thongtinxe->taitrongxe }}">
-                            </div>    
-                        </div>
-                        
-                        <!--/span-->
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="control-label">Chiều dài xe (Mét)</label>
-                                <input type="text" name="chieudaixe" class="form-control form-control-danger" placeholder="Nhập chiều dài xe" value="{{ $thongtinxe->chieudaixe }}">
-                            </div>
-                        </div>
-                                         
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Thời gian xe vào <span><small>(dd-mm-yyyy hh:ii:ss)</small></span></label>
-                                	<input type="text" name="thoigianxevao" class="form-control form-control-danger" placeholder="Thời gian xe vào" value="{{ $thongtinxe->thoigianxevao }}">
+                                    <label class="control-label">Tải trọng xe (Tấn)</label>
+                                	<input type="text" name="taitrongxe" class="form-control form-control-danger" placeholder="Nhập tải trọng xe" value="{{ $thongtinxe->taitrongxe }}">
                                 </div>    
                             </div>
-                            <div class="col-md-3">
+                            
+                            <!--/span-->
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Thời gian xe ra <span><small>(dd-mm-yyyy hh:ii:ss)</small></span></label>
+                                    <label class="control-label">Chiều dài xe (Mét)</label>
+                                    <input type="text" name="chieudaixe" class="form-control form-control-danger" placeholder="Nhập chiều dài xe" value="{{ $thongtinxe->chieudaixe }}">
+                                </div>
+                            </div>
+                        </div>                 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Thời gian xe vào <span><small>(Ngày-Tháng-Năm Giờ:Phút:Giây)</small></span></label>
+                                	<input type="text" name="thoigianxevao" class="form-control form-control-danger" placeholder="Mặc định" value="{{ $thongtinxe->thoigianxevao }}">
+                                </div>    
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Thời gian xe ra <span><small>(Ngày-Tháng-Năm Giờ:Phút:Giây)</small></span></label>
                                 	<input type="text" name="thoigianxera" class="form-control form-control-danger" placeholder="Nhập thời gian xe ra" value="{{ $thongtinxe->thoigianxera }}">
                                 </div>    
                             </div>
                         </div>
 
-                        <h4 class="card-title">Dành cho Logistic</h4>
+                        <h3 class="card-title">Dành cho Logistic</h3>
                         <hr>
                         <div class="row p-t-20">
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="control-label">Giao hàng bởi</label>
-                                    <select class="form-control" name="giaohangboi" >
-                                        <option value="BLV" 
-                                        @if($thongtinxe->giaohangboi == "BLV")
-                                            selected=""
-                                        @endif>BLV</option>
-                                        <option value="EXW" @if($thongtinxe->giaohangboi == "EXW")
-                                            selected=""
-                                        @endif>EXW</option>
+                                    <select class="form-control" name="giaohangboi">
+                                        <option value="BLV">BLV</option>
+                                        <option value="EXW">EXW</option>
                                     </select>
                                 </div>
                             </div>
@@ -117,14 +109,8 @@
                                 <div class="form-group">
                                     <label class="control-label">Loại hàng</label>
                                     <select class="form-control" name="loaihang">
-                                        <option value="DA"
-                                        @if($thongtinxe->loaihang == "DA")
-                                            selected=""
-                                        @endif
-                                        >DA</option>
-                                        <option value="LE" @if($thongtinxe->loaihang == "LE")
-                                            selected=""
-                                        @endif >LE</option>
+                                        <option value="DA">DA</option>
+                                        <option value="LE">LE</option>
                                     </select>
                                 </div>
                             </div>
@@ -169,65 +155,13 @@
                                     <input type="text" name="notelogistic" class="form-control form-control-danger" placeholder="Ghi chú" value="{{ $thongtinxe->notelogistic }}">
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">Số đơn hàng</label>
-                                    <input type="text" name="sodonhang" class="form-control form-control-danger" placeholder="Số đơn hàng" value="{{$thongtinxe->sodonhang}}">
-                                </div>
-                            </div>
-                                
-                            <div class="col-md-2">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">CS</label>
-                                    <input type="text" name="tencs" class="form-control form-control-danger" placeholder="Tên CS" value="{{$thongtinxe->tencs}}">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">Chiều dài hàng (m)</label>
-                                    <input type="text" name="chieudaihang" class="form-control form-control-danger" placeholder="Chiều dài hàng" value="{{$thongtinxe->chieudaihang}}">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">Khối lượng hàng (tấn)</label>
-                                    <input type="text" name="khoiluonghang" class="form-control form-control-danger" placeholder="Khối lượng hàng" value="{{$thongtinxe->khoiluonghang}}">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Picking list đính kèm(PDF, Excel): 
-                                    @if($thongtinxe->file_pickinglist)
-                                        <a href="upload/delivery/pickinglist/{{$thongtinxe->file_pickinglist}}">Đã có file pickinglist: {{substr($thongtinxe->file_pickinglist,0,strlen($thongtinxe->file_pickinglist)-19).substr($thongtinxe->file_pickinglist,strlen($thongtinxe->file_pickinglist)-4,4)}}</a>
-                                    @else
-                                        
-                                    @endif
-                                    <!-- //strlen($chiphi->tenchungtu) - 12 -->
-                                </label>
-                                <input type="file" name="file_pickinglist">
-                            </div>
-                        </div>
                         </div>
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Sửa</button>
-                        
+                        <button type="button" class="btn btn-inverse">Cancel</button>
                     </div>
                 </form>
-
-                <hr>
-                <div class="row">
-                    <!-- column -->
-                    @foreach($pictures as $picture)
-                    <div class="col-lg-3 col-md-6">
-                        <!-- Card -->
-                        <div class="card">
-                            <img class="card-img-top img-responsive" src="upload/delivery/done/{{$picture->link_hinh}}" alt="Card image cap">
-                            <div class="btn btn-info"> {{ $thongtinxe->khachhang }} </div>
-                        </div>                    
-                    </div>
-                    @endforeach
-                </div>
             </div>
         </div>
     </div>

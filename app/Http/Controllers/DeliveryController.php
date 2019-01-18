@@ -333,6 +333,14 @@ class DeliveryController extends Controller
         return redirect()->back()->with('thongbao','Đã plan thành công');
     }
     
+    public function getViewLG($id)
+    {
+        $thongtinxe = DeliveryThongTinXe::find($id);
+        $pictures = DeliveryPicture::where('thongtinxe_id',$id)->get();
+
+        return view('pages.delivery.logistic.view',compact('thongtinxe','pictures'));
+    }
+
     public function getEditLG($id)
     {
         $thongtinxe = DeliveryThongTinXe::find($id);
@@ -802,5 +810,12 @@ class DeliveryController extends Controller
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
                     ->get();
         return view('pages.delivery.interface.v1.office2',compact('thongtinxe'));
+    }
+
+    //------------
+    public function getList_GU()
+    {
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
+        return view('pages.delivery.guest.list',compact('thongtinxe'));
     }
 }

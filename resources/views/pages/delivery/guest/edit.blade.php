@@ -101,14 +101,9 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="control-label">Giao hàng bởi</label>
-                                    <select class="form-control" name="giaohangboi" >
-                                        <option value="BLV" 
-                                        @if($thongtinxe->giaohangboi == "BLV")
-                                            selected=""
-                                        @endif>BLV</option>
-                                        <option value="EXW" @if($thongtinxe->giaohangboi == "EXW")
-                                            selected=""
-                                        @endif>EXW</option>
+                                    <select class="form-control" name="giaohangboi">
+                                        <option value="BLV">BLV</option>
+                                        <option value="EXW">EXW</option>
                                     </select>
                                 </div>
                             </div>
@@ -117,14 +112,8 @@
                                 <div class="form-group">
                                     <label class="control-label">Loại hàng</label>
                                     <select class="form-control" name="loaihang">
-                                        <option value="DA"
-                                        @if($thongtinxe->loaihang == "DA")
-                                            selected=""
-                                        @endif
-                                        >DA</option>
-                                        <option value="LE" @if($thongtinxe->loaihang == "LE")
-                                            selected=""
-                                        @endif >LE</option>
+                                        <option value="DA">DA</option>
+                                        <option value="LE">LE</option>
                                     </select>
                                 </div>
                             </div>
