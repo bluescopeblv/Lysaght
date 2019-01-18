@@ -19,7 +19,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link href="delivery_inteface/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="delivery_inteface/css/thongtingiaohang.css">
+    <link rel="stylesheet" type="text/css" href="delivery_inteface/css_fix/thongtingiaohang.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -42,49 +42,61 @@
       <div class="content-wrapper">
         <!-- Main content -->
         <section class="content-area">
-			<div class="box box-1">
-  			<p class="text-title">Khu vực xe chờ giao hàng</p>
-  			<div class="thumb-box">
-  			  <div class="content-thumb-box">
-
-
-                          
-                            
+      <div class="box box-1">
+        <p class="text-title">Khu vực xe chờ giao hàng</p>
+        <div class="thumb-box">
+          <div class="content-thumb-box">                 
           @foreach($thongtinxe as $ttx)
-          @if($ttx->status >= 20 & $ttx->status <= 40 )
-      			<div class="item">
-      			  <div class="box-item">
-      			    <div class="img-truck">
-      			        <img src="delivery_inteface/img/truck.png">
-      			    </div>
-      			    <p class="text-number-truck">{{$ttx->bienso}}</p>
-      			    <div class="text-time">
-      			      <p>
+          @if($ttx->status >= 20 & $ttx->status <= 30 )
+            <div class="item">
+              <div class="box-item">
+                <div class="img-truck">
+                    <img src="delivery_inteface/img/truck.png">
+                </div>
+                <p class="text-number-truck">{{$ttx->bienso}}</p>
+                <div class="text-time">
+                  <p>
                     @if($ttx->thoigianxevao != NULL)
                       {{ date('H:i',strtotime($ttx->thoigianxevao)) }}
                     @endif
                     
                   </p>
-      			      <p>{{ get_Delivery_Minute($ttx->thoigianxevao) }} phút</p>
-      			    </div>
-      			  </div><!-- ./box-item -->
-      			</div><!-- ./item -->
+                  <p>{{ get_Delivery_Minute($ttx->thoigianxevao) }} phút</p>
+                </div>
+              </div><!-- ./box-item -->
+            </div><!-- ./item -->
           @endif
           @endforeach
+            <div class="item" style="background: white">
+              <div class="box-item" style="background: white">
+                <div class="img-truck">
+                    
+                </div>
+                <p class="text-number-truck"></p>
+                <div class="text-time">
+                  <p>
+                    
+                    
+                  </p>
+                  <p></p>
+                </div>
+              </div><!-- ./box-item -->
+            </div><!-- ./item -->
+
           </div><!-- ./content-thumb-box-1 -->
-  			</div><!-- ./thumb-box-1 -->
-			</div><!-- ./box-1 -->
+        </div><!-- ./thumb-box-1 -->
+      </div><!-- ./box-1 -->
       <div class="box box-2">
-            <p class="text-title">Khu vực giao hàng</p>
-            <div class="thumb-box">
-              <div class="content-thumb-box">
+        <p class="text-title">Khu vực giao hàng</p>
+          <div class="thumb-box">
+            <div class="content-thumb-box">
             @foreach($thongtinxe as $ttx)
-            @if($ttx->status >= 50 & $ttx->status <= 60 )
+            @if($ttx->status >= 40 & $ttx->status <= 60 )
             <div class="item">
               <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
+                <div class="img-truck">
+                    <img src="delivery_inteface/img/truck.png">
+                </div>
               <p class="text-number-truck">{{$ttx->bienso}}</p>
               <div class="text-time">
                 <p>@if($ttx->thoigianxevao != NULL)
@@ -96,63 +108,17 @@
             </div><!-- ./item -->
             @endif
             @endforeach
-            
+            <div class="item">
+              <div class="box-item" style="background:white">
+                
+
+              </div>
+            </div><!-- ./item -->
           </div>
         </div>
       </div><!-- ./box-2 -->
-          <div class="box box-3">
-            <p class="text-title">Khu vực chờ giao nhận thép </p>
-            <div class="thumb-box">
-              <div class="content-thumb-box">
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-              <p class="text-number-truck"></p>
-              <div class="text-time">
-                <p> </p>
-                <p> </p>
-              </div>
-            </div>
-            </div><!-- ./item -->
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-            </div>
-            </div><!-- ./item -->
-          </div>
-        </div>
-          </div><!-- ./box-3 -->
-          <div class="box box-4">
-            <p class="text-title">Khu vực giao nhận thép </p>
-            <div class="thumb-box">
-              <div class="content-thumb-box">
-            
-
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-            </div>
-            </div><!-- ./item -->
-            <div class="item">
-
-              <div class="box-item">
-              <div class="img-truck">
-                  <img src="delivery_inteface/img/truck.png">
-              </div>
-            </div>
-            </div><!-- ./item -->
-          </div>
-        </div>
-          </div><!-- ./box-4 -->
+         
+          
         </section><!-- ./content-area -->
         <section class="content content-table">
           <div class="row">
@@ -173,6 +139,7 @@
                       <th>Số CO</th>
                       
                       <th>Trạng thái</th>
+                      <th>DN</th>
                       <th>Chi tiết</th>
                     </tr>
                     @foreach($thongtinxe as $ttx)
@@ -208,6 +175,11 @@
                         </td> -->
                         <td>
                             {!! getDeliveryStatus($ttx->status) !!}
+                        </td>
+                        <td>
+                          @if($ttx->thoigianxongDN)
+                            <span class="label label-warning">Đã có DN</span>
+                          @endif
                         </td>
                         <td>{{ $ttx->notelogistic }}</td>
                     </tr>
