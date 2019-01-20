@@ -136,8 +136,7 @@ class DeliveryController extends Controller
 
     public function getListBV()
     {
-    	$thongtinxe = DeliveryThongTinXe::where('status','<',22)
-                    ->where('status','<=',80)
+    	$thongtinxe = DeliveryThongTinXe::where('status','<=',80)
                     ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
                     ->get();

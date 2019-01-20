@@ -11,7 +11,8 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                     <li class="breadcrumb-item active">Data</li>
-                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/giaohang/kehoach"> Xem kế hoạch</a> </button>
+                    <a href="delivery/giaohang/kehoach"><div class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Xem kế hoạch </div></a>
+
                 <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/giaohang/"> Danh sách</a> </button>
 
                 </ol>

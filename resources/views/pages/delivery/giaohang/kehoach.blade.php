@@ -1,5 +1,16 @@
 @extends('layout.index')
-
+@section('css')
+    <link href="admin_asset/assets/node_modules/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <!-- Page plugins css -->
+    <link href="admin_asset/assets/node_modules/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <!-- Color picker plugins css -->
+    <link href="admin_asset/assets/node_modules/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+    <!-- Date picker plugins css -->
+    <link href="admin_asset/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <!-- Daterange picker plugins css -->
+    <link href="admin_asset/assets/node_modules/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="admin_asset/assets/node_modules/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+@endsection
 @section('content')
 <div class="container">
 	<div class="row page-titles">
@@ -11,7 +22,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                     <li class="breadcrumb-item active">Data</li>
-                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/giaohang/kehoach"> Xem kế hoạch</a> </button>
+                <a href="delivery/giaohang/kehoach"><div class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Xem kế hoạch </div></a>
                 <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="delivery/giaohang/"> Danh sách</a> </button>
 
                 </ol>
@@ -28,7 +39,8 @@
             <form action="delivery/giaohang/kehoach" method="POST">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 
-                <input  type="date" id="myDate" class="form-control" name="DateFind" value="{{ date('Y-m-d',strtotime( $today->addDay() )) }}" style="display: inline;width: 15%">
+                <input  type="date"  class="form-control " name="DateFind" value="{{ date('Y-m-d',strtotime( $today->addDay() )) }}" style="display: inline;width: 15%">
+
                 <input  type="date" class="form-control" name="DateFind2" value="{{ date('Y-m-d',strtotime( $today )) }}" style="display: inline;width: 15%">
                 
                 <button type="submit" class="btn btn-default">Tìm kiếm</button>
@@ -42,6 +54,7 @@
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
+                            <th>Thời gian</th>
                             <th>Dự án</th>
                             <th>Biển số</th>
                             <th>Số CO</th>
@@ -60,6 +73,8 @@
                     <tbody>
                     	@foreach($thongtinxe as $ttx)
                         <tr>
+                            <td>{{date('d-m',strtotime($ttx->thoigianbatdauchathang))}}</td>
+                            thoigiankehoach
                             <td><a href="delivery/giaohang/detail/{{$ttx->id}}">{{ $ttx->khachhang }}</a></td>
                             <td>{{ $ttx->bienso }}</td>
                             <td> <a href="delivery/giaohang/detail/{{$ttx->id}}">{{ getSoLuongCO($ttx->id) }}</a> </td>
@@ -166,4 +181,94 @@
 	    });
 	});
 </script>
+<!-- ============================================================== -->
+    <!-- Plugins for this page -->
+    <!-- ============================================================== -->
+    <!-- Plugin JavaScript -->
+    <script src="admin_asset/assets/node_modules/moment/moment.js"></script>
+    <script src="admin_asset/assets/node_modules/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="admin_asset/assets/node_modules/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <!-- Color Picker Plugin JavaScript -->
+    <script src="admin_asset/assets/node_modules/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+    <script src="admin_asset/assets/node_modules/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+    <script src="admin_asset/assets/node_modules/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="admin_asset/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="admin_asset/assets/node_modules/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="admin_asset/assets/node_modules/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script>
+    // MAterial Date picker    
+    $('#mdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+    $('#timepicker').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
+    $('#date-format').bootstrapMaterialDatePicker({ format: 'dddd DD MMMM YYYY - HH:mm' });
+
+    $('#min-date').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY HH:mm', minDate: new Date() });
+    // Clock pickers
+    $('#single-input').clockpicker({
+        placement: 'bottom',
+        align: 'left',
+        autoclose: true,
+        'default': 'now'
+    });
+    $('.clockpicker').clockpicker({
+        donetext: 'Done',
+    }).find('input').change(function() {
+        console.log(this.value);
+    });
+    $('#check-minutes').click(function(e) {
+        // Have to stop propagation here
+        e.stopPropagation();
+        input.clockpicker('show').clockpicker('toggleView', 'minutes');
+    });
+    if (/mobile/i.test(navigator.userAgent)) {
+        $('input').prop('readOnly', true);
+    }
+    // Colorpicker
+    $(".colorpicker").asColorPicker();
+    $(".complex-colorpicker").asColorPicker({
+        mode: 'complex'
+    });
+    $(".gradient-colorpicker").asColorPicker({
+        mode: 'gradient'
+    });
+    // Date Picker
+    jQuery('.mydatepicker, #datepicker').datepicker();
+    jQuery('#datepicker-autoclose').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+    jQuery('#date-range').datepicker({
+        toggleActive: true
+    });
+    jQuery('#datepicker-inline').datepicker({
+        todayHighlight: true
+    });
+    // Daterange picker
+    $('.input-daterange-datepicker').daterangepicker({
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-danger',
+        cancelClass: 'btn-inverse'
+    });
+    $('.input-daterange-timepicker').daterangepicker({
+        timePicker: true,
+        format: 'MM/DD/YYYY h:mm A',
+        timePickerIncrement: 30,
+        timePicker12Hour: true,
+        timePickerSeconds: false,
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-danger',
+        cancelClass: 'btn-inverse'
+    });
+    $('.input-limit-datepicker').daterangepicker({
+        format: 'DD/MM/YYYY',
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-danger',
+        cancelClass: 'btn-inverse',
+        dateLimit: {
+            days: 6
+        }
+    });
+    </script>
 @endsection

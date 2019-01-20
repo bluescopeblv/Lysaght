@@ -59,7 +59,7 @@
                             	@if($ttx->thoigianxera != NULL)
                             		{{date('d-m-Y H:i',strtotime($ttx->thoigianxera))}}
                             	@else
-                                    @if($ttx->status >= 80)
+                                    @if( $ttx->status >= 60 & $ttx->status != 70 )
                             		<span class="label label-info"><a href="delivery/baove/out/{{$ttx->id}}">Xe ra ?</a></span>
                                     @endif
                             	@endif

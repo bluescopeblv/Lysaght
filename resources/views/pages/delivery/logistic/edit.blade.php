@@ -116,7 +116,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="control-label">Loại hàng</label>
-                                    <select class="form-control" name="loaihang" disabled="">
+                                    <select class="form-control" name="loaihang">
                                         <option value="DA"
                                         @if($thongtinxe->loaihang == "DA")
                                             selected=""
