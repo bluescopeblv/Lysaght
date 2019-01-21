@@ -30,8 +30,8 @@
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Dự án</th>
                             <th>Kế hoạch</th>
+                            <th>Dự án</th>
                             <th>Biển số</th>
                             <th>Số CO</th>
                             <th>Thời gian huấn luyện tài xế</th>
