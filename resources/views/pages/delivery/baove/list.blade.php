@@ -32,6 +32,7 @@
                             <th>Thời gian đến</th>
                             <th>Thời gian ra</th>
                             <th>Dự án</th>
+                            <th>Giao hàng bởi</th>
                             <th>Biển số xe</th>
                             <th>Tên tài xế</th>
                             <th>Nhà xe</th>
@@ -65,6 +66,7 @@
                             	@endif
                             </td>
                             <td>{{$ttx->khachhang}}</td>
+                            <td>{{ $ttx->giaohangboi }}</td>
                             <td>{{$ttx->bienso}}</td>
                             <td>{{$ttx->tentaixe}}</td>
                             <td>{{$ttx->nhaxe}}</td>
