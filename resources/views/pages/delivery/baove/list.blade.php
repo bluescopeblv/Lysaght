@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row page-titles">
         <div class="col-md-2 align-self-center">
-            <h4 class="text-themecolor">DANH SÁCH XE</h4>
+            <h4 class="text-themecolor">BẢO VỆ</h4>
         </div>
         <div class="col-md-10 align-self-center text-right">
             <div class="d-flex justify-content-end align-items-center">
@@ -19,7 +19,6 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Data Table</h4>
             @if(session('thongbao'))
                 <div class="alert alert-success">
                     {{session('thongbao')}}           
@@ -32,7 +31,7 @@
                             <th>Thời gian đến</th>
                             <th>Thời gian ra</th>
                             <th>Dự án</th>
-                            <th>Giao hàng bởi</th>
+                            <th>By</th>
                             <th>Biển số xe</th>
                             <th>Tên tài xế</th>
                             <th>Nhà xe</th>
@@ -48,7 +47,7 @@
                         <tr>
                             <td>
                                 @if($ttx->thoigianxevao != NULL)
-                                    {{date('d-m-Y H:i',strtotime($ttx->thoigianxevao))}}
+                                    {{date('d-m H:i',strtotime($ttx->thoigianxevao))}}
                                 @else
                                     @if($ttx->status <= 20)
                                     <span class="label label-info"><a href="delivery/baove/in/{{$ttx->id}}">Xe vào ?</a></span>
@@ -58,7 +57,7 @@
                             </td>
                             <td>
                             	@if($ttx->thoigianxera != NULL)
-                            		{{date('d-m-Y H:i',strtotime($ttx->thoigianxera))}}
+                            		{{date('d-m H:i',strtotime($ttx->thoigianxera))}}
                             	@else
                                     @if( $ttx->status >= 60 & $ttx->status != 70 )
                             		<span class="label label-info"><a href="delivery/baove/out/{{$ttx->id}}">Xe ra ?</a></span>
