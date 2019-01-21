@@ -42,6 +42,7 @@
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
+                            <th>Kế hoạch</th>
                             <th>Dự án</th>
                             <th>Biển số</th>
                             <th>Số CO</th>
@@ -60,6 +61,7 @@
                     <tbody>
                     	@foreach($thongtinxe as $ttx)
                         <tr>
+                            <td>{{date('d-m',strtotime($ttx->thoigiankehoach))}}</td>
                             <td><a href="delivery/giaohang/detail/{{$ttx->id}}">{{ $ttx->khachhang }}</a></td>
                             <td>{{ $ttx->bienso }}</td>
                             <td> <a href="delivery/giaohang/detail/{{$ttx->id}}">{{ getSoLuongCO($ttx->id) }}</a> </td>

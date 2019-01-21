@@ -473,6 +473,7 @@ class FiveSController extends Controller
 
         $now  = Carbon::now();
         $now_month = $now->month;
+        $now_year = $now->year;
         //$dt = $now->subHours($begin);
 
         $soThang =  $now->diffInMonths($begin);
@@ -483,7 +484,7 @@ class FiveSController extends Controller
             $monthNew = $begin->addMonth()->month;
 
             $start = Carbon::create(2018, 8, 01, 1, 1, 0)->startOfDay()->toDateTimeString();
-            $end   = Carbon::create(2018, $monthNew, 01, 1, 1, 0)->endOfMonth()->toDateTimeString();
+            $end   = Carbon::create($begin->year, $monthNew, 01, 1, 1, 0)->endOfMonth()->toDateTimeString();
 
             $defect = count(DefectList::where('date','>=', $start)->where('date','<',$end)->get());
             $complete = count(DefectList::where('ngayhoanthanh','>=', $start)->where('ngayhoanthanh','<',$end)

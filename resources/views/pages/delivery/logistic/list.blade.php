@@ -36,6 +36,7 @@
                 <thead>
                     <tr>
                         <th>Dự án</th>
+                        <th>Kế hoạch</th>
                         <th>Biển số</th>
                         <th>Giao hàng bởi</th>
                         <th>Type</th>
@@ -54,6 +55,7 @@
                 	
                 	@foreach($thongtinxe as $ttx)
                     <tr>
+                        <td>{{date('d-m',strtotime($ttx->thoigiankehoach))}}</td>
                         <td>{{ $ttx->khachhang }}</td>
                         <td>{{ $ttx->bienso }}</td>
                         <td>{{ $ttx->giaohangboi }}</td>

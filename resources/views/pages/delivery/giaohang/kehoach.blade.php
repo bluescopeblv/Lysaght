@@ -73,7 +73,7 @@
                     <tbody>
                     	@foreach($thongtinxe as $ttx)
                         <tr>
-                            <td>{{date('d-m',strtotime($ttx->thoigianbatdauchathang))}}</td>
+                            <td>{{date('d-m',strtotime($ttx->thoigiankehoach))}}</td>
                             
                             <td><a href="delivery/giaohang/detail/{{$ttx->id}}">{{ $ttx->khachhang }}</a></td>
                             <td>{{ $ttx->bienso }}</td>

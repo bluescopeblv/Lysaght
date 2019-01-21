@@ -31,6 +31,7 @@
                     <thead>
                         <tr>
                             <th>Dự án</th>
+                            <th>Kế hoạch</th>
                             <th>Biển số</th>
                             <th>Số CO</th>
                             <th>Thời gian huấn luyện tài xế</th>
@@ -48,6 +49,7 @@
                     <tbody>
                     	@foreach($thongtinxe as $ttx)
                         <tr>
+                            <td>{{date('d-m',strtotime($ttx->thoigiankehoach))}}</td>
                             <td><a href="delivery/giaohang/detail/{{$ttx->id}}">{{ $ttx->khachhang }}</a></td>
                             <td>{{ $ttx->bienso }}</td>
                             <td> <a href="delivery/giaohang/detail/{{$ttx->id}}">{{ getSoLuongCO($ttx->id) }}</a> </td>

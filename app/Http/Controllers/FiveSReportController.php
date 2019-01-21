@@ -389,18 +389,21 @@ class FiveSReportController extends Controller
 
         $now  = Carbon::now();
         $now_month = $now->month;
+        $now_year = $now->year;
+
         //$dt = $now->subHours($begin);
 
         $soThang =  $now->diffInMonths($begin);
         $data = [];
         $data1 = [];
         $data2 = []; 
+        
         for ($i=1; $i <= $soThang; $i++) { 
             $monthNew = $begin->addMonth()->month;
 
             $start = Carbon::create(2018, 8, 01, 1, 1, 0)->startOfDay()->toDateTimeString();
-            $end   = Carbon::create(2018, $monthNew, 01, 1, 1, 0)->endOfMonth()->toDateTimeString();
-
+            $end   = Carbon::create($now_year, $monthNew, 01, 1, 1, 0)->endOfMonth()->toDateTimeString();
+            dd($end);
             $defect = count(DefectList::where('date','>=', $start)->where('date','<',$end)->get());
             $complete = count(DefectList::where('ngayhoanthanh','>=', $start)->where('ngayhoanthanh','<',$end)
                         ->where('status',1)->get());
