@@ -200,7 +200,7 @@
                                     <select class="form-control" name="status">
                                         @foreach($all_status as $key => $val)
                                         <option value="{{ $val->status}}"
-                                        @if($thongtinxe->status == $thongtinxe->status)
+                                        @if($val->status == $thongtinxe->status)
                                             selected=""
                                         @endif
                                         >{{ $val->name}}</option>
