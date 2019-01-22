@@ -808,6 +808,8 @@ class DeliveryController extends Controller
                     ->where('status','<=',80)
                     ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->orderBy('thoigiankehoach')
+                    ->orderBy('thoigianxevao')
                     ->get();
         return view('pages.delivery.interface.office',compact('thongtinxe'));
     }
@@ -818,6 +820,8 @@ class DeliveryController extends Controller
                     ->where('status','<=',80)
                     ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->orderBy('thoigiankehoach')
+                    ->orderBy('thoigianxevao')
                     ->get();
         return view('pages.delivery.interface.v1.office',compact('thongtinxe'));
     }
@@ -828,6 +832,7 @@ class DeliveryController extends Controller
                     ->where('status','<=',80)
                     ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->orderBy('thoigiankehoach')
                     ->get();
         return view('pages.delivery.interface.v1.office2',compact('thongtinxe'));
     }
