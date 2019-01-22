@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\DeliveryThongTinXe;
 use App\DeliveryDetail;
 use App\DeliveryPicture;
+use App\DeliveryStatus;
 use DB;
 use Mail;
 use Illuminate\Support\Facades\Storage;
@@ -351,10 +352,11 @@ class DeliveryController extends Controller
 
     public function getEditLG($id)
     {
+        $all_status = DeliveryStatus::all();
         $thongtinxe = DeliveryThongTinXe::find($id);
         $pictures = DeliveryPicture::where('thongtinxe_id',$id)->get();
 
-        return view('pages.delivery.logistic.edit',compact('thongtinxe','pictures'));
+        return view('pages.delivery.logistic.edit',compact('thongtinxe','pictures','all_status'));
     }
 
     public function postEditLG($id, Request $request)
@@ -393,6 +395,7 @@ class DeliveryController extends Controller
         $thongtinxe->tencs =  $request->tencs;
         $thongtinxe->chieudaihang =  $request->chieudaihang;
         $thongtinxe->khoiluonghang =  $request->khoiluonghang;
+        $thongtinxe->status =  $request->status;
 
         $fileNameCu = $request->file_pickinglist;
         //Kiểm tra file
@@ -403,7 +406,6 @@ class DeliveryController extends Controller
                     unlink(public_path("upload/delivery/pickinglist/".$fileNameCu));
                 }
             }
-            
 
             $file = $request->file_pickinglist;
 

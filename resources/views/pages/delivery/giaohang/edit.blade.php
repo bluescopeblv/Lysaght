@@ -42,7 +42,7 @@
                             <!--/span-->
                             <div class="col-md-2">
                                 <div class="form-group has-danger">
-                                    <label class="control-label">Chiều dài (m)</label>
+                                    <label class="control-label">Hàng dài nhất (m)</label>
                                     <input type="text" name="chieudai" class="form-control form-control-danger" placeholder="Chiều dài" value="{{ $thongtinxe->chieudai }}">
                                 </div>
                             </div>

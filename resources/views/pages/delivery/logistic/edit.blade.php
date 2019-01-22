@@ -10,7 +10,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-info">
-                <span><a href="delivery/logistic/">Danh sách xe</a></span>
+                <span><a href="delivery/logistic/">Quay lại</a></span>
                 <span class="label label-warning" style="float: right;">
                     <a href="delivery/logistic/reset/{{$thongtinxe->id}}"><span class="glyphicon glyphicon-edit">Reject</span></a>
                 </span>
@@ -192,6 +192,21 @@
                                 <div class="form-group has-danger">
                                     <label class="control-label">Khối lượng hàng (tấn)</label>
                                     <input type="text" name="khoiluonghang" class="form-control form-control-danger" placeholder="Khối lượng hàng" value="{{$thongtinxe->khoiluonghang}}">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label">Status</label>
+                                    <select class="form-control" name="status">
+                                        @foreach($all_status as $key => $val)
+                                        <option value="{{ $val->status}}"
+                                        @if($thongtinxe->status == $thongtinxe->status)
+                                            selected=""
+                                        @endif
+                                        >{{ $val->name}}</option>
+                                        @endforeach
+                                        
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-12">
