@@ -140,7 +140,7 @@
                       
                       <th>Trạng thái</th>
                       <th>DN</th>
-                      <th>Chi tiết</th>
+                      <th>Ghi chú</th>
                     </tr>
                     @foreach($thongtinxe as $ttx)
                     <tr>
