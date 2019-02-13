@@ -782,3 +782,77 @@ Route::group(['prefix' => 'delivery2'], function() {
     });
 
 });
+
+// V2 - KPI
+Route::group(['prefix' => 'kpi'], function() {
+    Route::get('/', 'DeliveryController@getDanhSach');
+
+    Route::group(['prefix' => 'outsource'], function() {
+        Route::get('/','KPIController@getList_OUT');
+
+        Route::get('/edit/{id}','KPIController@getEdit_OUT');
+        Route::post('/edit/{id}','KPIController@postEdit_OUT');
+
+        // Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+    });
+
+    Route::group(['prefix' => 'safety'], function() {
+        Route::get('/','KPIController@getList_SAF');
+
+        Route::get('/edit/{id}','KPIController@getEdit_SAF');
+        Route::post('/edit/{id}','KPIController@postEdit_SAF');
+
+        // Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+    });
+
+    Route::group(['prefix' => 'production'], function() {
+        Route::get('/','KPIController@getList_PROD');
+
+        Route::get('/edit/{id}','KPIController@getEdit_PROD');
+        Route::post('/edit/{id}','KPIController@postEdit_PROD');
+
+        // Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+    });
+
+    Route::group(['prefix' => 'qc'], function() {
+        Route::get('/','KPIController@getList_QC');
+
+        Route::get('/edit/{id}','KPIController@getEdit_QC');
+        Route::post('/edit/{id}','KPIController@postEdit_QC');
+
+        Route::get('/delete/{id}','Delivery2Controller@getDeleteBV');
+
+    });
+
+    Route::group(['prefix' => 'maintenance'], function() {
+        Route::get('/','KPIController@getList_MAIN');
+
+        Route::get('/edit/{id}','KPIController@getEdit_MAIN');
+        Route::post('/edit/{id}','KPIController@postEdit_MAIN');
+
+        //Route::get('/delete/{id}','Delivery2Controller@getDeleteBV');
+
+    });
+
+    Route::group(['prefix' => 'warehouse'], function() {
+        Route::get('/','DeliveryController@getList_WH');
+
+        Route::get('/add', 'DeliveryController@getAddBV');
+        Route::post('/add', 'DeliveryController@postAddBV');
+
+        Route::get('/edit/{id}','DeliveryController@getEditGH');
+        Route::post('/edit/{id}','DeliveryController@postEditGH');
+
+        Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+    });
+
+    Route::group(['prefix' => 'interface'], function() {
+        Route::get('/','DeliveryController@getList_IF');
+
+        Route::get('/office', 'DeliveryController@getInterface_Office_IF');
+        Route::get('/driver', 'DeliveryController@getInterface_Driver_IF');
+        
+        Route::get('time','AjaxController@getRealTime');
+    });
+
+});

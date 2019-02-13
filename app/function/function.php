@@ -141,6 +141,13 @@ function getDeliveryStatus($status)
     
 }
 
+function getDelivery_Public_Display($public_display)
+{
+	if($public_display == false ){
+        return '<span class="label label-danger">NO DISPLAY</span>';
+    }
+}
+
 function get5Sdanhgia($id)
 {
 	//$thongtinxe = App\DeliveryThongTinXe::find($id);

@@ -1,9 +1,11 @@
 <aside class="sidebar" role="navigation">
     <div class="scroll-sidebar">
         <div class="user-profile">
+            @if(Auth::check())
             <div class="dropdown user-pro-body">
-                <p class="profile-text m-t-15 font-16"><a href="javascript:void(0);"> Hanna Gover</a></p>
+                <p class="profile-text m-t-15 font-16"><a href="javascript:void(0);"> {{Auth::user()->name}}</a></p>
             </div>
+            @endif
         </div>
         <nav class="sidebar-nav">
             <ul id="side-menu">
@@ -56,11 +58,12 @@
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-grid fa-fw"></i> <span class="hide-menu"> KPI</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="basic-table.html">All Function</a></li>
-                        <li><a href="table-layouts.html">QC</a></li>
-                        <li><a href="table-layouts.html">Maintenance</a></li>
-                        <li><a href="table-layouts.html">Outsource</a></li>
-                        <li><a href="table-layouts.html">Operation</a></li>
+                        <li><a href="kpi/">All Function</a></li>
+                        <li><a href="kpi/qc">QC</a></li>
+                        <li><a href="kpi/maintenance">Maintenance</a></li>
+                        <li><a href="kpi/outsource">Outsource</a></li>
+                        <li><a href="kpi/production">Production</a></li>
+                        <li><a href="kpi/safety">Safety</a></li>
 
                     </ul>
                 </li>

@@ -134,12 +134,16 @@ class DeliveryController extends Controller
         $thongtinxe->save();
         return redirect()->back()->with('thongbao','Sửa thành công');
     }
-
+//==========================================================================
+//          BẢO VỆ
+//==========================================================================
     public function getListBV()
     {
     	$thongtinxe = DeliveryThongTinXe::where('status','<=',80)
                     ->where('status','!=',70)
+                    ->where('public_display',true)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->where('public_display',true)
                     ->get();
     	return view('pages.delivery.baove.list',compact('thongtinxe'));
     }
@@ -396,6 +400,7 @@ class DeliveryController extends Controller
         $thongtinxe->chieudaihang =  $request->chieudaihang;
         $thongtinxe->khoiluonghang =  $request->khoiluonghang;
         $thongtinxe->status =  $request->status;
+        $thongtinxe->public_display =  $request->public_display;
 
         $fileNameCu = $request->file_pickinglist;
         //Kiểm tra file
@@ -480,14 +485,17 @@ class DeliveryController extends Controller
         return redirect()->back()->with('thongbao','Cập nhật thời gian xong DN thành công');
     }
 
-    
-
+//=========================================================
+//          GIAO HÀNG
+//=========================================================
     public function getListGH()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',30)
+                    ->where('public_display',true)
                     ->where('status','<=',80)
                     ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->where('public_display',true)
                     ->get();
         return view('pages.delivery.giaohang.list',compact('thongtinxe'));
     }
@@ -787,9 +795,9 @@ class DeliveryController extends Controller
         return view('pages.delivery.warehouse.list',compact('thongtinxe'));
     }
 
-    //==========================================================================
-    //         INTEFACE
-    //==========================================================================
+//==========================================================================
+//          INTERFACE
+//==========================================================================
     public function getList_IF()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
@@ -805,9 +813,11 @@ class DeliveryController extends Controller
     public function getInterface_Office_IF()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('public_display',true)
                     ->where('status','<=',80)
                     ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->where('public_display',true)
                     ->orderBy('thoigiankehoach')
                     ->orderBy('thoigianxevao')
                     ->get();
@@ -817,9 +827,11 @@ class DeliveryController extends Controller
     public function getInterface_v1_Office_IF()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('public_display',true)
                     ->where('status','<=',80)
                     ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->where('public_display',true)
                     ->orderBy('thoigiankehoach')
                     ->orderBy('thoigianxevao')
                     ->get();
@@ -829,23 +841,27 @@ class DeliveryController extends Controller
     public function getInterface_v1_Office2_IF()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('public_display',true)
                     ->where('status','<=',80)
                     ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->where('public_display',true)
                     ->orderBy('thoigiankehoach')
                     ->get();
         return view('pages.delivery.interface.v1.office2',compact('thongtinxe'));
     }
 
-    //==========================================================================
-    //         GUEST
-    //==========================================================================
+//==========================================================================
+//          GUEST
+//==========================================================================
     public function getList_GU()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('public_display',true)
                     ->where('status','<=',80)
                     ->where('status','!=',70)
                     ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+                    ->where('public_display',true)
                     ->get();
         return view('pages.delivery.guest.list',compact('thongtinxe'));
     }
@@ -858,5 +874,5 @@ class DeliveryController extends Controller
         return view('pages.delivery.guest.view',compact('thongtinxe','CO','pictures'));
     }
 
-    //==========================================================================
+//==========================================================================
 }

@@ -80,6 +80,9 @@
     <script src="v2/member/plugins/components/styleswitcher/jQuery.style.switcher.js"></script>
     <!--Data table js -->
     <script src="v2/member/plugins/components/datatables/jquery.dataTables.min.js"></script>
+
+    <!-- Flash notification -->
+    <script src="js/flash_notification.js"></script>
     @yield('script')
 </body>
 

@@ -209,6 +209,30 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label">Display</label>
+                                    <select class="form-control" name="public_display" style="color: 
+                                        @if($thongtinxe->public_display == 0)
+                                            red
+                                        @else 
+                                            green
+
+                                        @endif">
+                                        <option value="1" 
+                                        @if($thongtinxe->public_display == 1)
+                                            selected=""
+                                        @endif
+                                        >Hiển thị</option>
+                                        
+                                        <option value="0"
+                                        @if($thongtinxe->public_display == 0)
+                                            selected=""
+                                        @endif
+                                        >Không Hiển thị</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-md-12">
                             <div class="form-group">
                                 <label>Picking list đính kèm(PDF, Excel): 

@@ -114,7 +114,9 @@
                             {{ getDeliverySoAnh($ttx->id) }}
                         </td>
                         <td>
-                            {!! getDeliveryStatus($ttx->status) !!}
+                            {!! getDeliveryStatus($ttx->status) !!} 
+                            {!! getDelivery_Public_Display($ttx->public_display) !!}
+
                         </td>
                         
                         <td>
