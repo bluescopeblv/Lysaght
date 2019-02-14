@@ -183,4 +183,72 @@ function get_Delivery_Minute($date) //Car in factory
 {
 	return Carbon::parse($date)->diffInMinutes(Carbon::now()); //diffInHours
 }
+
+//===================================================================================
+// Delivery
+//===================================================================================
+
+	function get_Delivery_ThoiGian_ChoChatHang($time_xevao, $time_batdauchathang) 
+	{
+		//return Carbon::parse($date)->diffInMinutes(Carbon::now()); //diffInHours
+		$thoigian = Carbon::parse($time_batdauchathang)->diffInMinutes($time_xevao)/60;
+		return number_format($thoigian, 2);
+	}
+
+	function get_Delivery_ThoiGian_ChatHang($time_batdauchathang, $time_xongchathang) 
+	{
+		//return Carbon::parse($date)->diffInMinutes(Carbon::now()); //diffInHours
+		$thoigian = Carbon::parse($time_xongchathang)->diffInMinutes($time_batdauchathang)/60;
+		return number_format($thoigian, 2);
+	}
+
+	function get_Delivery_ThoiGian_ChoDN($time_xongchathang, $thoigianxongDN) 
+	{
+		//return Carbon::parse($date)->diffInMinutes(Carbon::now()); //diffInHours
+		if(Carbon::parse($thoigianxongDN) > Carbon::parse($time_xongchathang) )
+		{
+			$thoigian = Carbon::parse($thoigianxongDN)->diffInMinutes($time_xongchathang)/60;
+			return number_format($thoigian, 2);
+		}else{
+			return 0;
+		}
+	}
+
+	function get_Delivery_ThoiGian_ChoDO_PXK($time_xongchathang, $thoigianxongPXK) 
+	{
+		if(Carbon::parse($thoigianxongPXK) > Carbon::parse($time_xongchathang) && $thoigianxongPXK != Null)
+
+		{
+			//echo Carbon::parse($thoigianxongPXK);
+
+			$thoigian = Carbon::parse($thoigianxongPXK)->diffInMinutes($time_xongchathang)/60;
+			return number_format($thoigian, 2);
+		}else{
+			return 0;
+		}
+	}
+
+	function get_Delivery_ThoiGian_BanGiaoDN($time_xongchathang, $thoigianxongDN, $thoigianbagiaoDN)
+	{
+		if(Carbon::parse($thoigianxongDN) > Carbon::parse($time_xongchathang) )
+		{
+			$thoigian = Carbon::parse($thoigianxongDN)->diffInMinutes($time_xongchathang)/60;
+			return number_format($thoigian, 2);
+		}else{ //Xong truoc
+			$thoigian = Carbon::parse($thoigianbagiaoDN)->diffInMinutes($time_xongchathang)/60;
+			return number_format($thoigian, 2);
+		}
+	}
+
+	function get_Delivery_TongThoiGian($time_xevao, $time_batdauchathang, $time_xongchathang, $thoigianxongDN, $thoigianxongPXK, $thoigianbagiaoDN)
+	{
+		$kq = get_Delivery_ThoiGian_ChoChatHang($time_xevao, $time_batdauchathang)
+			+ get_Delivery_ThoiGian_ChatHang($time_batdauchathang, $time_xongchathang)
+			+ get_Delivery_ThoiGian_ChoDN($time_xongchathang, $thoigianxongDN) 
+			+ get_Delivery_ThoiGian_ChoDO_PXK($time_xongchathang, $thoigianxongPXK) 
+			+ get_Delivery_ThoiGian_BanGiaoDN($time_xongchathang, $thoigianxongDN, $thoigianbagiaoDN);
+		return $kq;
+
+	}
+
 ?>

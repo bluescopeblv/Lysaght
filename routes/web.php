@@ -625,8 +625,9 @@ Route::group(['prefix' => 'training'], function() {
     Route::get('/','TrainingController@getList');
 });
 
-//------------------------------------------------------------------
-// Dashboard
+//========================================================================
+//      Dashboard
+//========================================================================
 Route::group(['prefix' => 'dashboard'], function() {
     Route::group(['prefix' => 'mfg'], function() {
         Route::get('/','DB_Controller@getListBV');
@@ -684,7 +685,9 @@ Route::group(['prefix' => 'Test'], function() {
         return view('v2.member.delivery.list');
     });
 });
-// V2 - Delivery
+//========================================================================
+//      V2 - Delivery
+//========================================================================
 Route::group(['prefix' => 'delivery2'], function() {
     Route::get('/', 'DeliveryController@getDanhSach');
 
@@ -781,9 +784,18 @@ Route::group(['prefix' => 'delivery2'], function() {
         Route::get('time','AjaxController@getRealTime');
     });
 
+    Route::group(['prefix' => 'report'], function() {
+        Route::get('/','Delivery2Controller@getList_RP');
+        Route::post('/','Delivery2Controller@postList_RP');
+        
+
+    });
+
 });
 
-// V2 - KPI
+//========================================================================
+//      V2 - KPI
+//========================================================================
 Route::group(['prefix' => 'kpi'], function() {
     Route::get('/', 'DeliveryController@getDanhSach');
 
@@ -856,3 +868,55 @@ Route::group(['prefix' => 'kpi'], function() {
     });
 
 });
+
+
+//========================================================================
+//      V2 - Dashboard 2
+//========================================================================
+Route::group(['prefix' => 'dashboard2'], function() {
+    Route::group(['prefix' => 'mfg'], function() {
+        Route::get('/','DB_Controller@getListBV');
+
+        Route::get('/add', 'DeliveryController@getAddBV');
+        Route::post('/add', 'DeliveryController@postAddBV');
+
+        Route::get('/edit/{id}','DeliveryController@getEditBV');
+        Route::post('/edit/{id}','DeliveryController@postEditBV');
+
+        Route::get('/delete/{id}','DeliveryController@getDeleteBV');
+
+        Route::get('/in/{id}','DeliveryController@getIn_BV');
+        Route::get('/out/{id}','DeliveryController@getOutBV');
+    });
+
+    Route::group(['prefix' => 'hr'], function() {
+        Route::get('/','DS_HR_Controller@get_List_2');
+
+        Route::get('/add', 'DS_HR_Controller@get_Add_2');
+        Route::post('/add', 'DS_HR_Controller@post_Add_2');
+
+        Route::get('/edit/{id}','DS_HR_Controller@get_Edit_2');
+        Route::post('/edit/{id}','DS_HR_Controller@post_Edit_2');
+
+        Route::get('/delete/{id}','DS_HR_Controller@get_Delete_2');
+    });
+
+    Route::group(['prefix' => 'safety'], function() {
+        Route::get('/','DS_Safety_Controller@get_List');
+
+        Route::get('/add', 'DS_Safety_Controller@get_Add');
+        Route::post('/add', 'DS_Safety_Controller@post_Add');
+
+        Route::get('/edit/{id}','DS_Safety_Controller@get_Edit');
+        Route::post('/edit/{id}','DS_Safety_Controller@post_Edit');
+
+        Route::get('/delete/{id}','DS_Safety_Controller@get_Delete');
+    });
+
+    Route::group(['prefix' => 'interface'], function() {
+        Route::get('/','DS_Interface_Controller@getInterface1');
+
+    });
+
+});
+//========================================================================

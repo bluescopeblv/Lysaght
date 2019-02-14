@@ -9,6 +9,7 @@ use App\DeliveryDetail;
 use App\DeliveryPicture;
 use DB;
 use Mail;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -706,5 +707,46 @@ class Delivery2Controller extends Controller
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)->get();
         return view('pages.delivery.interface.office',compact('thongtinxe'));
     }
+
+
+//==========================================================================
+//          GUEST
+//==========================================================================
+    public function getList_RP()
+    {
+        // $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+        //                 ->where('status','<=',80)
+        //                 ->where('status','!=',70)
+        //                 ->orwhere('thoigianxera', '>=', date('Y-m-d').' 00:00:00')
+        //                 ->get();
+        //dd($thongtinxe);
+        $today = Carbon::now();
+        $ngay = Carbon::now();
+        $ngay2 = Carbon::now();
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('thoigiankehoach','>=',"$ngay")
+                    ->where('thoigiankehoach','<=',"$ngay2")
+                    ->orderBy('thoigiankehoach')
+                    ->get();
+        return view('v2.member.delivery.report.list',compact('thongtinxe', 'today','ngay','ngay2'));
+        //return view('v2.member.delivery.report.list',compact('thongtinxe'));
+    }
     
+    public function postList_RP(Request $request)
+    {
+        $ngay = $request->DateFind;
+        $ngay2 = $request->DateFind2;
+        $ngay =  Carbon::create(substr($ngay, 0, 4), substr($ngay, 5, 2), substr($ngay, 8, 2), 0, 0, 0);
+        $ngay2 = Carbon::create(substr($ngay2, 0, 4), substr($ngay2, 5, 2), substr($ngay2, 8, 2), 23, 59, 59);
+
+        //dd($ngay2);
+        
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('thoigiankehoach','>=',"$ngay")
+                    ->where('thoigiankehoach','<=',"$ngay2")
+                    ->orderBy('thoigiankehoach')
+                    ->get();
+        $today = Carbon::now();
+        return view('v2.member.delivery.report.list',compact('thongtinxe','today','ngay','ngay2'));
+    }
 }

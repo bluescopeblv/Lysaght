@@ -10,22 +10,21 @@
         <nav class="sidebar-nav">
             <ul id="side-menu">
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> Dashboard <span class="label label-rounded label-info pull-right">3</span></span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> Dashboard <!-- <span class="label label-rounded label-info pull-right">3</span> --></span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li> <a href="index.html">Modern Version</a> </li>
-                        <li> <a href="index2.html">Clean Version</a> </li>
-                        <li> <a href="index3.html">Analytical Version</a> </li>
+                        <li> <a href="dashboard2/hr">HR</a> </li>
+                        <li> <a href="javascript:void(0);">Dashboard 2</a> </li>
                     </ul>
                 </li>
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-basket fa-fw"></i> <span class="hide-menu"> Help </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li> <a href="index4.html">Báo lỗi</a> </li>
-                        <li> <a href="products.html">Danh bạ</a> </li>
+                        <li> <a href="baoloi-danhsach">Báo lỗi</a> </li>
+                        <li> <a href="phonebook">Danh bạ</a> </li>
 
                     </ul>
                 </li>
-                <li>
+                <!-- <li>
                     <a class="active waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-envelope-letter fa-fw"></i> <span class="hide-menu"> Inbox <span class="label label-rounded label-primary pull-right">5</span></span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li> <a href="inbox.html">Mail Box</a> </li>
@@ -34,31 +33,29 @@
                         <li> <a href="contact.html">Contact</a> </li>
                         <li> <a href="contact-detail.html">Contact Detail</a> </li>
                     </ul>
-                </li>
+                </li> -->
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-equalizer fa-fw"></i> <span class="hide-menu"> Hoạt động<span class="label label-rounded label-danger pull-right">1</span></span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-equalizer fa-fw"></i> <span class="hide-menu"> Hoạt động <!-- <span class="label label-rounded label-danger pull-right">1</span> --></span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="panels-wells.html">Danh sách</a></li>
-                        <li><a href="panel-ui-block.html">Panels With BlockUI</a></li>
-                        <li><a href="portlet-draggable.html">Draggable Portlet</a></li>
-                        
+                        <li><a href="activity">Danh sách</a></li>
                         
                     </ul>
                 </li>
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-notebook fa-fw"></i> <span class="hide-menu"> Giao hàng </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="delivery2/logistic">Kế hoạch</a></li>
+                        <!-- <li><a href="delivery2/logistic">Kế hoạch</a></li>
                         <li><a href="delivery2/baove">Bảo vệ</a></li>
-                        <li><a href="delivery2/giaohang">Sản xuất</a></li>
+                        <li><a href="delivery2/giaohang">Sản xuất</a></li> -->
+                        <li><a href="delivery2/report">Thống kê</a></li>
                         
 
                     </ul>
                 </li>
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-grid fa-fw"></i> <span class="hide-menu"> KPI</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-grid fa-fw"></i> <span class="hide-menu"> KPI<span class="label label-rounded label-danger pull-right">NEW</span></span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="kpi/">All Function</a></li>
+                        <li><a href="javascript:void(0);">All Function</a></li>
                         <li><a href="kpi/qc">QC</a></li>
                         <li><a href="kpi/maintenance">Maintenance</a></li>
                         <li><a href="kpi/outsource">Outsource</a></li>
@@ -70,10 +67,10 @@
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu"> 5S</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="morris-chart.html">Thống kê</a></li>
-                        <li><a href="peity-chart.html">Đánh giá</a></li>
-                        <li><a href="knob-chart.html">Danh sách</a></li>
-                        <li><a href="sparkline-chart.html">Raise Khiếm khuyết</a></li>
+                        <li><a href="javascript:void(0);">Thống kê</a></li>
+                        <li><a href="javascript:void(0);">Đánh giá</a></li>
+                        <li><a href="javascript:void(0);">Danh sách</a></li>
+                        <li><a href="javascript:void(0);">Raise Khiếm khuyết</a></li>
                     </ul>
                 </li>
                 <li>
@@ -81,14 +78,13 @@
                     <ul aria-expanded="false" class="collapse">
                         <li> <a href="javascript:void(0);">Các chỉ số</a>
                         </li>
-                        <li><a href="starter-page.html">Quản lí chi phí</a></li>
-                        <li><a href="blank.html">Blank Page</a></li>
+                        <li><a href="javascript:void(0);">Quản lí chi phí</a></li>
                         
                     </ul>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="calendar.html" aria-expanded="false"><i class="icon-calender fa-fw"></i> <span class="hide-menu"> Calendar</span></a>
-                </li>
+                </li> -->
             </ul>
         </nav>
         <div class="p-30">

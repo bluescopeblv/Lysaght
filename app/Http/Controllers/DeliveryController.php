@@ -485,9 +485,9 @@ class DeliveryController extends Controller
         return redirect()->back()->with('thongbao','Cập nhật thời gian xong DN thành công');
     }
 
-//=========================================================
+//==========================================================================
 //          GIAO HÀNG
-//=========================================================
+//==========================================================================
     public function getListGH()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',30)
@@ -647,11 +647,18 @@ class DeliveryController extends Controller
     {
         $thongtinxe = DeliveryThongTinXe::find($id);
         $thongtinxe->thoigianbagiaoDN = date('Y-m-d H:i:s');
-        $thongtinxe->status = 80;
+        if ($thongtinxe->status == 90) {
+            # code...
+        } else {
+            $thongtinxe->status = 80;
+        }
+
         $thongtinxe->save();
         return redirect()->back()->with('thongbao','Cập nhật thành công');
     }
-
+//==========================================================================
+//          LOGISTIC
+//==========================================================================
     public function getDetailCO_LG($id)
     {
         $thongtinxe = DeliveryThongTinXe::find($id);
@@ -874,5 +881,6 @@ class DeliveryController extends Controller
         return view('pages.delivery.guest.view',compact('thongtinxe','CO','pictures'));
     }
 
-//==========================================================================
+
+
 }
