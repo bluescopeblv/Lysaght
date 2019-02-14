@@ -48,6 +48,7 @@
                         <li><a href="delivery2/baove">Bảo vệ</a></li>
                         <li><a href="delivery2/giaohang">Sản xuất</a></li> -->
                         <li><a href="delivery2/report">Thống kê</a></li>
+                        <li><a href="delivery2/report/export">Xuất Excel</a></li>
                         
 
                     </ul>

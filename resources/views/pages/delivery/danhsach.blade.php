@@ -34,6 +34,7 @@
                         <div class="button button1"><a href="delivery/warehouse">KHO</a></div>
                         <div class="button button1"><a href="delivery/guest">GUEST</a></div>
                         <div class="button button1"><a href="delivery/interface/v1/office">GIAO DIỆN</a></div>
+                        <div class="button button1"><a href="delivery2/report">REPORT</a></div>
 		                <hr>
 				    	
 		                <marquee>DELIVERY - GIAO HÀNG</marquee>

@@ -7,6 +7,11 @@ use DB;
 use App\Product;
 use App\MaintenanceChiPhiSparepart;
 use App\User;
+use App\DeliveryThongTinXe;
+use App\DeliveryDetail;
+use App\DeliveryPicture;
+use App\DeliveryStatus;
+
 
 class ExcelController extends Controller
 //Laravel excel 2.1
@@ -60,4 +65,6 @@ class ExcelController extends Controller
             });
         })->download($type);
     }      
+
+    
 }

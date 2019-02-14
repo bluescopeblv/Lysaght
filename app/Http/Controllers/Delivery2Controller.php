@@ -746,4 +746,45 @@ class Delivery2Controller extends Controller
         $today = Carbon::now();
         return view('v2.member.delivery.report.list',compact('thongtinxe','today','ngay','ngay2'));
     }
+
+    public function getExport_RP()
+    {
+        $today = Carbon::now();
+        $ngay =  Carbon::create(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day, 0, 0, 0);
+        $ngay2 = Carbon::create(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day, 23, 59, 59);
+        //dd($ngay);
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('thoigiankehoach','>=',"$ngay")
+                    ->where('thoigiankehoach','<=',"$ngay2")
+                    ->orderBy('thoigiankehoach')
+                    ->get();
+        return view('v2.member.delivery.report.export',compact('thongtinxe', 'today','ngay','ngay2'));
+    }
+
+    public function postExport_RP(Request $request){
+        $type = "xlsx";
+        $ngay = $request->DateFind;
+        $ngay2 = $request->DateFind2;
+        $ngay =  Carbon::create(substr($ngay, 0, 4), substr($ngay, 5, 2), substr($ngay, 8, 2), 0, 0, 0);
+        $ngay2 = Carbon::create(substr($ngay2, 0, 4), substr($ngay2, 5, 2), substr($ngay2, 8, 2), 23, 59, 59);
+        $products = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('thoigiankehoach','>=',"$ngay")
+                    ->where('thoigiankehoach','<=',"$ngay2")
+                    ->orderBy('thoigiankehoach')
+                    ->get()
+                    ->toArray();
+        // $products = DeliveryThongTinXe::
+        //             ->get()
+        //             ->toArray();
+        $duoi1 = date('Ymd');
+        $duoi2 = date('His');
+        \Excel::create('PREL3 - Delivery - '.$duoi1.' - '.$duoi2, function($excel) use ($products) {
+            $excel->sheet('Sheet 1', function($sheet) use ($products)
+            {
+                $sheet->fromArray($products);
+            });
+        })->download($type);
+
+        return redirect()->back();
+    } 
 }

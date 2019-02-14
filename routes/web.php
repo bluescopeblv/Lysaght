@@ -787,6 +787,10 @@ Route::group(['prefix' => 'delivery2'], function() {
     Route::group(['prefix' => 'report'], function() {
         Route::get('/','Delivery2Controller@getList_RP');
         Route::post('/','Delivery2Controller@postList_RP');
+
+        Route::get('export', 'Delivery2Controller@getExport_RP');
+        Route::post('export', 'Delivery2Controller@postExport_RP')->name('export.delivery.1');
+
         
 
     });

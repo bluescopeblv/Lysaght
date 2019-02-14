@@ -59,7 +59,6 @@ myTable.tbody{
 
                         <hr>
                     </form>
-
                 <table id="myTable" class="table table-bordered table-striped color-bordered-table info-bordered-table hover-table">
                     <thead>
                         <tr>
