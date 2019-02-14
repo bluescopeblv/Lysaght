@@ -42,7 +42,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-notebook fa-fw"></i> <span class="hide-menu"> Giao hàng </span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-notebook fa-fw"></i> <span class="hide-menu"> Giao hàng <span class="label label-rounded label-info pull-right">NEW</span></span></a>
                     <ul aria-expanded="false" class="collapse">
                         <!-- <li><a href="delivery2/logistic">Kế hoạch</a></li>
                         <li><a href="delivery2/baove">Bảo vệ</a></li>
@@ -53,7 +53,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-grid fa-fw"></i> <span class="hide-menu"> KPI<span class="label label-rounded label-danger pull-right">NEW</span></span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-grid fa-fw"></i> <span class="hide-menu"> KPI<span class="label label-rounded label-danger pull-right"></span></span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="javascript:void(0);">All Function</a></li>
                         <li><a href="kpi/qc">QC</a></li>

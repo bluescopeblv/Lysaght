@@ -721,15 +721,15 @@ class Delivery2Controller extends Controller
         //                 ->get();
         //dd($thongtinxe);
         $today = Carbon::now();
-        $ngay = Carbon::now();
-        $ngay2 = Carbon::now();
+        $ngay =  Carbon::create(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day, 0, 0, 0);
+        $ngay2 = Carbon::create(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day, 23, 59, 59);
+        //dd($ngay);
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
                     ->where('thoigiankehoach','>=',"$ngay")
                     ->where('thoigiankehoach','<=',"$ngay2")
                     ->orderBy('thoigiankehoach')
                     ->get();
         return view('v2.member.delivery.report.list',compact('thongtinxe', 'today','ngay','ngay2'));
-        //return view('v2.member.delivery.report.list',compact('thongtinxe'));
     }
     
     public function postList_RP(Request $request)
@@ -738,9 +738,6 @@ class Delivery2Controller extends Controller
         $ngay2 = $request->DateFind2;
         $ngay =  Carbon::create(substr($ngay, 0, 4), substr($ngay, 5, 2), substr($ngay, 8, 2), 0, 0, 0);
         $ngay2 = Carbon::create(substr($ngay2, 0, 4), substr($ngay2, 5, 2), substr($ngay2, 8, 2), 23, 59, 59);
-
-        //dd($ngay2);
-        
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
                     ->where('thoigiankehoach','>=',"$ngay")
                     ->where('thoigiankehoach','<=',"$ngay2")
