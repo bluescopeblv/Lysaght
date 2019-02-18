@@ -99,23 +99,23 @@ myTable.tbody{
                             <!--  -->
                             
                             <td>
-                                {{ get_Delivery_ThoiGian_ChoChatHang($ttx->thoigianxevao,$ttx->thoigianbatdauchathang) }}
+                                {{ doithoigian(get_Delivery_ThoiGian_ChoChatHang($ttx->thoigianxevao,$ttx->thoigianbatdauchathang)) }}
                             </td>
                             <td>
-                                {{ get_Delivery_ThoiGian_ChatHang($ttx->thoigianbatdauchathang,$ttx->thoigianketthucchathang) }}
+                                {{ doithoigian(get_Delivery_ThoiGian_ChatHang($ttx->thoigianbatdauchathang,$ttx->thoigianketthucchathang)) }}
                             </td>
                             <td>
-                                {{ get_Delivery_ThoiGian_ChoDN($ttx->thoigianketthucchathang, $ttx->thoigianxongDN) }}
+                                {{ doithoigian(get_Delivery_ThoiGian_ChoDN($ttx->thoigianketthucchathang, $ttx->thoigianxongDN)) }}
                             </td>
                             <td>
-                                {{ get_Delivery_ThoiGian_ChoDO_PXK($ttx->thoigianketthucchathang,$ttx->thoigianxongPXK) }}
+                                {{ doithoigian(get_Delivery_ThoiGian_ChoDO_PXK($ttx->thoigianketthucchathang,$ttx->thoigianxongPXK)) }}
                             </td>
                             <td>
-                                {{ get_Delivery_ThoiGian_BanGiaoDN($ttx->thoigianketthucchathang,$ttx->thoigianxongDN, $ttx->thoigianbagiaoDN) }}
+                                {{ doithoigian(get_Delivery_ThoiGian_BanGiaoDN($ttx->thoigianketthucchathang,$ttx->thoigianxongDN, $ttx->thoigianbagiaoDN)) }}
                             </td>
 
                             <td>
-                                {{ get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN ) }}
+                                {{ doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
                             </td>
                             
                             <td>{!! getDeliveryStatus($ttx->status) !!}</td>

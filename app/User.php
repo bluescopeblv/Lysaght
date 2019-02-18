@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\DeliveryHoatDong','id_user','id');
     }
+
+    public function music_acitvity()
+    {
+        return $this->hasMany('App\MusicActivity','id_user','id');
+    }
 }

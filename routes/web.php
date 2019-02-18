@@ -789,9 +789,10 @@ Route::group(['prefix' => 'delivery2'], function() {
         Route::post('/','Delivery2Controller@postList_RP');
 
         Route::get('export', 'Delivery2Controller@getExport_RP');
-        Route::post('export', 'Delivery2Controller@postExport_RP')->name('export.delivery.1');
+        Route::post('export', 'Delivery2Controller@postExport_RP');
 
-        
+        //Route::get('excel','Delivery2Controller@getExportExcel_RP');
+        //Route::post('excel', 'Delivery2Controller@postExportExcel_RP');
 
     });
 
@@ -924,3 +925,18 @@ Route::group(['prefix' => 'dashboard2'], function() {
 
 });
 //========================================================================
+
+//========================================================================
+//      V2 - MUSIC
+//========================================================================
+Route::group(['prefix' => 'music'], function() {
+    Route::get('/', 'MusicController@getList_Info');
+
+    Route::get('add','MusicController@getAdd_Info');
+    Route::post('add','MusicController@postAdd_Info');
+
+    Route::get('/edit/{id}','KPIController@getEdit_OUT');
+    Route::post('/edit/{id}','KPIController@postEdit_OUT');
+
+    
+});

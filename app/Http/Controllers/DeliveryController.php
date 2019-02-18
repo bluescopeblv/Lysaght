@@ -16,6 +16,7 @@ use Carbon\Carbon;
 
 class DeliveryController extends Controller
 {
+
     public function getDanhSach()
     {
     	$thongtinxe = DeliveryThongTinXe::all();
@@ -256,6 +257,16 @@ class DeliveryController extends Controller
         $thongtinxe = DeliveryThongTinXe::find($id);  
         $thongtinxe->thoigianxevao = date('Y-m-d H:i:s');
         $thongtinxe->status = 20;
+        if (Carbon::now()->isWeekend() ) { //isWeekday() isWeekend
+            $thongtinxe->thoigianlogisticConfirm = date('Y-m-d H:i:s');
+            $thongtinxe->status = 40;
+            $thongtinxe->thoigianthanhtoan = date('Y-m-d H:i:s');
+            $thongtinxe->thoigianxongDN = date('Y-m-d H:i:s');
+                
+        } else {
+            //dd(Carbon::now());
+        }
+        
         $thongtinxe->save();
                             
         return redirect()->back()->with('thongbao','Đã cập nhật thời gian xe vào thành công');
@@ -271,6 +282,7 @@ class DeliveryController extends Controller
         return redirect()->back()->with('thongbao','Đã cập nhật thời gian xe ra thành công');
     }
 
+//=======================================================
     public function getListLG()
     {
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
@@ -648,7 +660,7 @@ class DeliveryController extends Controller
         $thongtinxe = DeliveryThongTinXe::find($id);
         $thongtinxe->thoigianbagiaoDN = date('Y-m-d H:i:s');
         if ($thongtinxe->status == 90) {
-            # code...
+            $thongtinxe->status = 90;
         } else {
             $thongtinxe->status = 80;
         }

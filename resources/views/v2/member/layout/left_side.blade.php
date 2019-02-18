@@ -83,6 +83,15 @@
                         
                     </ul>
                 </li>
+                <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> Music<span class="label label-rounded label-success pull-right"></span></span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li> <a href="javascript:void(0);">List</a>
+                        </li>
+                        <li><a href="javascript:void(0);">Quản lí chi phí</a></li>
+                        
+                    </ul>
+                </li>
                 <!-- <li>
                     <a href="calendar.html" aria-expanded="false"><i class="icon-calender fa-fw"></i> <span class="hide-menu"> Calendar</span></a>
                 </li> -->

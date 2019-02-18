@@ -30,10 +30,10 @@ myTable.tbody{
         <div class="panel panel-info">
             <div class="panel-body">
                 <span class="tieude">LOGISTIC - EXPORT</span>
-                <span style="float:right; display: block;">
+                <!-- <span style="float:right; display: block;">
                     
                 <a href="delivery2/logistic/add">
-                    <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Tạo kế hoạch mới </button></a></span>
+                    <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Tạo kế hoạch mới </button></a></span> -->
             </div>
         </div>
     </div>

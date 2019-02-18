@@ -760,31 +760,162 @@ class Delivery2Controller extends Controller
                     ->get();
         return view('v2.member.delivery.report.export',compact('thongtinxe', 'today','ngay','ngay2'));
     }
-
+    
     public function postExport_RP(Request $request){
         $type = "xlsx";
+        $today = Carbon::now();
         $ngay = $request->DateFind;
         $ngay2 = $request->DateFind2;
         $ngay =  Carbon::create(substr($ngay, 0, 4), substr($ngay, 5, 2), substr($ngay, 8, 2), 0, 0, 0);
         $ngay2 = Carbon::create(substr($ngay2, 0, 4), substr($ngay2, 5, 2), substr($ngay2, 8, 2), 23, 59, 59);
         $products = DeliveryThongTinXe::where('status','>=',10)
+                    // ->select('thoigianxevao','thoigianxera','khachhang', 'bienso','tentaixe',
+                    // 'nhaxe','taitrongxe', 'chieudaixe', 'giaohangboi', 'loaihang', 'thoigian_ChoChatHang')
                     ->where('thoigiankehoach','>=',"$ngay")
                     ->where('thoigiankehoach','<=',"$ngay2")
                     ->orderBy('thoigiankehoach')
-                    ->get()
-                    ->toArray();
-        // $products = DeliveryThongTinXe::
-        //             ->get()
-        //             ->toArray();
+                    ->get();
+                    //->toArray();
+        $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+                    ->where('thoigiankehoach','>=',"$ngay")
+                    ->where('thoigiankehoach','<=',"$ngay2")
+                    ->orderBy('thoigiankehoach')
+                    ->get();
+        //dd($products);
+
+        $data1 = array(
+            array('Thời gian xe vào', 'Thời gian xe ra', 'Khách hàng/Dự án', 'Số xe','Tên tài xế',
+            'Nhà xe', 'Tải trọng xe (Tấn)', 'Chiều dài xe', 'Giao hàng bởi', 'Loại hàng')
+        );
+
+        //$data = array_merge($data1, $products);
+
+        $data = $products;
+        
         $duoi1 = date('Ymd');
         $duoi2 = date('His');
-        \Excel::create('PREL3 - Delivery - '.$duoi1.' - '.$duoi2, function($excel) use ($products) {
-            $excel->sheet('Sheet 1', function($sheet) use ($products)
-            {
-                $sheet->fromArray($products);
+
+        \Excel::create('PREL3 - Delivery - '.$duoi1.' - '.$duoi2, function($excel) use($thongtinxe, $today, $ngay, $ngay2){
+
+            $excel->sheet('New sheet', function($sheet) use($thongtinxe, $today,$ngay, $ngay2){
+
+                $sheet->loadView('v2.member.delivery.report.excel')
+                      ->with('thongtinxe', $thongtinxe,
+                             'today', $today,
+                             'ngay', $ngay,
+                             'ngay2', $ngay2);
+                      //dd($today);
             });
         })->download($type);
 
+        // \Excel::create('PREL3 - Delivery - '.$duoi1.' - '.$duoi2, function($excel) use ($data) {
+        //     $excel->sheet('Sheet 1', function($sheet) use ($data)
+        //     {
+        //         $sheet->fromArray($data, null, 'A1', false, false);
+        //     });
+        // })->download($type);
+
         return redirect()->back();
     } 
+
+//Test
+    // public function postExport_RP2(Request $request){
+    //     $type = "xlsx";
+    //     $ngay = $request->DateFind;
+    //     $ngay2 = $request->DateFind2;
+    //     $ngay =  Carbon::create(substr($ngay, 0, 4), substr($ngay, 5, 2), substr($ngay, 8, 2), 0, 0, 0);
+    //     $ngay2 = Carbon::create(substr($ngay2, 0, 4), substr($ngay2, 5, 2), substr($ngay2, 8, 2), 23, 59, 59);
+    //     $products = DeliveryThongTinXe::where('status','>=',10)
+    //                 // ->select('thoigianxevao','thoigianxera','khachhang', 'bienso','tentaixe',
+    //                 // 'nhaxe','taitrongxe', 'chieudaixe', 'giaohangboi', 'loaihang', 'thoigian_ChoChatHang')
+    //                 ->where('thoigiankehoach','>=',"$ngay")
+    //                 ->where('thoigiankehoach','<=',"$ngay2")
+    //                 ->orderBy('thoigiankehoach')
+    //                 ->get();
+    //                 //->toArray();
+
+    //     dd($products);
+
+    //     $data1 = array(
+    //         array('Thời gian xe vào', 'Thời gian xe ra', 'Khách hàng/Dự án', 'Số xe','Tên tài xế',
+    //         'Nhà xe', 'Tải trọng xe (Tấn)', 'Chiều dài xe', 'Giao hàng bởi', 'Loại hàng')
+    //     );
+
+    //     $data = array_merge($data1, $products);
+        
+        
+    //     $duoi1 = date('Ymd');
+    //     $duoi2 = date('His');
+    //     \Excel::create('PREL3 - Delivery - '.$duoi1.' - '.$duoi2, function($excel) use ($data) {
+    //         $excel->sheet('Sheet 1', function($sheet) use ($data)
+    //         {
+    //             $sheet->fromArray($data, null, 'A1', false, false);
+    //         });
+    //     })->download($type);
+
+    //     return redirect()->back();
+    // } 
+
+
+    // public function postExport_RP1(Request $request){
+    //     $type = "xlsx";
+    //     $ngay = $request->DateFind;
+    //     $ngay2 = $request->DateFind2;
+    //     $ngay =  Carbon::create(substr($ngay, 0, 4), substr($ngay, 5, 2), substr($ngay, 8, 2), 0, 0, 0);
+    //     $ngay2 = Carbon::create(substr($ngay2, 0, 4), substr($ngay2, 5, 2), substr($ngay2, 8, 2), 23, 59, 59);
+    //     $products = DeliveryThongTinXe::where('status','>=',10)
+    //                 // ->select('thoigianxevao','thoigianxera','khachhang', 'bienso','tentaixe',
+    //                 // 'nhaxe','taitrongxe', 'chieudaixe', 'giaohangboi', 'loaihang', 'thoigian_ChoChatHang')
+    //                 ->where('thoigiankehoach','>=',"$ngay")
+    //                 ->where('thoigiankehoach','<=',"$ngay2")
+    //                 ->orderBy('thoigiankehoach')
+    //                 ->get();
+    //                 //->toArray();
+
+    //     //dd($products);
+
+    //     $data1 = array(
+    //         array('Thời gian xe vào', 'Thời gian xe ra', 'Khách hàng/Dự án', 'Số xe','Tên tài xế',
+    //         'Nhà xe', 'Tải trọng xe (Tấn)', 'Chiều dài xe', 'Giao hàng bởi', 'Loại hàng')
+    //     );
+
+    //     //$data = array_merge($data1, $products);
+
+    //     $data = $products;
+        
+    //     $duoi1 = date('Ymd');
+    //     $duoi2 = date('His');
+
+    //     \Excel::create('PREL3 - Delivery - '.$duoi1.' - '.$duoi2, function($excel) {
+
+    //         $excel->sheet('New sheet', function($sheet) {
+
+    //             $sheet->loadView('v2.member.delivery.report.list');
+    //         });
+    //     });
+
+    //     // \Excel::create('PREL3 - Delivery - '.$duoi1.' - '.$duoi2, function($excel) use ($data) {
+    //     //     $excel->sheet('Sheet 1', function($sheet) use ($data)
+    //     //     {
+    //     //         $sheet->fromArray($data, null, 'A1', false, false);
+    //     //     });
+    //     // })->download($type);
+
+    //     //return redirect()->back();
+    // } 
+
+    // public function getExportExcel_RP()
+    // {
+    //     $today = Carbon::now();
+    //     $ngay =  Carbon::create(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day, 0, 0, 0);
+    //     $ngay2 = Carbon::create(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day, 23, 59, 59);
+    //     //dd($ngay);
+    //     $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
+    //                 ->where('thoigiankehoach','>=',"$ngay")
+    //                 ->where('thoigiankehoach','<=',"$ngay2")
+    //                 ->orderBy('thoigiankehoach')
+    //                 ->get();
+    //     return view('v2.member.delivery.report.excel',compact('thongtinxe', 'today','ngay','ngay2'));
+    // }
+    
 }

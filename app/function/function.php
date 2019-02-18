@@ -192,14 +192,14 @@ function get_Delivery_Minute($date) //Car in factory
 	{
 		//return Carbon::parse($date)->diffInMinutes(Carbon::now()); //diffInHours
 		$thoigian = Carbon::parse($time_batdauchathang)->diffInMinutes($time_xevao)/60;
-		return number_format($thoigian, 2);
+		return $thoigian;
 	}
 
 	function get_Delivery_ThoiGian_ChatHang($time_batdauchathang, $time_xongchathang) 
 	{
 		//return Carbon::parse($date)->diffInMinutes(Carbon::now()); //diffInHours
 		$thoigian = Carbon::parse($time_xongchathang)->diffInMinutes($time_batdauchathang)/60;
-		return number_format($thoigian, 2);
+		return $thoigian;
 	}
 
 	function get_Delivery_ThoiGian_ChoDN($time_xongchathang, $thoigianxongDN) 
@@ -208,7 +208,7 @@ function get_Delivery_Minute($date) //Car in factory
 		if(Carbon::parse($thoigianxongDN) > Carbon::parse($time_xongchathang) )
 		{
 			$thoigian = Carbon::parse($thoigianxongDN)->diffInMinutes($time_xongchathang)/60;
-			return number_format($thoigian, 2);
+			return $thoigian;
 		}else{
 			return 0;
 		}
@@ -222,7 +222,7 @@ function get_Delivery_Minute($date) //Car in factory
 			//echo Carbon::parse($thoigianxongPXK);
 
 			$thoigian = Carbon::parse($thoigianxongPXK)->diffInMinutes($time_xongchathang)/60;
-			return number_format($thoigian, 2);
+			return $thoigian;
 		}else{
 			return 0;
 		}
@@ -233,10 +233,10 @@ function get_Delivery_Minute($date) //Car in factory
 		if(Carbon::parse($thoigianxongDN) > Carbon::parse($time_xongchathang) )
 		{
 			$thoigian = Carbon::parse($thoigianxongDN)->diffInMinutes($time_xongchathang)/60;
-			return number_format($thoigian, 2);
+			return $thoigian;
 		}else{ //Xong truoc
 			$thoigian = Carbon::parse($thoigianbagiaoDN)->diffInMinutes($time_xongchathang)/60;
-			return number_format($thoigian, 2);
+			return $thoigian;
 		}
 	}
 
@@ -249,6 +249,16 @@ function get_Delivery_Minute($date) //Car in factory
 			+ get_Delivery_ThoiGian_BanGiaoDN($time_xongchathang, $thoigianxongDN, $thoigianbagiaoDN);
 		return $kq;
 
+	}
+
+	function doithoigian($value)
+	{
+		if($value*60 < 60 ){
+			return '0:'.$value*60;
+		}else{
+			$thapphan = CEIL(($value - FLOOR($value))*60);
+			return FLOOR($value).':'.$thapphan;
+		}
 	}
 
 ?>
