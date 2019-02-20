@@ -13,7 +13,7 @@ use Carbon\Carbon;
 class MusicController extends Controller
 {
 //==========================================================================
-//          BẢO VỆ
+//          MUSIC INFO
 //==========================================================================
     public function getList_Info()
     {
@@ -62,50 +62,85 @@ class MusicController extends Controller
         return redirect()->back()->with('thongbao','Thêm thành công');
     }
 
-    public function getEditBV($id)
+    public function getEdit_Info($id)
     {
-    	$thongtinxe = DeliveryThongTinXe::find($id);
-    	return view('pages.delivery.baove.edit',compact('thongtinxe'));
+    	$song = MusicInfo::find($id);
+    	return view('v2.member.music.edit',compact('song'));
     }
 
-    public function postEditBV(Request $request,$id)
+    public function postEdit_Info(Request $request,$id)
     {
     	$this->validate($request,[
-            'tentaixe' => 'required',
-            'bienso'=>'required',
-            'taitrongxe' => 'required',
-            'chieudaixe'=>'required',
+            'name' => 'required',
         ],
         [
-            'tentaixe.required'=>'Bạn chưa nhập tên tài xế',
-            'bienso.required'=>'Bạn chưa nhập biển số xe',
-            'taitrongxe.required'=>'Bạn chưa nhập tải trọng xe',
-            'chieudaixe.required'=>'Bạn chưa nhập chiều dài xe'
+            'name.required'=>'Bạn chưa nhập tên bài hát',
         ]);
 
-        $thongtinxe = DeliveryThongTinXe::find($id);
-        $thongtinxe->khachhang = $request->khachhang;
-        $thongtinxe->tentaixe = $request->tentaixe;
-        $thongtinxe->bienso = $request->bienso;
-        $thongtinxe->nhaxe = $request->nhaxe;
-        $thongtinxe->taitrongxe = $request->taitrongxe;
-        $thongtinxe->chieudaixe = $request->chieudaixe;
-        $thongtinxe->thoigianxevao = $request->thoigianxevao;
-        $thongtinxe->thoigianxera =  $request->thoigianxera;
-
-        //echo "string".date('Y-m-d H:i:s');
+        $song = MusicInfo::find($id);
+        $song->name = $request->name;
+        
        
-        $thongtinxe->save();
+        $song->save();
         return redirect()->back()->with('thongbao','Sửa thành công');
     }
 
-    public function getDeleteBV($id)
+    public function getDelete_Info($id)
     {
-        $thongtinxe = DeliveryThongTinXe::find($id);       
-        $thongtinxe->delete();
+        $song = MusicInfo::find($id);   
+        $song->delete();
         return redirect()->back()->with('thongbao','Đã xóa thành công');
     }
 
+//==========================================================================
+//          MUSIC ACTIVITY
+//==========================================================================
+    public function getList_Acti()
+    {
+        $songs = MusicActivity::all();
+        return view('v2.member.music.activity.list',compact('songs'));
+    }
 
+    public function getAdd_Acti()
+    {
+        $songs = MusicInfo::all();
+        return view('v2.member.music.activity.add', compact('songs'));
+    }
+
+    public function postAdd_Acti(Request $request)
+    {
+        $this->validate($request,[
+            'name' => 'required',
+            'linkfile'=>'required',
+        ],
+        [
+            'name.required'=>'Bạn chưa nhập tên bài hát',
+            'linkfile.required'=>'Bạn chưa nhập link file',
+        ]);
+
+        $songs = new MusicInfo;
+        $songs->name = $request->name;
+
+        //Kiểm tra file
+        if ($request->hasFile('linkfile')) {
+            $file = $request->linkfile;
+
+            $fullName = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+
+            $fullNameLenght = strlen($fullName);
+            $extensionLenght = strlen($extension);
+            $nameLength = $fullNameLenght - ($extensionLenght + 1);
+            $onlyName = substr($fullName, 0, $nameLength);
+
+            $fileNewName = $onlyName.'_'.date('YmdHis').'.'.$file->getClientOriginalExtension();
+
+            $file->move('upload/music/lib',$fileNewName);
+            $songs->linkfile = $fileNewName;
+        }
+       
+        $songs->save();
+        return redirect()->back()->with('thongbao','Thêm thành công');
+    }
 
 }

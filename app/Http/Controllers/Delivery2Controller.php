@@ -768,30 +768,14 @@ class Delivery2Controller extends Controller
         $ngay2 = $request->DateFind2;
         $ngay =  Carbon::create(substr($ngay, 0, 4), substr($ngay, 5, 2), substr($ngay, 8, 2), 0, 0, 0);
         $ngay2 = Carbon::create(substr($ngay2, 0, 4), substr($ngay2, 5, 2), substr($ngay2, 8, 2), 23, 59, 59);
-        $products = DeliveryThongTinXe::where('status','>=',10)
-                    // ->select('thoigianxevao','thoigianxera','khachhang', 'bienso','tentaixe',
-                    // 'nhaxe','taitrongxe', 'chieudaixe', 'giaohangboi', 'loaihang', 'thoigian_ChoChatHang')
-                    ->where('thoigiankehoach','>=',"$ngay")
-                    ->where('thoigiankehoach','<=',"$ngay2")
-                    ->orderBy('thoigiankehoach')
-                    ->get();
-                    //->toArray();
+        
+
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
                     ->where('thoigiankehoach','>=',"$ngay")
                     ->where('thoigiankehoach','<=',"$ngay2")
                     ->orderBy('thoigiankehoach')
                     ->get();
-        //dd($products);
 
-        $data1 = array(
-            array('Thời gian xe vào', 'Thời gian xe ra', 'Khách hàng/Dự án', 'Số xe','Tên tài xế',
-            'Nhà xe', 'Tải trọng xe (Tấn)', 'Chiều dài xe', 'Giao hàng bởi', 'Loại hàng')
-        );
-
-        //$data = array_merge($data1, $products);
-
-        $data = $products;
-        
         $duoi1 = date('Ymd');
         $duoi2 = date('His');
 

@@ -935,8 +935,20 @@ Route::group(['prefix' => 'music'], function() {
     Route::get('add','MusicController@getAdd_Info');
     Route::post('add','MusicController@postAdd_Info');
 
-    Route::get('/edit/{id}','KPIController@getEdit_OUT');
-    Route::post('/edit/{id}','KPIController@postEdit_OUT');
+    Route::get('/edit/{id}','MusicController@getEdit_Info');
+    Route::post('/edit/{id}','MusicController@postEdit_Info');
 
-    
+    Route::get('/delete/{id}','MusicController@getDelete_Info');
+
+    Route::group(['prefix' => 'activity'], function() {
+        Route::get('/', 'MusicController@getList_Acti');
+
+        Route::get('add','MusicController@getAdd_Acti');
+        Route::post('add','MusicController@postAdd_Acti');
+
+        Route::get('/edit/{id}','MusicController@getEdit_Acti');
+        Route::post('/edit/{id}','MusicController@postEdit_Acti');
+
+        Route::get('/delete/{id}','MusicController@getDelete_Acti');
+        });
 });

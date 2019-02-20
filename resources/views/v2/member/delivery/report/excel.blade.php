@@ -4,21 +4,42 @@
     <title>DELIVERY REPORT</title>
 </head>
 <body>
-    <h3>DELIVERY REPORT</h3>
+    <h4>DELIVERY REPORT <span style="color:green">Reporting time: {{ date('d-m-y')}}</span></h4>
+    
     <table id="myTable" class="table table-bordered table-striped color-bordered-table info-bordered-table hover-table">
         <thead>
             <tr>
+                <!-- 1 -->
                 <th>Kế hoạch</th>
+                <th>Thời gian xe vào</th>
+                <th>Thời gian xe ra</th>
                 <th>Dự án</th>
                 <th>Giao hàng bởi</th>
-                <th>Type</th>
+                <th>Hàng dự án/Lẻ</th>
                 <th>Biển số xe</th>
                 <th>Tên tài xế</th>
                 <th>Nhà xe</th>
-                <th>Tải trọng xe</th>
-                <th>Chiều dài</th>
-                <!--  -->
-                
+                <th>Tải trọng xe (Tấn)</th>
+                <th>Chiều dài (m)</th>
+                <!-- 2 -->
+                <th>Thời gian logistic xác nhận</th>
+                <th>Chi tiết</th>
+                <th>Logistic ghi chú</th>
+                <th>Thời gian huấn luyện tài xế xong</th>
+                <th>Thời gian bắt đầu chất hàng</th>
+                <th>Thời gian chất hàng xong</th>
+                <th>Thời gian hoàn thành DN</th>
+                <th>Thời gian hoàn thành PXK</th>
+                <th>Thời gian bàn giao DN</th>
+                <!-- 3 -->
+                <th>Sản phẩm</th>
+                <th>Chiều dài hàng</th>
+                <th>Số tấn</th>
+                <th>Số kiện hàng</th>
+                <th>Số dây ràng</th>
+                <th>Giao hàng ghi chú</th>
+
+                <!-- 4 -->
                 <th>T/G chờ chất hàng (h)</th>
                 <th>T/G chất hàng (h)</th>
                 <th>T/G chờ DN (h)</th>
@@ -33,7 +54,10 @@
             
             @foreach($thongtinxe as $ttx)
             <tr>
-                <td>{{date('d-m',strtotime($ttx->thoigiankehoach))}}</td>
+                <!-- 1 -->
+                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigiankehoach)) }}</td>
+                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianxevao)) }}</td>
+                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianxera )) }}</td>
                 <td>{{ $ttx->khachhang }}</td>
                 <td>{{ $ttx->giaohangboi }}</td>
                 <td>{{ $ttx->loaihang }}</td>
@@ -42,8 +66,26 @@
                 <td>{{$ttx->nhaxe}}</td>
                 <td>{{$ttx->taitrongxe}}</td>
                 <td>{{$ttx->chieudaixe}}</td>
-                <!--  -->
-                
+                <!-- 2 -->
+                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianlogisticConfirm )) }}</td>
+                <td>{{ getDeliveryDetail($ttx->id) }}</td>
+                <td>{{ $ttx->notelogistic }}</td>
+                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianhuanluyen )) }}</td>
+                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianbatdauchathang )) }}</td>
+                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianketthucchathang )) }}</td>
+                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianxongDN )) }}</td>
+                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianxongPXK )) }}</td>
+                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianbagiaoDN )) }}</td>
+
+                <!-- 3 -->
+                <td>{{ $ttx->sanpham }}</td>
+                <td>{{ $ttx->chieudai }}</td>
+                <td>{{ $ttx->khoiluong }}</td>
+                <td>{{ $ttx->sokien}}</td>
+                <td>{{ $ttx->sodayrang}}</td>
+                <td>{{ $ttx->noteproduction}}</td>
+
+                <!-- 4 -->
                 <td>
                     {{ doithoigian(get_Delivery_ThoiGian_ChoChatHang($ttx->thoigianxevao,$ttx->thoigianbatdauchathang)) }}
                 </td>

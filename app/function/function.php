@@ -261,4 +261,19 @@ function get_Delivery_Minute($date) //Car in factory
 		}
 	}
 
+	function getDeliveryDetail($id)
+	{
+		$details = App\DeliveryDetail::where('thongtinxe_id',$id)->get();
+		$temp = "";
+		foreach ($details as $key => $val) {
+			if ($temp) {
+				$temp = $temp.";  ".$val->CO.":".$val->sanpham."-".$val->chitietgiaohang;
+			} else {
+				$temp = $val->CO.":".$val->sanpham."-".$val->chitietgiaohang;
+			}
+		}
+
+		return $temp;
+	}
+
 ?>

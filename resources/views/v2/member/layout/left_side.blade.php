@@ -86,9 +86,9 @@
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> Music<span class="label label-rounded label-success pull-right"></span></span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li> <a href="javascript:void(0);">List</a>
+                        <li> <a href="music">List</a>
                         </li>
-                        <li><a href="javascript:void(0);">Quản lí chi phí</a></li>
+                        <li><a href="music/activity">Schedule</a></li>
                         
                     </ul>
                 </li>

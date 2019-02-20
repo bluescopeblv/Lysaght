@@ -23,10 +23,10 @@
     <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-body">
-                <span class="tieude">MUSIC - LIBRARY</span>
+                <span class="tieude">MUSIC - ACTIVITY</span>
                 <span style="float:right; display: block">
-                <a href="music/add">
-                    <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm bài hát mới </button></a></span>
+                <a href="music/activity/add">
+                    <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm bài hát vào phát </button></a></span>
             </div>
         </div>
     </div>
@@ -47,10 +47,12 @@
                         <tr>
                             <th>#</th>
                             <th>Tên bài hát</th>
-                            <th>Link File</th>
-
+                            <th>Thời gian bắt đầu</th>
+                            <th>Thời gian kết thúc</th>
+                            <th>User</th>
+                            <th>Active</th>
                             <th>Updated at</th>
-                            <th>Hoạt động</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,7 +61,7 @@
                         <tr>
                             <td>{{$val->id}}</td>
                             <td>{{$val->name}}</td>
-                            <td>{{$val->linkfile}}</td>
+                            <td>{{$val->start}}</td>
                             <td>{{$val->updated_at}}</td>
                             <td>
                                 <span class="label label-warning">

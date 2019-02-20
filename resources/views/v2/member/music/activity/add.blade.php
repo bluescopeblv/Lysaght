@@ -26,7 +26,7 @@
     <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-body">
-                <span class="tieude">MUSIC - LIBRARY - EDIT <span style="color: green">{{ $song->name }}</span></span>
+                <span class="tieude">MUSIC - LIBRARY - ADD</span>
                 <span style="float:right; display: block">
                 <a href="music/">
                     <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Danh sách bài hát </button></a></span>
@@ -44,14 +44,25 @@
                     {{session('thongbao')}}           
                 </div>
             @endif
-            <form action="music/edit/{{$song->id}}" method="post" enctype='multipart/form-data'>
+            <form action="music/add" method="post" enctype='multipart/form-data'>
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         <div class="row p-t-20">
-                            <div class="col-md-9">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Tên bài hát</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Nhập tên bài hát..." value="{{ $song->name }}">
+                                    <select name="name" class="form-control">
+                                        <option>_______Please select song_______</option>
+                                        @foreach($songs as $key => $val)
+                                            <option value="{{ $val->id }}">{{ $val->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <label class="control-label">Thời gian bắt đầu</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Nhập tên bài hát...">
                                      </div>
                             </div>
                             <!--/span-->
@@ -63,14 +74,12 @@
                             </div> -->
 
                             
-                            <!--/span-->
-                            
                         </div>
                         <!--/row-->
                         
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Edit</button>
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Thêm</button>
                         
                     </div>
                 </form>
