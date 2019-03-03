@@ -65,7 +65,13 @@ class PagesController extends Controller
         ]);
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
         {
-            return redirect('trangchu');
+            if (User::where('email',$request->email)->first()->ver == true ) {
+                return redirect('procurement/activity/firstcheck');
+            } else {
+                return redirect('trangchu');
+            }
+            
+            
         }
         else{
             return redirect('dangnhap')->with('thongbao','Đăng nhập không thành công');

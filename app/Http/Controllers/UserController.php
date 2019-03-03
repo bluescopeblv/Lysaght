@@ -44,6 +44,11 @@ class UserController extends Controller
         $user->quyen_baoloi = $request->quyen_baoloi;
         $user->quyen_activity = $request->quyen_activity;
         $user->quyen_delivery = $request->quyen_delivery;
+        $user->quyen_kpi = $request->quyen_kpi;
+        $user->quyen_ros = $request->quyen_ros;
+        $user->quyen_music = $request->quyen_music;
+        $user->quyen_dashboard = $request->quyen_dashboard;
+        $user->ver = $request->ver;
 
         if ($request->changePassword == "on") {
             $this->validate($request,[

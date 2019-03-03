@@ -68,7 +68,9 @@ class AjaxController extends Controller
 
     	$chitiet->save();
 
-    	return redirect("chitiet/".$chitiet->CO."/".$chitiet->Litem)->with('thongbao','Bạn đã báo cáo thành công');
+        return redirect()->back()->with('thongbao','Bạn đã báo cáo thành công');
+
+    	//return redirect("chitiet/".$chitiet->CO."/".$chitiet->Litem)->with('thongbao','Bạn đã báo cáo thành công');
     }
 
     public function getRealTime()

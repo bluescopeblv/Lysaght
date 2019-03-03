@@ -281,6 +281,171 @@
                                  type="radio">Admin
                             </label>
                         </div>
+                        <!-- Quyen ROS -->
+                        <div class="form-group">
+                            <label>Quyền ROS</label>
+                            <label class="radio-inline">
+                                <input name="quyen_ros" value="0"  
+                                @if($user->quyen_ros == 0)
+                                    {{'checked=""'}}
+                                @endif
+                                type="radio">Không có quyền
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_ros" value="1" 
+                                @if($user->quyen_ros == 1)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Thường
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_ros" value="2" 
+                                @if($user->quyen_ros == 2)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Sup/Manager
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_ros" value="3" 
+                                @if($user->quyen_ros == 3)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Admin
+                            </label>
+                        </div>
+
+                        <!-- Quyen KPI -->
+                        <div class="form-group">
+                            <label>Quyền KPI</label>
+                            <label class="radio-inline">
+                                <input name="quyen_kpi" value="0"  
+                                @if($user->quyen_kpi == 0)
+                                    {{'checked=""'}}
+                                @endif
+                                type="radio">Không có quyền
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_kpi" value="1" 
+                                @if($user->quyen_kpi == 1)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Thường
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_kpi" value="2" 
+                                @if($user->quyen_kpi == 2)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Sup/Manager
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_kpi" value="3" 
+                                @if($user->quyen_kpi == 3)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Admin
+                            </label>
+                        </div>
+
+                        <!-- Quyen Dashboard -->
+                        <div class="form-group">
+                            <label>Quyền Dashboard</label>
+                            <label class="radio-inline">
+                                <input name="quyen_dashboard" value="0"  
+                                @if($user->quyen_dashboard == 0)
+                                    {{'checked=""'}}
+                                @endif
+                                type="radio">Không có quyền
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_dashboard" value="1" 
+                                @if($user->quyen_dashboard == 1)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Thường
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_dashboard" value="2" 
+                                @if($user->quyen_dashboard == 2)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Sup/Manager
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_dashboard" value="3" 
+                                @if($user->quyen_dashboard == 3)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Admin
+                            </label>
+                        </div>
+
+                        <!-- Quyen Music -->
+                        <div class="form-group">
+                            <label>Quyền Music</label>
+                            <label class="radio-inline">
+                                <input name="quyen_music" value="0"  
+                                @if($user->quyen_music == 0)
+                                    {{'checked=""'}}
+                                @endif
+                                type="radio">Không có quyền
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_music" value="1" 
+                                @if($user->quyen_music == 1)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Thường
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_music" value="2" 
+                                @if($user->quyen_music == 2)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Sup/Manager
+                            </label>
+                            <label class="radio-inline">
+                                <input name="quyen_music" value="3" 
+                                @if($user->quyen_music == 3)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Admin
+                            </label>
+                        </div>
+
+                        <!-- Quyen Version -->
+                        <div class="form-group">
+                            <label>Quyền Version</label>
+                            <label class="radio-inline">
+                                <input name="ver" value="0"  
+                                @if($user->ver == 0)
+                                    {{'checked=""'}}
+                                @endif
+                                type="radio">Ver 1
+                            </label>
+                            <label class="radio-inline">
+                                <input name="ver" value="1" 
+                                @if($user->ver == 1)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Ver 1
+                            </label>
+                            <label class="radio-inline">
+                                <input name="ver" value="2" 
+                                @if($user->ver == 2)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Ver 2
+                            </label>
+                            <label class="radio-inline">
+                                <input name="ver" value="3" 
+                                @if($user->ver == 3)
+                                    {{'checked=""'}}
+                                @endif
+                                 type="radio">Ver 3
+                            </label>
+                        </div>
+
                         <button type="submit" class="btn btn-default">Sửa</button>
                         <button type="reset" class="btn btn-default">Làm mới</button>
                     <form>

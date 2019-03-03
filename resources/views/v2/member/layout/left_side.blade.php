@@ -3,12 +3,14 @@
         <div class="user-profile">
             @if(Auth::check())
             <div class="dropdown user-pro-body">
-                <p class="profile-text m-t-15 font-16"><a href="javascript:void(0);"> {{Auth::user()->name}}</a></p>
+                <p class="profile-text m-t-15 font-16"><a href="nguoidung"> {{Auth::user()->name}}</a></p>
             </div>
             @endif
         </div>
+        @if(Auth::check())
         <nav class="sidebar-nav">
             <ul id="side-menu">
+                @if(Auth::user()->quyen_dashboard)
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> Dashboard <!-- <span class="label label-rounded label-info pull-right">3</span> --></span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -16,6 +18,7 @@
                         <li> <a href="javascript:void(0);">Dashboard 2</a> </li>
                     </ul>
                 </li>
+                @endif
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-basket fa-fw"></i> <span class="hide-menu"> Help </span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -34,6 +37,7 @@
                         <li> <a href="contact-detail.html">Contact Detail</a> </li>
                     </ul>
                 </li> -->
+                @if(Auth::user()->quyen_activity)
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-equalizer fa-fw"></i> <span class="hide-menu"> Hoạt động <!-- <span class="label label-rounded label-danger pull-right">1</span> --></span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -41,6 +45,8 @@
                         
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user()->quyen_delivery)
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-notebook fa-fw"></i> <span class="hide-menu"> Giao hàng <span class="label label-rounded label-info pull-right">NEW</span></span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -53,6 +59,8 @@
 
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user()->quyen_kpi)
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-grid fa-fw"></i> <span class="hide-menu"> KPI<span class="label label-rounded label-danger pull-right"></span></span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -65,6 +73,8 @@
 
                     </ul>
                 </li>
+                @endif 
+                @if(Auth::user()->quyen_5s)
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu"> 5S</span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -74,6 +84,8 @@
                         <li><a href="javascript:void(0);">Raise Khiếm khuyết</a></li>
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user()->quyen_baotri)
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-settings fa-fw"></i> <span class="hide-menu"> Maintenance<span class="label label-rounded label-success pull-right"></span></span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -83,6 +95,8 @@
                         
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user()->quyen_music)
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> Music<span class="label label-rounded label-success pull-right"></span></span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -92,11 +106,30 @@
                         
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user()->quyen_ros)
+                <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> ROS<span class="label label-rounded label-success pull-right"></span></span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        @if(Auth::user()->quyen_ros >= 2)
+                        <li> <a href="procurement/transport">Giá vận chuyển</a></li>
+                        <li> <a href="procurement/product">Sản phẩm</a></li>
+                        <li> <a href="procurement/estimatedprice">Estimated Price</a></li>
+                        <li> <a href="procurement/review/ad">Review Proc</a></li>
+                        @endif
+                        <li> <a href="procurement/activity/firstcheck">Check giá</a></li>
+                        @if(Auth::user()->quyen_ros >= 1)
+                        <li> <a href="procurement/review">Review</a></li>
+                        @endif
+                    </ul>
+                </li>
+                @endif
                 <!-- <li>
                     <a href="calendar.html" aria-expanded="false"><i class="icon-calender fa-fw"></i> <span class="hide-menu"> Calendar</span></a>
                 </li> -->
             </ul>
         </nav>
+        @endif
         <div class="p-30">
             <span class="hide-menu">
                 

@@ -206,7 +206,7 @@ class KeHoachController extends Controller
 
         Mail::send('emails.email', $data, function($message) use ($subject) {
             $message->from('l3lysaght.svr01@gmail.com', 'Pre-L3 Project');
-            $message->to('dinh.ha@bluescope.com')
+            $message->to('lieu.tran@bluescope.com')
                     ->cc('hue.bui@bluescope.com')
                     ->cc('sanh.nguyen@bluescope.com')
                     ->cc('phuc.truong@bluescope.com')

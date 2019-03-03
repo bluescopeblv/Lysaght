@@ -59,11 +59,35 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Thời gian bắt đầu</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Nhập tên bài hát...">
-                                     </div>
+                                    <input type="date" name="start" class="form-control" placeholder="Nhập tên bài hát..." value="{{ date('d-M-y') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">Thời gian kết thúc</label>
+                                    <input type="date" name="finish" class="form-control" placeholder="Nhập tên bài hát..." value="{{ date('d-M-y') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">Active</label>
+                                    <select name="active" class="form-control">
+                                        <option value="1" selected="">Active</option>
+                                        <option value="0">No Active</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">Priority</label>
+                                    <select name="active" class="form-control">
+                                        <option value="0" selected="">0</option>
+                                        <option value="1">1</option>
+                                    </select>
+                                </div>
                             </div>
                             <!--/span-->
                             <!-- <div class="col-md-3">

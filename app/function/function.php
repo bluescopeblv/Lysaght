@@ -276,4 +276,191 @@ function get_Delivery_Minute($date) //Car in factory
 		return $temp;
 	}
 
+
+	function getROS_TotalCost($request)
+	{
+		$product   =  App\ProcureProduct::find($request->procu_production_norm_id);
+        $estiprice = App\ProcureEstimated::orderby('id','desc')->first();
+        $transport = App\ProcureTransport::find($request->proc_transportation_price_id);
+
+        //Khối lượng, số tấn
+        $weight = ($product->kg_per_m2 * $request->quantity )/1000 + 2;
+
+        $price_crane_45_factory = $estiprice->crane_45_factory * 2 * 1;
+        $price_crane_45_site = $estiprice->crane_45_site * 2 * 1;
+        $price_crane_80_site = $estiprice->crane_80_site * 2 * 1;
+        $price_crane_8_site = $estiprice->crane_8_site * ceil($weight/20) * 1; // Số lần cẩu coil
+        $price_crane_liftjack = $estiprice->crane_liftjack * 1 * 1;
+        $price_transport_machine = ($transport->machinery_movement * 1000) * 2* 1;
+        $price_hamer_liftjack = ($transport->machinery_movement * 1000 + 1000000) * 2* 1;
+        $price_transport_acc = ($transport->accessories_movement * 1000) * 2* 1;
+
+
+        //Crane Price
+        if ( $request->bl_mini_layout == "on") {
+            //MB hẹp
+            $price_toiuu_crane = $price_crane_45_factory
+                               + $price_crane_80_site
+                               + $price_transport_machine
+                               + $price_crane_8_site;
+        } else {
+            //MB rộng
+            //PA1: Hamer Liftjack
+
+            $price_pa1 = $price_transport_machine 
+                       + $price_crane_8_site;
+                       + 1000000
+                       + $estiprice->crane_8_site;   //Tăng 1 lần cẩu coil
+            //PA2: Liftjack
+            $price_pa2 = $price_transport_machine 
+                       + $price_crane_8_site
+                       + $estiprice->crane_8_site;   //Tăng 1 lần cẩu coil
+            //PA3: Binh thường
+            $price_pa3 = $price_crane_45_factory 
+                       + $price_crane_45_site
+                       + $price_crane_8_site
+                       + $price_transport_machine;   //Tăng 1 lần cẩu coil
+
+            if( $request->crane_option == 0 ) {
+                $price_toiuu_crane = $price_pa3; 
+            }elseif ( $request->crane_option == 1 ) {
+                $price_toiuu_crane = $price_pa1; 
+            }elseif ( $request->crane_option == 2 ) {
+                $price_toiuu_crane = $price_pa2; 
+            }else{
+                $price_toiuu_crane = min($price_pa1, $price_pa2, $price_pa3);
+            }
+        }
+
+
+        $price_machines_insurance = $estiprice->machines_insurance * 2 * 1;
+        $price_transport_coil = ($transport->coil_movement * 1000) * ceil($weight/20)* 1;
+
+        //Số ngày cán tôn
+        $run_day = ceil($request->quantity / $product->finishgood_per_day);
+
+        $price_genset_hiring = $estiprice->genset_hiring * 1 * ($run_day +2);
+        $price_fuel_genset = $estiprice->fuel_genset * 100 * ($run_day);
+        $price_daunoidien = $estiprice->daunoidien * 2* 1;
+        $price_electric_site = $estiprice->electric_site * $run_day* 1;
+
+        //Dien cong truong
+        if($request->bl_electric_site == 0 ){
+            //May phat
+            $price_electric = $price_genset_hiring + $price_fuel_genset;
+        }else{
+            $price_electric = $price_daunoidien + $price_electric_site;
+        }
+
+        $qty_labour = ceil($request->length / $product->distance_2_worker);
+        $price_labour_cost  = $estiprice->labour_cost * ($qty_labour + 1) * ($run_day +2);
+        $price_health_check  = $estiprice->health_check * ($qty_labour + 1) * 1;
+        $price_safety_certificate  = $estiprice->safety_certificate * ($qty_labour + 1) * 1;
+        $price_insurance  = $estiprice->insurance * ($qty_labour + 1) * 1;
+        //Chi phí nhân công
+        if ( $request->bl_operator_blv == 0) {
+            //Lysaght
+            $price_labour = $price_labour_cost + $price_health_check + $price_safety_certificate + $price_insurance;
+        } else {
+            //Khach hang
+            $price_labour = 0;
+        }
+        
+        //Số lượng technician
+        if ($request->bl_technician == 0) {
+            $qty_technician = 3;
+        } else {
+            $qty_technician = 2;
+        }
+        $price_technician = $estiprice->technician * $qty_technician * ($run_day +2); //2 ngày setup
+
+        //Tính số gỗ
+        if ($request->pcs_per_packet == "Default") {
+            $timer_m3 = $product->timber;
+            $pcs = $product->pcs_default;
+        } else {
+            $timer_m3 = ($product->pcs_default / $request->pcs_per_packet ) * $product->timber;
+            $pcs = $request->pcs_per_packet;
+        }
+        $price_timber = $estiprice->timber * ($request->quantity / 1000) * $timer_m3 * 1;
+        //dd( $price_timber );
+
+        $price_safety_tool = $estiprice->safety_tool * 1 * 1;
+        $price_covering_nylon = $estiprice->covering_nylon * ($request->quantity / 1000) *$product->covering_nylon * 1;
+        $price_security = $estiprice->security * 1 * ($run_day +2); //2 ngày setup
+        //Chi phi phat sinh so vi tri chay may can
+        if($request->point_run_number == 1 ){
+            $price_point_run_number = 0;
+        }else{
+            $price_point_run_number = $request->point_run_number * 18000000;
+        }
+        //Chi phi phat sinh so vi tri dat hang thanh pham
+        if($request->point_finishgood_number == 1 ){
+            $price_point_finishgood_number = 0;
+        }else{
+            $price_point_finishgood_number = $request->point_finishgood_number * 5000000;
+        }
+        
+        //---------
+        //Tong gia =
+        $price_out_service = $price_toiuu_crane         //Chi phi cau + van chuyen
+                           + $price_transport_acc       //Chi phi van chuyen ACC
+                           + $price_machines_insurance  //Bao hiem may moc
+                           + $price_transport_coil      //Chuyen coil
+                           + $price_electric            //Chi phi dien
+                           + $price_labour
+                           + $price_technician
+                           + $price_timber
+                           + $price_safety_tool
+                           + $price_covering_nylon
+                           + $price_security
+                           + $price_point_run_number
+                           + $price_point_finishgood_number;
+
+        if ($price_out_service * 0.13 < 20000000) {
+            $price_service = 20000000;
+        } else {
+            $price_service = $price_out_service*0.13;
+        }
+
+        $price_include_service = $price_out_service + $price_service;
+
+        return $price_include_service;
+	}
+
+	function getROS_RunDay($request)
+	{
+		$product   = App\ProcureProduct::find($request->procu_production_norm_id);
+        $estiprice = App\ProcureEstimated::orderby('id','desc')->first();
+        $transport = App\ProcureTransport::find($request->proc_transportation_price_id);
+
+        //Số ngày cán tôn
+        $run_day = ceil($request->quantity / $product->finishgood_per_day);
+
+        return $run_day;
+	}
+
+	function getROS_Weigh($request)
+	{
+		$product   = App\ProcureProduct::find($request->procu_production_norm_id);
+        //Khối lượng, số tấn
+        $weight = ($product->kg_per_m2 * $request->quantity )/1000 + 2;
+
+        return $weight;
+	}
+
+	function getROS_status($id)
+	{
+		$status   = App\ProcureActivity::find($id)->status;
+		if($status == 1 )
+	        return '<span class="label label-info">Wait review</span>';
+	    else if($status == 2)
+	        return '<span class="label label-success">Reviewed by Procurement</span>';
+	    elseif($status == 3)
+	        return '<span class="label label-warning">Procurement not agree</span>';
+	    else {
+	    	return '';
+	    }
+
+	}
 ?>

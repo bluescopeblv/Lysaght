@@ -951,4 +951,94 @@ Route::group(['prefix' => 'music'], function() {
 
         Route::get('/delete/{id}','MusicController@getDelete_Acti');
         });
+
+    Route::group(['prefix' => 'play'], function() {
+        Route::get('/', 'MusicController@getList_Play');
+    });
+});
+
+//========================================================================
+//      V2 - PROCUREMENT
+//========================================================================
+Route::group(['prefix' => 'procurement'], function() {
+    // Route::get('/', 'ProcurementController@getList_Info');
+
+    // Route::get('add','MusicController@getAdd_Info');
+    // Route::post('add','MusicController@postAdd_Info');
+
+    // Route::get('/edit/{id}','MusicController@getEdit_Info');
+    // Route::post('/edit/{id}','MusicController@postEdit_Info');
+
+    // Route::get('/delete/{id}','MusicController@getDelete_Info');
+
+    Route::group(['prefix' => 'transport'], function() {
+        Route::get('/', 'ProcurementController@getList_Trans');
+
+        Route::get('add','ProcurementController@getAdd_Trans');
+        Route::post('add','ProcurementController@postAdd_Trans');
+
+        Route::get('/edit/{id}','ProcurementController@getEdit_Trans');
+        Route::post('/edit/{id}','ProcurementController@postEdit_Trans');
+
+        Route::post('/importTransport/', 'ProcurementController@importTransport')->name('import.Trans');
+        Route::get('/exportTransport/{type}', 'ProcurementController@exportTransport')->name('export.Trans');
+        
+        Route::get('/delete/{id}','ProcurementController@getDelete_Trans');
+    });
+
+    Route::group(['prefix' => 'product'], function() {
+        Route::get('/', 'ProcurementController@getList_Prod');
+
+        Route::get('add','ProcurementController@getAdd_Prod');
+        Route::post('add','ProcurementController@postAdd_Prod');
+
+        Route::get('/edit/{id}','ProcurementController@getEdit_Prod');
+        Route::post('/edit/{id}','ProcurementController@postEdit_Prod');
+
+        // Route::get('/delete/{id}','MusicController@getDelete_Acti');
+    });
+
+    Route::group(['prefix' => 'estimatedprice'], function() {
+        Route::get('/', 'ProcurementController@getList_Price');
+
+        Route::get('add','ProcurementController@getAdd_Price');
+        Route::post('add','ProcurementController@postAdd_Price');
+
+        Route::get('/edit/{id}','ProcurementController@getEdit_Price');
+        Route::post('/edit/{id}','ProcurementController@postEdit_Price');
+        
+        // Route::get('/delete/{id}','MusicController@getDelete_Acti');
+    });
+
+    Route::group(['prefix' => 'activity'], function() {
+        Route::get('/', 'ProcurementController@getList_Acti');
+
+        Route::get('firstcheck','ProcurementController@getFirstCheck_Acti');
+        Route::post('firstcheck','ProcurementController@postFirstCheck_Acti');
+
+        Route::get('add','ProcurementController@getAdd_Acti');
+        Route::post('add','ProcurementController@postAdd_Acti');
+
+        Route::post('review','ProcurementController@postReview_Acti');
+
+        // Route::get('/edit/{id}','ProcurementController@getEdit_Acti');
+        // Route::post('/edit/{id}','ProcurementController@postEdit_Acti');
+        
+        // Route::get('/delete/{id}','MusicController@getDelete_Acti');
+    });
+
+    Route::group(['prefix' => 'review'], function() {
+        Route::get('/', 'ProcurementController@getList_Review');
+        Route::get('/ad', 'ProcurementController@getListAd_Review');
+
+        Route::get('/edit/{id}','ProcurementController@getEdit_Review');
+        Route::post('/edit/{id}','ProcurementController@postEdit_Review');
+
+        Route::get('/confirm/{id}','ProcurementController@getConfirm_Review');
+        Route::post('/confirm/{id}','ProcurementController@postConfirm_Review');
+
+        Route::post('/noagree/{id}','ProcurementController@postNoAgree_Review');
+        
+    });
+
 });

@@ -143,4 +143,14 @@ class MusicController extends Controller
         return redirect()->back()->with('thongbao','Thêm thành công');
     }
 
+
+//==========================================================================
+//          MUSIC PLAY
+//==========================================================================
+    public function getList_Play()
+    {
+        $songs = MusicActivity::all();
+        return view('v2.member.music.play.playlist',compact('songs'));
+    }
+
 }

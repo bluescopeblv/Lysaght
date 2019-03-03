@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\MusicActivity','id_user','id');
     }
+
+    public function procu_activity()
+    {
+        return $this->hasMany('App\ProcureActivity','id_user','id');
+    }
 }

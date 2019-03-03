@@ -61,6 +61,7 @@
     <!-- /#wrapper -->
     <!-- jQuery -->
     <script src="v2/member/plugins/components/jquery/dist/jquery.min.js"></script>
+    <script src="v2/member/js/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="v2/member/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Menu Plugin JavaScript -->

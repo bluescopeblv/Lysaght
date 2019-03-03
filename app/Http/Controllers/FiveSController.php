@@ -426,6 +426,7 @@ class FiveSController extends Controller
                     ->cc('sanh.nguyen@bluescope.com')
                     ->cc('Duc.Nguyen2@bluescope.com')
                     ->cc('Tu.Truong@bluescope.com')
+                    ->cc('Linh.Tran@bluescope.com')
                     ->cc('phuc.truong@bluescope.com')
                     ->subject($subject);
             // $message->to('phuc.truong@bluescope.com')

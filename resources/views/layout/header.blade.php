@@ -29,10 +29,13 @@
                             <li><a href="delivery">Giao hàng</a></li>
                         @endif
                         @if(Auth::user()->quyen_activity)
-                            
+                            <li><a href="activity">Hoạt động</a></li>
                         @endif
-                   @endif
-                    <li><a href="activity">Hoạt động</a></li>
+                        @if(Auth::user()->ver == 2)
+                            <li><a href="procurement/activity/firstcheck">v2</a></li>
+                        @endif
+                    
+                    @endif
                     <li><a href="baoloi-danhsach">Báo lỗi</a></li>
                     <li><a href="phonebook">Danh bạ</a></li>
                     <!-- <li><a href="lienhe">Liên hệ</a></li> -->
