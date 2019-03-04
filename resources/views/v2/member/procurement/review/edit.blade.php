@@ -86,7 +86,7 @@
                                     <th class="text-center">#</th>
                                     <th>Description</th>
                                     <th>Unit</th>
-                                    <th>Quantity</th>
+                                    <th>Value</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -180,19 +180,9 @@
                                         @endif
                                     </td>
                                 </tr>
+                                
                                 <tr>
                                     <td class="text-center">13</td>
-                                    <td>Mặt bằng hạn chế</td>
-                                    <td>-</td>
-                                    <td>@if($activity->bl_mini_layout == 1)
-                                            Có 
-                                        @else
-                                            Không
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">14</td>
                                     <td>Phương án cẩu</td>
                                     <td>-</td>
                                     <td>@if($activity->crane_option == 0)
@@ -204,6 +194,17 @@
                                         @else
 
                                         @endif</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">14</td>
+                                    <td>Cán trên cao</td>
+                                    <td>-</td>
+                                    <td>@if($activity->bl_layout_low == 1)
+                                            Có 
+                                        @else
+                                            Không
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">15</td>
@@ -258,6 +259,41 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row"></div>
+                            
+
+                            <div class="col-md-4">
+                                <div class="form-group has-danger" style="background-color: rgba(255, 102, 0, 1) ;padding: 10px 20px 10px 20px; border-radius: 15px;color: white; ">
+                                    <span style="font-size: 20px;" >MẶT BẰNG DÀI </span>
+                                    <BR/>
+                                    a = <span style="font-size: 40px;text-align: center;" > {{ $activity->a }} </span> m
+                                    <br>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger" style="background-color: rgba(255, 102, 0, 1) ;padding: 10px 20px 10px 20px; border-radius: 15px;color: white; ">
+                                    <span style="font-size: 20px;" >MẶT BẰNG RỘNG </span>
+                                    <BR/>
+                                    b = <span style="font-size: 40px;text-align: center;" > {{ $activity->b }} </span> m
+                                    <br>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-danger" style="background-color: rgba(255, 102, 0, 1) ;padding: 10px 20px 10px 20px; border-radius: 15px;color: white; ">
+                                    <span style="font-size: 20px;" >KV THÀNH PHẨM </span>
+                                    <BR/>
+                                    L = <span style="font-size: 40px;text-align: center;" > {{ $activity->L }} </span> m
+                                    <br>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                @if($activity->bl_mini_layout == "on") 
+                                    <img src="upload/ros/layout_save.png">
+                                @else
+                                    <img src="upload/ros/layout_large.png">
+                                @endif
+                            </div>
                     <hr>
                     <div class="text-right">
                         <!-- <button class="btn btn-danger" type="submit"> Proceed to payment </button>

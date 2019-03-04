@@ -154,10 +154,20 @@
                                     @endfor
                                 </select>
                             </div>
-                            <div class="form-check-inline col-md-5" style="margin-top: 30px">
+                            <div class="col-md-3">
+                                <label class="control-label">Cán ở vị trí</label>
+                                <select class="form-control" name="bl_layout_low">
+                                    <option value="0">Thấp</option>
+                                    <option value="1">Cao</option>
+                                </select>
+                            </div>
+                            <div class="form-check-inline col-md-3" style="margin-top: 30px">
                                 <input type="checkbox" class="check" id="minimal-checkbox-1" name="bl_mini_layout">
                                 <label for="minimal-checkbox-1">Mặt bằng hạn chế</label>
                             </div>
+                            
+
+
                             <div class="row"></div>
                             <div class="col-md-3" id="pac">
                                 <label class="control-label">Phương án cẩu</label>

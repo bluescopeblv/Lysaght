@@ -569,6 +569,22 @@ class ProcurementController extends Controller
         $price_include_service = $price_out_service + $price_service;
         //dd($price_include_service);
 
+        //Hiển thị kích thước mặt bằng
+        if ( $request->bl_mini_layout == "on") {
+            //MB hẹp
+            $a = 30;
+            $b = 8;
+        } else {
+            $a = 45;
+            $b = 12;
+        }
+        //Nếu cán dưới thấp - trên cao
+        if ($request->bl_layout_low == 0) {
+            $L = $request->length + 3;
+        } else {
+            $L = $request->length + 18;
+        }
+
         $activity = new ProcureActivity;
         $activity->quantity = $request->quantity;
         $activity->thickness = $request->thickness;
@@ -576,6 +592,13 @@ class ProcurementController extends Controller
         $activity->bl_electric_site  = $request->bl_electric_site ;
         $activity->bl_technician  = $request->bl_technician ;
         $activity->bl_operator_blv  = $request->bl_operator_blv ;
+        $activity->bl_layout_low  = $request->bl_layout_low ;
+        $activity->a  = $a ;
+        $activity->b  = $b ;
+        $activity->L  = $L ;
+        $activity->totalcost  = $price_include_service ;
+        $activity->weight  = $weight ;
+        
         $activity->crane_option  = $request->crane_option ;
         $activity->pcs_per_packet  = $pcs ;
         $activity->point_run_number   = $request->point_run_number  ;
@@ -588,8 +611,10 @@ class ProcurementController extends Controller
 
         $id = ProcureActivity::orderBy('created_at', 'desc')->first()->id;
 
-        //dd($request);
-        return view('v2.member.procurement.activity.result',compact('price_include_service','run_day','request', 'id'));
+
+        
+        
+        return view('v2.member.procurement.activity.result',compact('price_include_service','run_day','request', 'id','a','b','L'));
     }
 
     public function postReview_Acti(Request $request)
@@ -620,8 +645,6 @@ class ProcurementController extends Controller
                                     ->get();
         return view('v2.member.procurement.review.list_ad',compact('activities'));
     }
-
-
 
     public function getEdit_Review($id)
     {
