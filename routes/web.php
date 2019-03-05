@@ -1038,6 +1038,8 @@ Route::group(['prefix' => 'procurement'], function() {
         Route::post('/confirm/{id}','ProcurementController@postConfirm_Review');
 
         Route::post('/noagree/{id}','ProcurementController@postNoAgree_Review');
+
+        Route::get('/export/{id}','ProcurementController@getExportPDF_Review');
         
     });
 

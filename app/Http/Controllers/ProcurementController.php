@@ -722,6 +722,13 @@ class ProcurementController extends Controller
         return redirect()->back()->with('thongbao','Updated thành công');
     }   
 
+    public function getExportPDF_Review($id)
+    {
+        $data = ['name' => 'tienduong'];    
+        $pdf = App\PDF::loadView('v2.member.procurement.activity.result',  compact('data'));
+        return $pdf->download('invoice.pdf');
+    }   
+
 
 
 }

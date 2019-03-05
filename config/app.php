@@ -163,6 +163,7 @@ return [
         //ConsoleTVs\Charts\ChartsServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Goodnesskay\LaravelPdfViewer\LaravelPdfViewerServiceProvider::class,
 
 
     ],

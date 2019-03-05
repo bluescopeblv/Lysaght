@@ -261,6 +261,11 @@ function get_Delivery_Minute($date) //Car in factory
 		}
 	}
 
+	function doithoigian_hhmmss($value)
+	{
+			return $value;
+	}
+
 	function delivery_soGio($value)
 	{
 		return substr($value,0,strpos($value,":"));

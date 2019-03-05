@@ -789,6 +789,17 @@ class Delivery2Controller extends Controller
                              'ngay', $ngay,
                              'ngay2', $ngay2);
                       //dd($today);
+                      // Format a range with e.g. leading zeros
+                // $sheet->setColumnFormat(array(
+                //     'AA2:AL500' => 'h:mm:ss'
+                // ));
+                        // Set background color for a specific cell
+                $sheet->getStyle('AG2:AL500')->applyFromArray(array(
+                    'fill' => array(
+                        'color' => array('rgb' => '00ff00')
+                    )
+                ));
+
             });
         })->download($type);
 

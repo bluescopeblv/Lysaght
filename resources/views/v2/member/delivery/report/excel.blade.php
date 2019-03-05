@@ -40,15 +40,23 @@
                 <th>Giao hàng ghi chú</th>
 
                 <!-- 4 -->
-                <th>T/G chờ chất hàng (h)</th>
-                <th>T/G chất hàng (h)</th>
-                <th>T/G chờ DN (h)</th>
-                <th>T/G chờ DO/ PXK (h)</th>
-                <th>T/G chờ bàn giao DN (h)</th>
-                <th><b>Tổng thời gian (h)</b></th>
+                <th>T/G chờ chất hàng (h:m)</th>
+                <th>T/G chất hàng (h:m)</th>
+                <th>T/G chờ DN (h:m)</th>
+                <th>T/G chờ DO/ PXK (h:m)</th>
+                <th>T/G chờ bàn giao DN (h:m)</th>
+                <th><b>Tổng thời gian (h:m)</b></th>
 
-                <th><b>Tổng thời gian (Số giờ)</b></th>
-                <th><b>Tổng thời gian (Số phút)</b></th>
+                <!-- 5 -->
+                <th>T/G chờ chất hàng (Số)</th>
+                <th>T/G chất hàng (Số)</th>
+                <th>T/G chờ DN (Số)</th>
+                <th>T/G chờ DO/ PXK (Số)</th>
+                <th>T/G chờ bàn giao DN (Số)</th>
+                <th><b>Tổng thời gian (Số)</b></th>
+
+                <!-- <th><b>Tổng thời gian (Số giờ)</b></th>
+                <th><b>Tổng thời gian (Số phút)</b></th> -->
                 <th>Status</th>
                 
             </tr>
@@ -86,7 +94,7 @@
                 <td>{{ $ttx->khoiluong }}</td>
                 <td>{{ $ttx->sokien}}</td>
                 <td>{{ $ttx->sodayrang}}</td>
-                <td>{{ $ttx->noteproduction}}</td>
+                <td >{{ $ttx->noteproduction}}</td>
 
                 <!-- 4 -->
                 <td>
@@ -105,17 +113,39 @@
                     {{ doithoigian(get_Delivery_ThoiGian_BanGiaoDN($ttx->thoigianketthucchathang,$ttx->thoigianxongDN, $ttx->thoigianbagiaoDN)) }}
                 </td>
 
-                <td>
+                <td style="color: blue">
                     {{ doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
                 </td>
-                <!-- Đổi ra Giờ -->
+
+                <!-- 5 -->
+                <td >
+                    {{ doithoigian_hhmmss(get_Delivery_ThoiGian_ChoChatHang($ttx->thoigianxevao,$ttx->thoigianbatdauchathang)) }}
+                </td>
+                <td  >
+                    {{ doithoigian_hhmmss(get_Delivery_ThoiGian_ChatHang($ttx->thoigianbatdauchathang,$ttx->thoigianketthucchathang)) }}
+                </td>
+                <td  >
+                    {{ doithoigian_hhmmss(get_Delivery_ThoiGian_ChoDN($ttx->thoigianketthucchathang, $ttx->thoigianxongDN)) }}
+                </td>
                 <td>
+                    {{ doithoigian_hhmmss(get_Delivery_ThoiGian_ChoDO_PXK($ttx->thoigianketthucchathang,$ttx->thoigianxongPXK)) }}
+                </td>
+                <td>
+                    {{ doithoigian_hhmmss(get_Delivery_ThoiGian_BanGiaoDN($ttx->thoigianketthucchathang,$ttx->thoigianxongDN, $ttx->thoigianbagiaoDN)) }}
+                </td>
+
+                <td style="color: blue">
+                    {{ doithoigian_hhmmss(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
+                </td>
+
+                <!-- Đổi ra Giờ -->
+                <!-- <td>
                     {{ delivery_soGio(doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN ))) }}
                 </td>
-                <!-- Đổi ra Phút -->
+                Đổi ra Phút
                 <td>
                     {{ delivery_soPhut(doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN ))) }}
-                </td>
+                </td> -->
                 
                 <td>{!! getDeliveryStatus($ttx->status) !!}</td>
                 
