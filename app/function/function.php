@@ -261,6 +261,16 @@ function get_Delivery_Minute($date) //Car in factory
 		}
 	}
 
+	function delivery_soGio($value)
+	{
+		return substr($value,0,strpos($value,":"));
+	}
+
+	function delivery_soPhut($value)
+	{
+		return substr($value,strpos($value,":")+1, strlen($value));
+	}
+
 	function getDeliveryDetail($id)
 	{
 		$details = App\DeliveryDetail::where('thongtinxe_id',$id)->get();

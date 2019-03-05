@@ -46,6 +46,9 @@
                 <th>T/G chờ DO/ PXK (h)</th>
                 <th>T/G chờ bàn giao DN (h)</th>
                 <th><b>Tổng thời gian (h)</b></th>
+
+                <th><b>Tổng thời gian (Số giờ)</b></th>
+                <th><b>Tổng thời gian (Số phút)</b></th>
                 <th>Status</th>
                 
             </tr>
@@ -104,6 +107,13 @@
 
                 <td>
                     {{ doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
+                </td>
+
+                <td>
+                    {{ delivery_soGio(doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN ))) }}
+                </td>
+                <td>
+                    {{ delivery_soPhut(doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN ))) }}
                 </td>
                 
                 <td>{!! getDeliveryStatus($ttx->status) !!}</td>
