@@ -108,10 +108,11 @@
                 <td>
                     {{ doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
                 </td>
-
+                <!-- Đổi ra Giờ -->
                 <td>
                     {{ delivery_soGio(doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN ))) }}
                 </td>
+                <!-- Đổi ra Phút -->
                 <td>
                     {{ delivery_soPhut(doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN ))) }}
                 </td>

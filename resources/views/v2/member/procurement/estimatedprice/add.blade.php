@@ -75,6 +75,13 @@
                             <!--/span-->
                             <div class="col-md-3">
                                 <div class="form-group has-danger">
+                                    <label class="control-label">Crane 80T site VND</label>
+                                    <input type="text" name="crane_80_site" class="form-control form-control-danger" placeholder="Crane 80T site" value="{{ old('crane_80_site') }}" >
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-3">
+                                <div class="form-group has-danger">
                                     <label class="control-label">Crane 8T VND</label>
                                     <input type="text" name="crane_8_site" class="form-control form-control-danger" placeholder="Crane 8T" value="{{ old('crane_8_site') }}">
                                 </div>

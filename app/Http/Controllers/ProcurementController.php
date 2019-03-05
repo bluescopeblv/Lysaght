@@ -315,6 +315,7 @@ class ProcurementController extends Controller
         $estiprice =  new ProcureEstimated;
         $estiprice->crane_45_factory  = $request->crane_45_factory ;
         $estiprice->crane_45_site  = $request->crane_45_site ;
+        $estiprice->crane_80_site  = $request->crane_80_site ;
         $estiprice->crane_8_site  = $request->crane_8_site ;
         $estiprice->crane_liftjack  = $request->crane_liftjack ;
         $estiprice->machines_insurance  = $request->machines_insurance ;
@@ -355,6 +356,7 @@ class ProcurementController extends Controller
         $estiprice =  ProcureEstimated::find($id);
         $estiprice->crane_45_factory  = $request->crane_45_factory ;
         $estiprice->crane_45_site  = $request->crane_45_site ;
+        $estiprice->crane_80_site  = $request->crane_80_site ;
         $estiprice->crane_8_site  = $request->crane_8_site ;
         $estiprice->crane_liftjack  = $request->crane_liftjack ;
         $estiprice->machines_insurance  = $request->machines_insurance ;
