@@ -26,7 +26,7 @@
     <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-body">
-                <span class="tieude">ROS - PRICE CHECK</span>
+                <span class="tieude">ROS - PROPOSAL</span>
                 
                 
             </div>
