@@ -681,7 +681,6 @@ class ProcurementController extends Controller
     public function getListAd_Review()
     {
         $activities = ProcureActivity::where('status','>=', 1)
-                                    ->where('user_id',Auth::user()->id)
                                     ->orderBy('updated_at','desc')
                                     ->get();
         return view('v2.member.procurement.review.list_ad',compact('activities'));
