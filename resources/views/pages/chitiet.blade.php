@@ -80,7 +80,7 @@
 			                            @endif
 			                            <td>{{$ct->SLDaSX}}</td>
 			                            <td hidden="">{{$ct->Note2}}</td>
-			                            <td class="center"><i class="glyphicon glyphicon-pencil"></i>a</td>
+			                            <td class="center"><i class="glyphicon glyphicon-pencil"></i>...</td>
 			                        </tr>
 			                        @endforeach
 			                    @endif

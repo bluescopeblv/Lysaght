@@ -294,6 +294,9 @@
                                     <img src="upload/ros/layout_large.png">
                                 @endif
                             </div>
+                            <div class="col-md-12" style="text-align: center;">
+                                <span >Noted: Áp dụng cho điều kiện cầu đường lớn hơn 42 tấn.</span> 
+                            </div>
                     <hr>
                     <div class="text-right">
                         <!-- <button class="btn btn-danger" type="submit"> Proceed to payment </button>

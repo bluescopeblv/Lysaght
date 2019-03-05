@@ -1,7 +1,22 @@
 @extends('v2.member.layout.index')
 @section('css')
 <!-- ===== Plugin CSS ===== -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link href="v2/member/plugins/components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<!-- ===== Bootstrap CSS ===== -->
+<link href="v2/member/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- ===== Plugin CSS ===== -->
+<link href="v2/member/plugins/components/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+<!-- ===== Animation CSS ===== -->
+<link href="v2/member/css/animate.css" rel="stylesheet">
+<!-- ===== Custom CSS ===== -->
+<link href="v2/member/css/style.css" rel="stylesheet">
+<!-- ===== Color CSS ===== -->
+<link href="v2/member/css/colors/default.css" id="theme" rel="stylesheet">
+
+<link href="v2/member/footable/css/footable.bootstrap.min.css"    rel="stylesheet">
+
 <!-- <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" /> -->
 <style type="text/css">
 .white-box{
@@ -35,6 +50,7 @@
                             <h3>VND &nbsp;<b class="text-danger" style="font-size: 40px;"> <span style="color: green; font-family: "arial" ">{{ number_format(getROS_TotalCost($activity)) }} </span></b></h3>
                             <p class="text-muted m-l-5">TỔNG GIÁ TRỊ DỰ ÁN
                                 <br/> Số ngày cán tôn: {{ getROS_RunDay($activity) }}
+                                <br/> Số nhân công: {{ number_format($detail_price->qty_labour) }}
                             </p>
 
                         </address>
@@ -86,9 +102,15 @@
 
                 <div class="col-md-12">
                     <div class="table-responsive m-t-40" style="clear: both;">
+                        <h3 style="color: blue">Các yêu cầu</h3>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Description</th>
+                                    <th>Unit</th>
+                                    <th>Value</th>
+
                                     <th class="text-center">#</th>
                                     <th>Description</th>
                                     <th>Unit</th>
@@ -101,30 +123,73 @@
                                     <td>Tổng khối lượng</td>
                                     <td>m2</td>
                                     <td>{{ number_format($activity->quantity) }}</td>
+
+                                    <td class="text-center">11</td>
+                                    <td>Số vị trí đặt thành phẩm</td>
+                                    <td>Vị trí</td>
+                                    <td>{{ $activity->point_finishgood_number}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">2</td>
                                     <td>Độ dày</td>
                                     <td> mm </td>
                                     <td>{{ $activity->thickness }}</td>
+
+                                    <td class="text-center">12</td>
+                                    <td>Mặt bằng hạn chế</td>
+                                    <td>-</td>
+                                    <td>@if($activity->bl_mini_layout == 1)
+                                            Có 
+                                        @else
+                                            Không
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">3</td>
                                     <td>Chiều dài tối đa</td>
                                     <td>m </td>
                                     <td>{{ $activity->length }}</td>
+
+                                    <td class="text-center">13</td>
+                                    <td>Phương án cẩu</td>
+                                    <td>-</td>
+                                    <td>@if($activity->crane_option == 0)
+                                            Bình Thường 
+                                        @elseif( $activity->crane_option == 1)
+                                            Hamer Liftjack
+                                        @elseif( $activity->crane_option == 2)
+                                            Liftjack
+                                        @else
+
+                                        @endif</td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">4</td>
                                     <td>Kiểu sóng</td>
                                     <td></td>
                                     <td>{{ $activity->procu_production_norm->name }}</td>
+
+                                    <td class="text-center">14</td>
+                                    <td>Cán trên cao</td>
+                                    <td>-</td>
+                                    <td>@if($activity->bl_layout_low == 1)
+                                            Có 
+                                        @else
+                                            Không
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">5</td>
                                     <td>Địa điểm dự án</td>
                                     <td></td>
                                     <td>{{ $activity->proc_transportation_price->location }}</td>
+
+                                    <td class="text-center">15</td>
+                                    <td>Note</td>
+                                    <td> </td>
+                                    <td>{{ $activity->note }}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">6</td>
@@ -156,6 +221,7 @@
                                         Không
                                     @endif</td>
                                 </tr>
+                                
                                 <tr>
                                     <td class="text-center">9</td>
                                     <td>Số tấm/Kiện</td>
@@ -169,59 +235,140 @@
                                     <td>Vị trí</td>
                                     <td>{{ $activity->point_run_number }}</td>
                                 </tr>
-                                <tr>
-                                    <td class="text-center">11</td>
-                                    <td>Số vị trí đặt thành phẩm</td>
-                                    <td>Vị trí</td>
-                                    <td>{{ $activity->point_finishgood_number}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">12</td>
-                                    <td>Mặt bằng hạn chế</td>
-                                    <td>-</td>
-                                    <td>@if($activity->bl_mini_layout == 1)
-                                            Có 
-                                        @else
-                                            Không
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">13</td>
-                                    <td>Phương án cẩu</td>
-                                    <td>-</td>
-                                    <td>@if($activity->crane_option == 0)
-                                            Bình Thường 
-                                        @elseif( $activity->crane_option == 1)
-                                            Hamer Liftjack
-                                        @elseif( $activity->crane_option == 2)
-                                            Liftjack
-                                        @else
-
-                                        @endif</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">14</td>
-                                    <td>Cán trên cao</td>
-                                    <td>-</td>
-                                    <td>@if($activity->bl_layout_low == 1)
-                                            Có 
-                                        @else
-                                            Không
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">15</td>
-                                    <td>Note</td>
-                                    <td> </td>
-                                    <td>{{ $activity->note }}</td>
-                                </tr>
 
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+                <div class="col-sm-6">
+                        <div class="white-box">
+                            <h3 class="box-title">GIÁ THÀNH PHẦN</h3>
+                            <div class="table-responsive">
+                                <table class="table color-bordered-table primary-bordered-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th>Description</th>
+                                            <th>Unit</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                    <td class="text-center">1</td>
+                                    <td>Chi phí cẩu và vận chuyển</td>
+                                    <td>VND</td>
+                                    <td class="text-right">{{ number_format($detail_price->price_toiuu_crane)  }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">2</td>
+                                    <td>Chi phí vận chuyển Accessories</td>
+                                    <td>VND</td>
+                                    <td class="text-right">{{ number_format($detail_price->price_transport_acc) }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">3</td>
+                                    <td>Chi phí bảo hiểm máy móc, thiết bị</td>
+                                    <td>VND</td>
+                                    <td class="text-right">{{ number_format($detail_price->price_machines_insurance) }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">4</td>
+                                    <td>Chi phí vận chuyển coil</td>
+                                    <td>VND</td>
+                                    <td class="text-right">{{ number_format($detail_price->price_transport_coil) }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">5</td>
+                                    <td>Chi phí điện</td>
+                                    <td>VND</td>
+                                    <td class="text-right">{{ number_format($detail_price->price_electric) }}</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="text-center">6</td>
+                                    <td>Chi phí nhân công vận hành</td>
+                                    <td>VND</td>
+                                    <td class="text-right">{{ number_format($detail_price->price_labour) }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td class="text-center">7</td>
+                                    <td>Chi phí kỹ thuật</td>
+                                    <td>VND</td>
+                                    <td class="text-right">{{ number_format($detail_price->price_technician) }}</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td class="text-center">8</td>
+                                    <td>Chi phí gỗ/pallet</td>
+                                    <td>VND</td>
+                                    <td class="text-right">{{ number_format($detail_price->price_timber) }}</td>
+                                    
+                                </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                 <div class="col-sm-6">
+                        <div class="white-box">
+                            <h3 class="box-title">GIÁ THÀNH PHẦN</h3>
+                            <div class="table-responsive">
+                                <table class="table color-bordered-table primary-bordered-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th>Description</th>
+                                            <th>Unit</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">9</td>
+                                            <td>Chi phí dụng cụ an toàn, Vật tư...</td>
+                                            <td>VND</td>
+                                            <td class="text-right">{{ number_format($detail_price->price_safety_tool) }}</td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">10</td>
+                                            <td>Chi phí bạc lót</td>
+                                            <td>VND</td>
+                                            <td class="text-right">{{ number_format($detail_price->price_covering_nylon) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">11</td>
+                                            <td>Chi phí bảo vệ</td>
+                                            <td>VND</td>
+                                            <td class="text-right">{{ number_format($detail_price->price_security) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">12</td>
+                                            <td>Chi phí phát sinh vị trí cán</td>
+                                            <td>VND</td>
+                                            <td class="text-right">{{ number_format($detail_price->price_point_run_number) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">13</td>
+                                            <td>Chi phí phát sinh vị trí để thành phẩm</td>
+                                            <td>VND</td>
+                                            <td class="text-right">{{ number_format($detail_price->price_point_finishgood_number) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">14</td>
+                                            <td>Chi phí dịch vụ</td>
+                                            <td>VND</td>
+                                            <td class="text-right">{{ number_format($detail_price->price_service) }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                 <div class="col-md-12">
                     <div class="pull-right m-t-30 text-right">
                         <p>Sub - Total amount: {{ number_format(getROS_TotalCost($activity)) }}</p>
@@ -229,6 +376,8 @@
                         <hr>
                         <h3><b style="font-size: 16px" >Total :  </b >{{ number_format(getROS_TotalCost($activity)) }} VND</h3></div>
                     <div class="clearfix"></div>
+
+
                     <hr>
                     <div class="row colorbox-group-widget">
                         <div class="col-md-3 col-sm-6 info-color-box">
@@ -336,7 +485,14 @@
                 </div>
             </div>
         </div>
+
+
+        
+
     </div>
+
+    
+
 </div>
 
 
@@ -346,48 +502,37 @@
 @endsection
 
 @section('script')
-<script>
-$(document).ready(function() {
-    $('#myTable').DataTable();
-    $(document).ready(function() {
-        var table = $('#example').DataTable({
-            "columnDefs": [{
-                "visible": true,
-                "targets": 2
-            }],
-            "order": [
-                [2, 'asc']
-            ],
-            "displayLength": 25,
-            "drawCallback": function(settings) {
-                var api = this.api();
-                var rows = api.rows({
-                    page: 'current'
-                }).nodes();
-                var last = null;
-                api.column(2, {
-                    page: 'current'
-                }).data().each(function(group, i) {
-                    if (last !== group) {
-                        $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                        last = group;
-                    }
-                });
-            }
-        });
-        // Order by the grouping
-        $('#example tbody').on('click', 'tr.group', function() {
-            var currentOrder = table.order()[0];
-            if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                table.order([2, 'desc']).draw();
-            } else {
-                table.order([2, 'asc']).draw();
-            }
-        });
-    });
-});
+<!-- Menu Plugin JavaScript -->
+<script src="v2/member/js/sidebarmenu.js"></script>
+<!--slimscroll JavaScript -->
+<script src="v2/member/js/jquery.slimscroll.js"></script>
+<script src="v2/member/js/custom.js"></script>
+<!-- Bootstrap Core JavaScript -->
+    <script src="v2/member/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--Wave Effects -->
+<script src="v2/member/js/waves.js"></script>
+<!-- jQuery -->
+<script src="v2/member/js/jquery/dist/jquery.min.js"></script>
+<script src="v2/member/js/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script src="v2/member/js/bootstrap-table/dist/bootstrap-table.ints.js"></script>
+<!-- jQuery -->
+<script src="v2/member/plugins/components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="v2/member/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="v2/member/js/sidebarmenu.js"></script>
+<!--slimscroll JavaScript -->
+<script src="v2/member/js/jquery.slimscroll.js"></script>
+<!--Wave Effects -->
+<script src="v2/member/js/waves.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="v2/member/js/custom.js"></script>
+<script src="v2/member/plugins/components/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script src="v2/member/plugins/components/bootstrap-table/dist/bootstrap-table.ints.js"></script>
+<!--Style Switcher -->
+<script src="v2/member/plugins/components/styleswitcher/jQuery.style.switcher.js"></script>
 
-
-
-</script>
+<!--Footable -->
+<script src="v2/member/footable/js/footable.js"></script>
+<script src="v2/member/footable/js/footable.min.js"></script>
 @endsection

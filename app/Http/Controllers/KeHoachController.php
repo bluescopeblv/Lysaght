@@ -47,7 +47,10 @@ class KeHoachController extends Controller
             $thongtin = KeHoach::where('WorkCenter','like',"$workcenter")
                                 ->where('DateSX_KH_DMY','>=',"$ngay")
                                 ->where('DateSX_KH_DMY','<=',"$ngay2")
+                                ->where('Plan',"OK")
+                                ->where('DaSX2',null)
                                 ->distinct()
+                                ->orderBy('DateSX_KH_DMY')
                                 ->orderBy('ThuTuCO')
                                 ->get(['DateSX_KH_DMY','DuAn','CO','Type','Litem','NgayGH']);
             return view('pages.kehoach',['kehoach'=>$thongtin,'ngayTimKiem'=>$ngay,'wc1'=>$workcenter,'ngay2'=>$ngay2]);

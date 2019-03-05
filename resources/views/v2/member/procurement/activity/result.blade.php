@@ -76,9 +76,8 @@
                 <input type="hidden" name="crane_option" value="{{ $request->crane_option  }}">
                 <input type="hidden" name="id" value="{{ $id }}">
                 <input type="hidden" name="price_include_service" value="{{ $price_include_service }}">
-
-                
-
+                <input type="hidden" name="detail_price" value="{{ $js_detail_price }}">
+                 
 
                 <div class="form-body">
                     <div class="panel-group">

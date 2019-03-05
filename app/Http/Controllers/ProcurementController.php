@@ -560,6 +560,7 @@ class ProcurementController extends Controller
                            + $price_point_run_number
                            + $price_point_finishgood_number;
 
+
         if ($price_out_service * 0.13 < 20000000) {
             $price_service = 20000000;
         } else {
@@ -585,6 +586,46 @@ class ProcurementController extends Controller
             $L = $request->length + 18;
         }
 
+        $array_keys = array(
+                'price_toiuu_crane', 
+                'price_transport_acc',
+                'price_machines_insurance', 
+                'price_transport_coil',
+                'price_electric',
+                'price_labour',
+                'price_technician',
+                'price_timber',
+                'price_safety_tool',
+                'price_covering_nylon',
+                'price_security',
+                'price_point_run_number',
+                'price_point_finishgood_number',
+                'price_service',
+                'qty_labour',
+            );
+        $array_values = array(
+                $price_toiuu_crane, 
+                $price_transport_acc,
+                $price_machines_insurance,
+                $price_transport_coil,
+                $price_electric,
+                $price_labour,
+                $price_technician,
+                $price_timber,
+                $price_safety_tool,
+                $price_covering_nylon,
+                $price_security,
+                $price_point_run_number,
+                $price_point_finishgood_number,
+                $price_service,
+                $qty_labour,
+            );
+        $detail_price = array_combine($array_keys, $array_values);
+        $js_detail_price = json_encode($detail_price);
+        
+        //dd($js_detail_price);
+
+
         $activity = new ProcureActivity;
         $activity->quantity = $request->quantity;
         $activity->thickness = $request->thickness;
@@ -598,7 +639,8 @@ class ProcurementController extends Controller
         $activity->L  = $L ;
         $activity->totalcost  = $price_include_service ;
         $activity->weight  = $weight ;
-        
+        $activity->para  = $js_detail_price ;
+
         $activity->crane_option  = $request->crane_option ;
         $activity->pcs_per_packet  = $pcs ;
         $activity->point_run_number   = $request->point_run_number  ;
@@ -611,10 +653,7 @@ class ProcurementController extends Controller
 
         $id = ProcureActivity::orderBy('created_at', 'desc')->first()->id;
 
-
-        
-        
-        return view('v2.member.procurement.activity.result',compact('price_include_service','run_day','request', 'id','a','b','L'));
+        return view('v2.member.procurement.activity.result',compact('price_include_service','run_day','request', 'id','a','b','L','js_detail_price','qty_labour'));
     }
 
     public function postReview_Acti(Request $request)
@@ -659,7 +698,8 @@ class ProcurementController extends Controller
         $products = ProcureProduct::all();
         $transports = ProcureTransport::all();
         $activity = ProcureActivity::find($id);
-        return view('v2.member.procurement.review.confirm', compact('activity','transports'));
+        $detail_price = json_decode($activity->para);
+        return view('v2.member.procurement.review.confirm', compact('activity','transports','detail_price'));
     }
     
 
