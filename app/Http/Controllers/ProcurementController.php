@@ -12,6 +12,7 @@ use DB;
 use Mail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 
 class ProcurementController extends Controller
@@ -724,9 +725,14 @@ class ProcurementController extends Controller
 
     public function getExportPDF_Review($id)
     {
-        $data = ['name' => 'tienduong'];    
-        $pdf = App\PDF::loadView('v2.member.procurement.activity.result',  compact('data'));
-        return $pdf->download('invoice.pdf');
+
+        $products = ProcureProduct::all();
+        $transports = ProcureTransport::all();
+        $activity = ProcureActivity::find($id);
+
+        $pdf = PDF::loadView('v2.member.procurement.export.proposal',compact('activity','transports'));
+        return $pdf->stream('Proposal.pdf'); 
+        return $pdf->download('Proposal.pdf');
     }   
 
 

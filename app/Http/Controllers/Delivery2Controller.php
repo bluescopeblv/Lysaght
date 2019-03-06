@@ -73,7 +73,7 @@ class Delivery2Controller extends Controller
                         'note' => $value->note,
                         'updated_at' => date('Y-m-d h:m:s'),
                         'created_at' => date('Y-m-d h:m:s'),
-                        ];
+                    ];
                 }
                 if(!empty($arr)){
                     DB::table('delivery_thongtinxe')->insert($arr);

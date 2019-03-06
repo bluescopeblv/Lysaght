@@ -70,7 +70,6 @@
                         <li><a href="kpi/outsource">Outsource</a></li>
                         <li><a href="kpi/production">Production</a></li>
                         <li><a href="kpi/safety">Safety</a></li>
-
                     </ul>
                 </li>
                 @endif 

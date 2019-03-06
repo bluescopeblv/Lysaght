@@ -136,8 +136,10 @@
                             <div class="col-md-12">
                                 @if($request->bl_mini_layout == "on") 
                                     <img src="upload/ros/layout_save.png">
+                                    <img src="upload/ros/layout_3D.png">
                                 @else
                                     <img src="upload/ros/layout_large.png">
+                                    <img src="upload/ros/layout_3D.png">
                                 @endif
                             </div>
     

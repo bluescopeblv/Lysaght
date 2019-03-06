@@ -65,6 +65,7 @@ myTable.tbody{
                             <th>Note</th>
                             <th>Status</th>
                             <th>Action</th>
+                            <th>Print</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -120,7 +121,12 @@ myTable.tbody{
                             <td>
                                 <span class="label label-warning">
                                     <a href="procurement/review/edit/{{$val->id}}"><span class="glyphicon glyphicon-edit">Xem</span></a>
-                                </span><span>  </span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="label label-warning">
+                                    <a href="procurement/review/export/{{$val->id}}"><span class="glyphicon glyphicon-edit">Print</span></a>
+                                </span>
                                 
                             </td>
                         </tr>

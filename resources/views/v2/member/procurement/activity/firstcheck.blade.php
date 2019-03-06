@@ -27,8 +27,6 @@
         <div class="panel panel-info">
             <div class="panel-body">
                 <span class="tieude">ROS - PROPOSAL</span>
-                
-                
             </div>
         </div>
     </div>
