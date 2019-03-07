@@ -47,7 +47,7 @@ class KeHoachController extends Controller
             $thongtin = KeHoach::where('WorkCenter','like',"$workcenter")
                                 ->where('DateSX_KH_DMY','>=',"$ngay")
                                 ->where('DateSX_KH_DMY','<=',"$ngay2")
-                                ->where('Plan',"OK")
+                                ->where('Plan','like',"OK")
                                 ->where('DaSX2',null)
                                 ->distinct()
                                 ->orderBy('DateSX_KH_DMY')
@@ -64,6 +64,7 @@ class KeHoachController extends Controller
         $chitietCO = KeHoach::where('CO',$CO)
                             ->where('WorkCenter','like',"$wc")
                             ->where('Litem',$LItem)
+                            ->where('Plan','like',"OK")
                             ->orderBy('Priority1')
                             ->orderBy('ChieuDai','desc')->orderBy('MO')->paginate(15);
         //$loaitin = LoaiTin::find($id);
