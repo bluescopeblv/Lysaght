@@ -79,6 +79,7 @@ class KeHoachController extends Controller
         $reportall = KeHoach::where('WorkCenter','like',"$wc")
                             ->where('CO',$CO)
                             ->where('Litem',$LItem)
+                            ->where('Plan','like',"OK")
                             ->get();
         //$loaitin = LoaiTin::find($id);
         //$tintuc = TinTuc::where('idLoaiTin',$id)->paginate(5);

@@ -66,7 +66,7 @@ class PagesController extends Controller
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
         {
             if (User::where('email',$request->email)->first()->ver == true ) {
-                return redirect('procurement/activity/firstcheck');
+                return redirect('member');
             } else {
                 return redirect('trangchu');
             }
@@ -82,6 +82,12 @@ class PagesController extends Controller
     	//echo "Mat khẩu: ".$request->password;
     	//return view('pages.dangnhap');
     }
+
+    function trangchu_v2()
+    {
+        return view('v2.member.hello.index');
+    }
+    
 
     function getDangXuat()
     {

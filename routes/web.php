@@ -243,6 +243,8 @@ Route::post('nguoidung','PagesController@postNguoiDung');
 Route::get('dangky','PagesController@getDangKy');
 Route::post('dangky','PagesController@postDangKy');
 
+Route::get('member','PagesController@trangchu_v2');
+
 
 Route::post('comment/{id}','CommentController@postComment');
 
