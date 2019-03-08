@@ -12,7 +12,7 @@
         @if(Auth::check())
         <div class="panel panel-info">
             <div class="panel-body">
-                <span class="tieude" style="font-size: 20px">WELCOME - {{ Auth::user()->name }}</span>
+                <span class="tieude" style="font-size: 40px">WELCOME - {{ Auth::user()->name }}</span>
                 <!-- <span style="float:right; display: block">
                 <a href="procurement/activity/add">
                     <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> New check </button></a></span> -->
