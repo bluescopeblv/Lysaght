@@ -132,7 +132,7 @@
         <div class="p-30">
             <span class="hide-menu">
                 
-                <a href="javascript:void(0);" target="_blank" class="btn btn-default m-t-15">Tài liệu</a>
+                <a href="trangchu" target="_blank" class="btn btn-default m-t-15">Ver 1</a>
             </span>
         </div>
     </div>
