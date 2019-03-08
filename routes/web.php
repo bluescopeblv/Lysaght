@@ -963,15 +963,6 @@ Route::group(['prefix' => 'music'], function() {
 //      V2 - PROCUREMENT
 //========================================================================
 Route::group(['prefix' => 'procurement'], function() {
-    // Route::get('/', 'ProcurementController@getList_Info');
-
-    // Route::get('add','MusicController@getAdd_Info');
-    // Route::post('add','MusicController@postAdd_Info');
-
-    // Route::get('/edit/{id}','MusicController@getEdit_Info');
-    // Route::post('/edit/{id}','MusicController@postEdit_Info');
-
-    // Route::get('/delete/{id}','MusicController@getDelete_Info');
 
     Route::group(['prefix' => 'transport'], function() {
         Route::get('/', 'ProcurementController@getList_Trans');
@@ -1032,6 +1023,7 @@ Route::group(['prefix' => 'procurement'], function() {
     Route::group(['prefix' => 'review'], function() {
         Route::get('/', 'ProcurementController@getList_Review');
         Route::get('/ad', 'ProcurementController@getListAd_Review');
+        Route::get('/history', 'ProcurementController@getListHistory_Review');
 
         Route::get('/edit/{id}','ProcurementController@getEdit_Review');
         Route::post('/edit/{id}','ProcurementController@postEdit_Review');
@@ -1041,8 +1033,7 @@ Route::group(['prefix' => 'procurement'], function() {
 
         Route::post('/noagree/{id}','ProcurementController@postNoAgree_Review');
 
-        Route::get('/export/{id}','ProcurementController@getExportPDF_Review');
-        
+        Route::get('/export/{id}','ProcurementController@getExportPDF_Review');        
     });
 
 });

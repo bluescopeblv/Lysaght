@@ -29,7 +29,7 @@ myTable.tbody{
     <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-body">
-                <span class="tieude">ROS - REVIEW</span>
+                <span class="tieude">HISTORY</span>
                 <span style="float:right; display: block">
                 <!-- <a href="procurement/product/add">
                     <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm sản phẩm mới </button></a></span> -->
@@ -49,6 +49,7 @@ myTable.tbody{
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Sale</th>
                             <th>Tổng khối lượng (m2)</th>
                             <th>Độ dày (mm)</th>
                             <th>Chiều dài tối đa (m)</th>
@@ -65,7 +66,6 @@ myTable.tbody{
                             <th>Note</th>
                             <th>Status</th>
                             <th>Action</th>
-                            <th>Print</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,6 +73,7 @@ myTable.tbody{
                         @foreach($activities as $key=>$val)
                         <tr>
                             <td>{{ $val->id }}</td>
+                            <td>{{ $val->users->name }}</td>
                             <td>{{ number_format($val->quantity) }}</td>
 
                             <td>{{ $val->thickness }}</td>
@@ -120,13 +121,8 @@ myTable.tbody{
 
                             <td>
                                 <span class="label label-warning">
-                                    <a href="procurement/review/edit/{{$val->id}}"><span class="glyphicon glyphicon-edit">Xem</span></a>
-                                </span>
-                            </td>
-                            <td>
-                                <span class="label label-warning">
-                                    <a href="procurement/review/export/{{$val->id}}"><span class="glyphicon glyphicon-edit">Print</span></a>
-                                </span>
+                                    <a href="procurement/review/confirm/{{$val->id}}"><span class="glyphicon glyphicon-edit">Edit</span></a>
+                                </span><span>  </span>
                                 
                             </td>
                         </tr>
@@ -145,11 +141,11 @@ myTable.tbody{
 @section('script')
 <script>
 $(document).ready(function() {
-    $(document).ready(function() {
+     $(document).ready(function() {
         var table = $('#myTable').DataTable({
             "order": [[ 0, "desc" ]],
             "displayLength": 10,
-            "lengthMenu": [[10, 15, 25, 50, -1], [10, 15, 25, 50, "All"]],
+            "lengthMenu": [[10,15, 25, 50, -1], [10,15, 25, 50, "All"]],
              
         });
          

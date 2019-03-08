@@ -32,7 +32,7 @@
                             <li><a href="activity">Hoạt động</a></li>
                         @endif
                         @if(Auth::user()->ver == 2)
-                            <li><a href="procurement/activity/firstcheck">v2</a></li>
+                            <li><a href="member">v2</a></li>
                         @endif
                     
                     @endif

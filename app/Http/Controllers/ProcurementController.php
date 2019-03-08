@@ -687,6 +687,14 @@ class ProcurementController extends Controller
         return view('v2.member.procurement.review.list_ad',compact('activities'));
     }
 
+    public function getListHistory_Review()
+    {
+        $activities = ProcureActivity::where('status','>=', 0)
+                                    ->orderBy('updated_at','desc')
+                                    ->get();
+        return view('v2.member.procurement.review.history',compact('activities'));
+    }
+
     public function getEdit_Review($id)
     {
         $products = ProcureProduct::all();

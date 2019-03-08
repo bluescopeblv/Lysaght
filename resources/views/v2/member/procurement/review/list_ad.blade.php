@@ -143,9 +143,9 @@ myTable.tbody{
 $(document).ready(function() {
      $(document).ready(function() {
         var table = $('#myTable').DataTable({
-             
-            "displayLength": 25,
-            "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+            "order": [[ 0, "desc" ]],
+            "displayLength": 10,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
              
         });
          
