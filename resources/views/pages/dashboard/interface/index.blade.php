@@ -70,7 +70,7 @@
                   <p class="text-target">Target</p>
                 </div><!-- ./target -->
                 <div class="actual">
-                  <p class="percent">42%</p><!-- ./percent -->
+                  <p class="percent">75%</p><!-- ./percent -->
                   <p class="text-target">Actual</p>
                 </div><!-- ./actual -->
               </div><!-- ./multiskill-content -->
@@ -88,12 +88,12 @@
          <div id="dlt" >
             <p class="name-title">Dispatch lead-time </p>
            <div class="target col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <p class="percent">5</p>
+              <p class="percent">5.5</p>
               <p class="text-minpack">min/ pack</p>
               <p class="text-target">Target</p>
             </div><!-- ./target -->
             <div class="actual col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <p class="percent">5.5</p>
+              <p class="percent">5.6</p>
               <p class="text-minpack">min/ pack</p>
               <p class="text-target">Actual</p>
             </div><!-- ./actual -->
@@ -105,7 +105,7 @@
               <p class="text-target">Target</p>
             </div><!-- ./target -->
             <div class="actual col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <p class="percent">0.02%</p>
+              <p class="percent">0.018%</p>
               <p class="text-target">Actual</p>
             </div><!-- ./actual -->
          </div><!-- #/cod -->

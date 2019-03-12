@@ -18,7 +18,7 @@ class DS_Interface_Controller extends Controller
 
         $chart = new Charts;
         $chart->labels(['Jul', 'Aug', 'Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','YTD']);
-        $chart->dataset('Actual', 'bar', [59,60,53,60,59,60])->color('red')->backgroundColor('pink');
+        $chart->dataset('Actual', 'bar', [59,60,53,60,59,60, 57, 58])->color('red')->backgroundColor('pink');
         $chart->dataset('Target', 'line', [63,63,63,63,63,63,63,63,63,63,63,63,63])->color('blue')->backgroundColor('yellow');
 
         //$chart->labels($campaignName);
@@ -42,7 +42,7 @@ class DS_Interface_Controller extends Controller
         // $chart->barWidth('0.8');
         $chart2 = new Charts;
         $chart2->labels(['Jul', 'Aug', 'Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','YTD']);
-        $chart2->dataset('Actual', 'bar', [87,84,76,80,79,78])->color('green')->backgroundColor('pink');
+        $chart2->dataset('Actual', 'bar', [87,84,76,80,79,78, 76, 77])->color('green')->backgroundColor('pink');
         $chart2->dataset('Target', 'line', [75,75,75,75,75,75,75,75,75,75,75,75,75])->color('red')->backgroundColor('yellow');
 
         $chart3 = new Charts;

@@ -310,12 +310,12 @@ google.charts.setOnLoadCallback(drawChart);
 // Draw the chart and set the chart values
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
-  ['Task', 'Hours per Day'],
-  ['One', 17],
-  ['Two', 8],
-  ['Three', 25],
-  ['Four', 8],
-  ['Five', 42]
+  ['Hihi', 'Hihi'],
+  ['One', 8],
+  ['Two', 0],
+  ['Three', 17],
+  ['Four', 0],
+  ['Five', 75]
 ]);
 
   // Optional; add a title and set the width and height of the chart
