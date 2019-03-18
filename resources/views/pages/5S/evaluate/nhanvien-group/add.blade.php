@@ -28,14 +28,26 @@
 
                     <form action="fives/evaluate/nhanvien-group/add" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label>Tên group nhân viên</label>                                
                                 <input name="name" placeholder="Nhập tên group nhân viên" id="name" class="form-control" />
 
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Tên group nhân viên</label>
+                                <select name="fs_group_id" placeholder="Nhập tên Big group" id="fs_group_id" class="form-control">
+                                    <option>Select</option>
+                                    @foreach($groups as $key => $val)
+                                        <option value="{{$val->id}}">{{$val->name}}</option>
+                                    @endforeach
+                                </select>                                
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label>Note</label>
                                 <input name="note" placeholder="Ghi chú" class="form-control" />

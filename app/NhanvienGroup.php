@@ -17,4 +17,9 @@ class NhanvienGroup extends Model
     {
     	return $this->hasMany('App\Chamdiem','nhanvien_group_id','id');
     }
+
+    public function fsgroup()
+    {
+    	return $this->belongsTo('App\FSGroup','fs_group_id','id');
+    }
 }

@@ -15,7 +15,8 @@
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> Dashboard <!-- <span class="label label-rounded label-info pull-right">3</span> --></span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li> <a href="dashboard2/hr">HR</a> </li>
-                        <li> <a href="javascript:void(0);">Dashboard 2</a> </li>
+                        <li> <a href="dashboard2/safety">Safety</a> </li>
+                        <li> <a href="dashboard/interface">Interface</a> </li>
                     </ul>
                 </li>
                 @endif
@@ -77,10 +78,12 @@
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu"> 5S</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="javascript:void(0);">Thống kê</a></li>
+                        <!-- <li><a href="javascript:void(0);">Thống kê</a></li>
                         <li><a href="javascript:void(0);">Đánh giá</a></li>
                         <li><a href="javascript:void(0);">Danh sách</a></li>
-                        <li><a href="javascript:void(0);">Raise Khiếm khuyết</a></li>
+                        <li><a href="javascript:void(0);">Raise Khiếm khuyết</a></li> -->
+                        <li><a href="fives/evaluate/fs-group">Groups</a></li>
+                        <li><a href="fives/evaluate/campaign2">Campaign</a></li>
                     </ul>
                 </li>
                 @endif

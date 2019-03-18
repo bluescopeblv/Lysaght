@@ -29,10 +29,10 @@ myTable.tbody{
     <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-body">
-                <span class="tieude">DASHBOARD - HR</span>
-                <span style="float:right; display: block">
-                <a href="dashboard2/hr/add">
-                    <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm mới </button></a></span>
+                <span class="tieude">5S - DANH SÁCH ĐỢT ĐÁNH GIÁ<span style="color: green"></span></span>
+                <!-- <span style="float:right; display: block">
+                <a href="fives/evaluate/fs-group/add">
+                    <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm mới </button></a></span> -->
             </div>
         </div>
     </div>
@@ -45,45 +45,38 @@ myTable.tbody{
             <h3 class="box-title m-b-0"></h3>
                 <!--  <p class="text-muted m-b-30">Data table example</p>-->            
                 <div class="table-responsive">
-                <table id="myTable" class="table table-bordered table-striped color-bordered-table info-bordered-table hover-table">
+                <table class="table table-striped table-bordered table-hover" id="myTable">
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Male</th>
-                            <th>Female</th>
-                            <th>Total employee</th>
-                            <th>Updated at</th>
-
-                            <th>Status</th>
+                        <tr align="center">
+                            <th>ID</th>
+                            <th>Đợt đánh giá</th>
+                            <th>Note</th>
+                            <th>Đã đánh giá</th>
+                            <th>Xem theo Big group</th>
                             <th>Action</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($hr as $key => $val)
-                        <tr>
-                            <td>{{ $val->id }}</td>
-                            <td>{{ $val->total_employees -   $val->female_employees }}</td>
-                            <td>{{ $val->female_employees }}</td>
-                            <td>{{ $val->total_employees }}</td>
-                            <td>{{ date('d-M-Y',strtotime($val->updated_at)) }}</td>
-                            <td>
-                                @if($key == 0)
-                                    <span class="label label-success">Display</span>
-                                @endif
-                            </td>
-                           
-                            <td>
-                                @if( date('d-M-Y',strtotime($val->updated_at)) == date('d-M-Y'))
-                                <span class="label label-info">
-                                    <a href="dashboard/hr/edit/{{$val->id}}"><span class="glyphicon glyphicon-edit">Edit</span></a>
-                                </span>
-                                <span style="margin-left: 5px">  </span>
-                                <span class="label label-warning">
-                                    <a href="dashboard/hr/delete/{{$val->id}}"><span class="glyphicon glyphicon-edit">Delete</span></a>
-                                </span>
-                                @endif
-                            </td>
+                        @foreach($campaign as $key => $val)
+                        <tr class="odd gradeX" align="center">
+                            <td>{{$val->id}}</td>
+
+                            <td>{{$val->name}}</td>
+                            <td>{{$val->note}}</td>
+
+                            <td><a href="fives/evaluate/main/{{$val->id}}">{{get5Sdanhgia($val->id)}}</a></td>
+
+                            <td class="center"><i class="fa fa-eye fa-fw"></i> <a href="fives/evaluate/result/{{$val->id}}">Xem</a></td>
+
+                            <td class="center"><i class="fa  fa-check-square-o fa-fw"></i> <a href="fives/evaluate/main/add/{{$val->id}}">Chấm điểm >></a></td>
+
+                            <td class="center"><i class="fa fa-trash fa-fw"></i> <a href="fives/evaluate/campaign/delete/{{$val->id}}">Xóa</a></td>
+                                                                                   
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="fives/evaluate/campaign/edit/{{$val->id}}">Sửa</a></td>
                         </tr>
+                        
                         @endforeach
                     </tbody>
                 </table>

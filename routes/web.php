@@ -319,7 +319,7 @@ Route::group(['prefix' => 'fives'], function() {
 
             Route::get('question/{id}','FiveSController@getQuestion_Main');
         });
-
+        //Maint Câu hỏi
         Route::group(['prefix' => 'question'], function() {
             Route::get('/','FiveSController@getListCauHoi_Admin');
 
@@ -346,6 +346,32 @@ Route::group(['prefix' => 'fives'], function() {
             
 
             Route::get('xoa/{id}','UserController@getXoa');
+        });
+
+        // V2 FS Group
+        Route::group(['prefix' => 'fs-group'], function() {
+            Route::get('/','FiveS2Controller@getList_FSGroup');
+
+            Route::get('add','FiveS2Controller@getAdd_FSGroup');
+            Route::post('add','FiveS2Controller@postAdd_FSGroup');
+
+            Route::get('edit/{id}','FiveS2Controller@getEdit_FSGroup');
+            Route::post('edit/{id}','FiveS2Controller@postEdit_FSGroup');
+            
+            Route::get('delete/{id}','FiveS2Controller@getDelete_FSGroup');
+        });
+
+        // V2 Main - Kết quả Chấm điểm THEO BIG GROUP
+        Route::group(['prefix' => 'result'], function() {
+
+            Route::get('/{id}','FiveS2Controller@getList_Result');
+        });
+
+        // V2 Main - Kết quả Chấm điểm THEO BIG GROUP
+        Route::group(['prefix' => 'campaign2'], function() {
+            Route::get('/','FiveS2Controller@getList_Campaign');
+
+            
         });
 
         Route::group(['prefix' => 'nhanvien-group'], function() {

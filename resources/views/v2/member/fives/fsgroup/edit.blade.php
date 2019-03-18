@@ -29,15 +29,14 @@ myTable.tbody{
     <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-body">
-                <span class="tieude">DASHBOARD - HR</span>
+                <span class="tieude">5S - GROUP - EDIT</span>
                 <span style="float:right; display: block">
-                <a href="dashboard2/hr">
+                <a href="fives/evaluate/fs-group">
                     <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Danh sách </button></a></span>
             </div>
         </div>
     </div>
 </div>
-
 <!-- /row -->
 <div class="row">
     <div class="col-sm-12">
@@ -56,23 +55,23 @@ myTable.tbody{
                         {{session('thongbao')}}           
                     </div>
                 @endif
-                <form action="dashboard/hr/add" method="post">
+                <form action="fives/evaluate/fs-group/edit/{{$group->id}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
-                        <h3 class="card-title">Thông tin</h3>
+                        <h3 class="card-title">Sửa </h3>
                         <hr>
                         <div class="row p-t-20">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">Total Employees (Only Lysaght)</label>
-                                    <input type="text" name="total_employees" class="form-control" placeholder="Tổng nhân viên">
+                                    <label class="control-label">Name</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Group name" value="{{$group->name}}">
                                 </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-3">
                                 <div class="form-group has-danger">
-                                    <label class="control-label">Female Employees (Only Lysaght)</label>
-                                    <input type="text" name="female_employees" class="form-control form-control-danger" placeholder="Số nhân viên nữ">
+                                    <label class="control-label">Note</label>
+                                    <input type="text" name="note" class="form-control form-control-danger" placeholder="Note..." value="{{$group->note}}">
                                 </div>
                             </div>
                             <!--/span-->
@@ -83,7 +82,7 @@ myTable.tbody{
                         
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Thêm</button>
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Sửa</button>
                         
                     </div>
                 </form>

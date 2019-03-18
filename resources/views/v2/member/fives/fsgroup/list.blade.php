@@ -29,9 +29,9 @@ myTable.tbody{
     <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-body">
-                <span class="tieude">DASHBOARD - HR</span>
+                <span class="tieude">5S - GROUP - DANH SÁCH BIG GROUP</span>
                 <span style="float:right; display: block">
-                <a href="dashboard2/hr/add">
+                <a href="fives/evaluate/fs-group/add">
                     <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm mới </button></a></span>
             </div>
         </div>
@@ -49,37 +49,30 @@ myTable.tbody{
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Male</th>
-                            <th>Female</th>
-                            <th>Total employee</th>
-                            <th>Updated at</th>
+                            <th>Name</th>
+                            <th>Noted</th>
 
-                            <th>Status</th>
+                            <th>Updated at</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($hr as $key => $val)
+                        @foreach($groups as $key => $val)
                         <tr>
                             <td>{{ $val->id }}</td>
-                            <td>{{ $val->total_employees -   $val->female_employees }}</td>
-                            <td>{{ $val->female_employees }}</td>
-                            <td>{{ $val->total_employees }}</td>
-                            <td>{{ date('d-M-Y',strtotime($val->updated_at)) }}</td>
+                            <td>{{ $val->name }}</td>
+                            <td>{{ $val->note }}</td>
+                            <td>{{ $val->updated_at }}</td>
+                            
                             <td>
-                                @if($key == 0)
-                                    <span class="label label-success">Display</span>
-                                @endif
-                            </td>
-                           
-                            <td>
-                                @if( date('d-M-Y',strtotime($val->updated_at)) == date('d-M-Y'))
+                                
                                 <span class="label label-info">
-                                    <a href="dashboard/hr/edit/{{$val->id}}"><span class="glyphicon glyphicon-edit">Edit</span></a>
+                                    <a href="fives/evaluate/fs-group/edit/{{$val->id}}"><span class="glyphicon glyphicon-edit">Edit</span></a>
                                 </span>
+                                @if( date('d-M-Y',strtotime($val->updated_at)) == date('d-M-Y'))
                                 <span style="margin-left: 5px">  </span>
                                 <span class="label label-warning">
-                                    <a href="dashboard/hr/delete/{{$val->id}}"><span class="glyphicon glyphicon-edit">Delete</span></a>
+                                    <a href="fives/evaluate/fs-group/delete/{{$val->id}}"><span class="glyphicon glyphicon-remove">Delete</span></a>
                                 </span>
                                 @endif
                             </td>

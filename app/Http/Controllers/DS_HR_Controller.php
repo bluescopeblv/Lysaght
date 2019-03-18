@@ -150,29 +150,7 @@ class DS_HR_Controller extends Controller
         $hr->female_employees = $request->female_employees;
           
         $hr->save();
-        //------------------------------------------------------------------
-        //Gửi mail
-        // $data['title'] = "GIAO HÀNG - THÔNG BÁO XE ĐẾN Ở CỔNG BẢO VỆ SỐ 1";
-        // $data['name'] = Auth::user()->name;
-        // $data['sdt'] = Auth::user()->sdt;
-
-        // $data['khachhang'] = $request->khachhang;
-        // $data['tentaixe'] = $request->tentaixe;
-        // $data['bienso'] = $request->bienso;
-        // $data['nhaxe'] = $request->nhaxe;
-        // $data['taitrongxe'] = $request->taitrongxe;
-        // $data['thoigianxevao'] = $thoigianxevao;
-
-        // $subject = 'GIAO HÀNG - THÔNG BÁO XE ĐẾN - KH: '.$request->khachhang;
-
-        // Mail::send('emails.delivery.dencong1', $data, function($message) use ($subject) {
-        //     $message->from('l3lysaght.svr01@gmail.com', 'Delivery Project');
-        //     $message->to('phuc.truong@bluescope.com')
-        //             ->cc('phuc.truong@bluescope.com')
-        //             ->subject($subject);
-            // $message->to('phuc.truong@bluescope.com')
-            //         ->subject($subject);
-        //});
+        
         //-------------------------------------------------------------------
 
         return redirect()->back()->with('thongbao','Thêm thành công');

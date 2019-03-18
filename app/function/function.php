@@ -166,7 +166,39 @@ function getDiem_5S_Nhom($chamdiem_id)
 	//$campaign = App\Campaign::find($campaign_id);
     $tongdiem = 5*count(App\Chitiet::where('chamdiem_id',$chamdiem_id)->get());
     $diem = App\Chitiet::where('chamdiem_id',$chamdiem_id)->sum('diem');
-	return $diem*100/$tongdiem;
+    if ($tongdiem > 0) {
+    	return $diem*100/$tongdiem;
+    } else {
+    	return 0;
+    }   
+	
+}
+
+function getDiem_5S_fsGroup($campaign_id, $fs_group_id)
+{
+	//dd($fs_group_id);
+	$nhanviengroups = App\NhanvienGroup::all();
+	$Sum = 0;
+	$count = 0;
+	foreach ($nhanviengroups as $key => $val) {
+		if ($val->fs_group_id == $fs_group_id ) {
+			$chamdiem = App\Chamdiem::where('nhanvien_group_id',$val->id)
+								->where('campaign_id', $campaign_id)
+								->first();
+			if($chamdiem){
+				$Sum = $Sum + getDiem_5S_Nhom($chamdiem->id);
+				$count = $count + 1;
+			}
+		} else {
+			# code...
+		}
+	}
+    
+    if ($count > 0 ) {
+    	return $Sum/$count;
+    } else {
+    	return 0;
+    }
 }
 
 function get_DS_Safety_Date_LTI($LTI_date)

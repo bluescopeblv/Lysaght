@@ -18,6 +18,7 @@ use App\NhanvienGroup;
 use App\Campaign;
 use App\Chamdiem;
 use App\Chitiet;
+use App\FSGroup;
 
 
 class FiveSController extends Controller
@@ -781,7 +782,8 @@ class FiveSController extends Controller
 
     public function getAdd_Group_Nhanvien()
     {
-        return view('pages.5S.evaluate.nhanvien-group.add');
+        $groups = FSGroup::all();
+        return view('pages.5S.evaluate.nhanvien-group.add',compact('groups'));
     }
 
     public function postAdd_Group_Nhanvien(Request $request)
@@ -796,6 +798,8 @@ class FiveSController extends Controller
         $nhanvien_group = new NhanvienGroup;
         $nhanvien_group->name = $request->name;
         $nhanvien_group->note = $request->note;
+
+        $nhanvien_group->fs_group_id = $request->fs_group_id;
         $nhanvien_group->save();
 
         return redirect()->back()->with('thongbao','Đã thêm thành công');
@@ -896,6 +900,7 @@ class FiveSController extends Controller
         $nhanvien->delete();
         return redirect()->back()->with('thongbao','Đã xóa thành công');;
     }
+    //-----------------------------------------------------------
 
-    //---------------------------------------------------------
+
 }

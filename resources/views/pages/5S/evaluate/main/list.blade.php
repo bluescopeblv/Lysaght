@@ -32,6 +32,7 @@
                         <tr align="center">
                             <th>#</th>
                             <th>Đánh giá nhóm</th>
+                            <th>Big group</th>
                             <th>Tiêu chẩn đánh giá</th>
                             <th>Khu vực</th>
                             <th>Trưởng nhóm đánh giá</th>
@@ -47,6 +48,7 @@
                         <tr class="odd gradeX" align="center">
                             <td>{{$val->id}}</td>
                             <td>{{$val->nhanvien_group->name}}</td>
+                            <td>{{$val->nhanvien_group->fsgroup->name }}</td>
                             <td><a href="">{{$val->question_group->name}}</a></td>
                             <td>{{$val->khuvucdanhgia}}</td>
                             <td>{{$val->truongnhomdanhgia}}</td>

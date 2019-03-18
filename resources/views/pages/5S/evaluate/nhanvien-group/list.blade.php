@@ -25,7 +25,8 @@
                     <thead>
                         <tr align="center">
                             <th>ID</th>
-                            <th>Tên group</th>                            
+                            <th>Tên group</th>
+                            <th>Big Group</th>                            
                             <th>Note</th>
 
                             <th>Delete</th>
@@ -37,6 +38,7 @@
                         <tr class="odd gradeX" align="center">
                             <td>{{$val->id}}</td>
                             <td>{{$val->name}}</td>
+                            <td>{{$val->fsgroup->name}}</td>
                             <td>{{$val->note}}</td>
                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="fives/evaluate/nhanvien-group/delete/{{$val->id}}"> Xóa</a></td>
                             
