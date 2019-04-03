@@ -58,6 +58,7 @@
                 <!-- <th><b>Tổng thời gian (Số giờ)</b></th>
                 <th><b>Tổng thời gian (Số phút)</b></th> -->
                 <th>Status</th>
+                <th>Thời gian nghỉ trưa/tối</th>
                 
             </tr>
         </thead>
@@ -148,6 +149,7 @@
                 </td> -->
                 
                 <td>{!! getDeliveryStatus($ttx->status) !!}</td>
+                <td>{{ checkTimeOff( $ttx->thoigianxevao, $ttx->thoigianxera ) }}</td>
                 
 
             </tr>

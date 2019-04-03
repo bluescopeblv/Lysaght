@@ -19,7 +19,7 @@ use App\DefectList;
 use DB;
 use Mail;
 
-class KeHoachController extends Controller
+class KeHoach2Controller extends Controller
 {
 	function __construct()
 	{
@@ -27,23 +27,43 @@ class KeHoachController extends Controller
 		//view::share(['kehoach'=>$kehoach]);
 	}
 
-    function getKeHoach()
+    function getList_FM()
     {
-        return view('pages.kehoach');
+        return view('v2.member.prel3.foreman.list');
     }
 
-    function postKeHoach(Request $request)
+    function postList_FM(Request $request)
     {
         $ngay = $request->DateFind;
         $ngay2 = $request->DateFind2;
         if(Auth::user()->quyen_preL3 >= 2){
             $workcenter = $request->workcenter;
+            
+            
         }else{
             $workcenter = Auth::user()->workcenter;
         }
+
+        //dd(Auth::user()->quyen_preL3);
         if(Auth::check())
         {
-            //$workcenter = Auth::user()->workcenter;
+            if ($workcenter == "all") {
+                $workcenter = '%';
+                $thongtin = KeHoach::where('WorkCenter','like',"$workcenter")
+                                ->where('DateSX_KH_DMY','>=',"$ngay")
+                                ->where('DateSX_KH_DMY','<=',"$ngay2")
+                                ->where('Plan','like',"OK")
+                                ->where('DaSX2',null)
+                                ->orwhere('WorkCenter','like',"$workcenter")
+                                ->where('Plan','like',"OK")
+                                ->where('DaSX2',null)                                
+                                ->distinct()
+                                ->orderBy('WorkCenter')
+                                ->orderBy('DateSX_KH_DMY')
+                                ->orderBy('ThuTuCO')
+                                ->get(['WorkCenter','DateSX_KH_DMY','DuAn','CO','Type','Litem','NgayGH','ThuTuCO']);
+            } else {
+        
             $thongtin = KeHoach::where('WorkCenter','like',"$workcenter")
                                 ->where('DateSX_KH_DMY','>=',"$ngay")
                                 ->where('DateSX_KH_DMY','<=',"$ngay2")
@@ -55,12 +75,12 @@ class KeHoachController extends Controller
                                 ->distinct()
                                 ->orderBy('DateSX_KH_DMY')
                                 ->orderBy('ThuTuCO')
-                                ->get(['DateSX_KH_DMY','DuAn','CO','Type','Litem','NgayGH','ThuTuCO']);
+                                ->get(['WorkCenter','DateSX_KH_DMY','DuAn','CO','Type','Litem','NgayGH','ThuTuCO']);
 
-                                //ThuTuCO
-            return view('pages.kehoach',['kehoach'=>$thongtin,'ngayTimKiem'=>$ngay,'wc1'=>$workcenter,'ngay2'=>$ngay2]);
+            }
+            return view('v2.member.prel3.foreman.list',['kehoach'=>$thongtin,'ngayTimKiem'=>$ngay,'wc1'=>$workcenter,'ngay2'=>$ngay2]);
         }else{
-            return redirect('kehoach')->with('thongbao','Bạn chưa đăng nhập');
+            return redirect('v2.member.prel3.foreman.list')->with('thongbao','Bạn chưa đăng nhập');
         }
     }
     function getChiTiet($CO,$LItem,$wc,$datesx,$ThuTuCO)

@@ -224,14 +224,15 @@ function get_Delivery_Minute($date) //Car in factory
 	{
 		//return Carbon::parse($date)->diffInMinutes(Carbon::now()); //diffInHours
 		$thoigian = Carbon::parse($time_batdauchathang)->diffInMinutes($time_xevao)/60;
-		return $thoigian;
+
+		return $thoigian - checkTimeOff($time_xevao, $time_batdauchathang);
 	}
 
 	function get_Delivery_ThoiGian_ChatHang($time_batdauchathang, $time_xongchathang) 
 	{
 		//return Carbon::parse($date)->diffInMinutes(Carbon::now()); //diffInHours
 		$thoigian = Carbon::parse($time_xongchathang)->diffInMinutes($time_batdauchathang)/60;
-		return $thoigian;
+		return $thoigian - checkTimeOff($time_batdauchathang, $time_xongchathang);
 	}
 
 	function get_Delivery_ThoiGian_ChoDN($time_xongchathang, $thoigianxongDN) 
@@ -240,7 +241,7 @@ function get_Delivery_Minute($date) //Car in factory
 		if(Carbon::parse($thoigianxongDN) > Carbon::parse($time_xongchathang) )
 		{
 			$thoigian = Carbon::parse($thoigianxongDN)->diffInMinutes($time_xongchathang)/60;
-			return $thoigian;
+			return $thoigian - checkTimeOff($time_xongchathang, $thoigianxongDN);
 		}else{
 			return 0;
 		}
@@ -254,7 +255,7 @@ function get_Delivery_Minute($date) //Car in factory
 			//echo Carbon::parse($thoigianxongPXK);
 
 			$thoigian = Carbon::parse($thoigianxongPXK)->diffInMinutes($time_xongchathang)/60;
-			return $thoigian;
+			return $thoigian - checkTimeOff($time_xongchathang, $thoigianxongPXK);
 		}else{
 			return 0;
 		}
@@ -265,7 +266,7 @@ function get_Delivery_Minute($date) //Car in factory
 		if(Carbon::parse($thoigianxongDN) > Carbon::parse($time_xongchathang) )
 		{
 			$thoigian = Carbon::parse($thoigianxongDN)->diffInMinutes($time_xongchathang)/60;
-			return $thoigian;
+			return $thoigian - checkTimeOff($time_xongchathang, $thoigianxongDN );
 		}else{ //Xong truoc
 			$thoigian = Carbon::parse($thoigianbagiaoDN)->diffInMinutes($time_xongchathang)/60;
 			return $thoigian;
@@ -281,6 +282,49 @@ function get_Delivery_Minute($date) //Car in factory
 			+ get_Delivery_ThoiGian_BanGiaoDN($time_xongchathang, $thoigianxongDN, $thoigianbagiaoDN);
 		return $kq;
 
+	}
+
+	function checkTimeOff($value1, $value2)
+	{
+		return checkTimeOff_Lunch($value1, $value2) + checkTimeOff_Afternoon($value1, $value2);
+	}
+
+	function checkTimeOff_Lunch($value1, $value2)
+	{
+		$day_value1 = Carbon::parse($value1);
+		$day_value2 = Carbon::parse($value2);
+		//$currentday = Carbon::createFromDate();
+		$eleven_hour_30 = Carbon::create($day_value1->year, $day_value1->month , $day_value1->day, 11, 30, 00);
+		$twelve_hour_30 = Carbon::create($day_value1->year, $day_value1->month , $day_value1->day, 12, 30, 00);
+
+		if( $day_value1 < $eleven_hour_30 && $day_value2 > $twelve_hour_30 )
+			return 1;
+		elseif( $day_value1 < $eleven_hour_30 && $day_value2 > $eleven_hour_30 && $day_value2 < $twelve_hour_30)
+			return ($day_value2->diffInSeconds($eleven_hour_30))/3600;
+		elseif( $day_value1 > $eleven_hour_30 && $day_value1 < $twelve_hour_30 && $day_value2 > $twelve_hour_30){
+			return abs(($twelve_hour_30->diffInSeconds($day_value1))/3600);
+		}else{
+			return 0;
+		}
+	}
+
+	function checkTimeOff_Afternoon($value1, $value2)
+	{
+		$day_value1 = Carbon::parse($value1);
+		$day_value2 = Carbon::parse($value2);
+		//$currentday = Carbon::createFromDate();
+		$eleven_hour_30 = Carbon::create($day_value1->year, $day_value1->month , $day_value1->day, 17, 30, 00);
+		$twelve_hour_30 = Carbon::create($day_value1->year, $day_value1->month , $day_value1->day, 18, 30, 00);
+
+		if( $day_value1 < $eleven_hour_30 && $day_value2 > $twelve_hour_30 )
+			return -1;
+		elseif( $day_value1 < $eleven_hour_30 && $day_value2 > $eleven_hour_30 && $day_value2 < $twelve_hour_30)
+			return ($day_value2->diffInSeconds($eleven_hour_30))/3600;
+		elseif( $day_value1 > $eleven_hour_30 && $day_value1 < $twelve_hour_30 && $day_value2 > $twelve_hour_30){
+			return ($twelve_hour_30->diffInSeconds($day_value1))/3600;
+		}else{
+			return 0;
+		}
 	}
 
 	function doithoigian($value)

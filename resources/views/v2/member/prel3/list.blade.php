@@ -29,9 +29,8 @@ myTable.tbody{
     <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-body">
-                <span class="tieude">LOGISTIC - REPORT</span>
-                <span style="float:right; display: block;">
-                    
+                <span class="tieude">LOGISTIC - QUẢN LÍ GIAO HÀNG</span>
+                <span style="float:right; display: block">
                 <a href="delivery2/logistic/add">
                     <button type="button" class="btn btn-warning d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Tạo kế hoạch mới </button></a></span>
             </div>
@@ -46,40 +45,20 @@ myTable.tbody{
             <h3 class="box-title m-b-0"></h3>
                 <!--  <p class="text-muted m-b-30">Data table example</p>-->            
                 <div class="table-responsive">
-                    <form action="delivery2/report" method="POST">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        
-                        <input  type="date" id="myDate" class="form-control" name="DateFind" value="{{ date('Y-m-d',strtotime( $today )) }}" style="display: inline;width: 20%">
-                        <input  type="date" class="form-control" name="DateFind2" value="{{ date('Y-m-d',strtotime( $today )) }}" style="display: inline;width: 20%">
-                        
-                        <button type="submit" class="btn btn-default">Tìm kiếm</button>
-                        @if(isset($ngay))
-                        <h4>Ngày <span style="color: blue">{{date('d-m-Y',strtotime($ngay))}}</span> đến <span style="color: blue">{{date('d-m-Y',strtotime($ngay2))}}</span> </h4>
-                        @endif
-
-                        <hr>
-                    </form>
                 <table id="myTable" class="table table-bordered table-striped color-bordered-table info-bordered-table hover-table">
                     <thead>
                         <tr>
-                            <th>Kế hoạch</th>
                             <th>Dự án</th>
+                            <th>Biển số</th>
                             <th>Giao hàng bởi</th>
                             <th>Type</th>
-                            <th>Biển số xe</th>
-                            <th>Tên tài xế</th>
-                            <th>Nhà xe</th>
-                            <th>Tải trọng xe</th>
-                            <th>Chiều dài</th>
-                            <!--  -->
-                            
-                            <th>T/G chờ chất hàng (h)</th>
-                            <th>T/G chất hàng (h)</th>
-                            <th>T/G chờ DN (h)</th>
-                            <th>T/G chờ DO/ PXK (h)</th>
-                            <th>T/G chờ bàn giao DN (h)</th>
-                            <th><b>Tổng thời gian (h)</b></th>
-                            <th>Thời gian nghỉ</th>
+                            <th>Thời gian confirm</th>
+                            <th>Thời gian Kế hoạch</th>
+                            <th>Thời gian Thanh toán</th>
+                            <th>Thời gian xong DN/DO</th>
+                            <th>Thời gian PXK</th>
+                            <th>Số CO</th>
+                            <th>Số ảnh đã chụp</th>
                             <th>Status</th>
                             <th>Hoạt động</th>
                         </tr>
@@ -88,49 +67,64 @@ myTable.tbody{
                         
                         @foreach($thongtinxe as $ttx)
                         <tr>
-                            <td>{{date('d-m',strtotime($ttx->thoigiankehoach))}}</td>
                             <td>{{ $ttx->khachhang }}</td>
+                            <td>{{ $ttx->bienso }}</td>
                             <td>{{ $ttx->giaohangboi }}</td>
                             <td>{{ $ttx->loaihang }}</td>
-                            <td>{{ $ttx->bienso }}</td>
-                            <td>{{ $ttx->tentaixe }}</td>
-                            <td>{{ $ttx->nhaxe }}</td>
-                            <td>{{ $ttx->taitrongxe }}</td>
-                            <td>{{ $ttx->chieudaixe }}</td>
-                            <!--  -->
-                            
                             <td>
-                                {{ doithoigian(get_Delivery_ThoiGian_ChoChatHang($ttx->thoigianxevao,$ttx->thoigianbatdauchathang)) }}
-                            </td>
-                            <td>
-                                {{ doithoigian(get_Delivery_ThoiGian_ChatHang($ttx->thoigianbatdauchathang,$ttx->thoigianketthucchathang)) }}
-                            </td>
-                            <td>
-                                {{ doithoigian(get_Delivery_ThoiGian_ChoDN($ttx->thoigianketthucchathang, $ttx->thoigianxongDN)) }}
-                            </td>
-                            <td>
-                                {{ doithoigian(get_Delivery_ThoiGian_ChoDO_PXK($ttx->thoigianketthucchathang,$ttx->thoigianxongPXK)) }}
-                            </td>
-                            <td>
-                                {{ doithoigian(get_Delivery_ThoiGian_BanGiaoDN($ttx->thoigianketthucchathang,$ttx->thoigianxongDN, $ttx->thoigianbagiaoDN)) }}
-                            </td>
-
-                            <td>
-                                {{ doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
-                            </td>
-
-                            <!-- Test -->
-
-                            <td>
-                                {{ checkTimeOff( $ttx->thoigianxevao, $ttx->thoigianxera ) }}
+                                @if($ttx->thoigianlogisticConfirm != NULL)
+                                    {{ date('H:i',strtotime($ttx->thoigianlogisticConfirm)) }}
+                                @else
+                                    <span class="label label-info"><a href="delivery/logistic/confirm/{{$ttx->id}}">OK</a></span>
+                                    @if($ttx->status < 30)
+                                    <span class="label label-info"><a href="delivery/logistic/wait/{{$ttx->id}}">Chờ</a></span>
+                                    @endif
+                                @endif
                             </td>
                             
-                            <td>{!! getDeliveryStatus($ttx->status) !!}</td>
+                            <td>
+                                @if($ttx->thoigiankehoach != NULL)
+                                    {{ date('H:i',strtotime($ttx->thoigiankehoach)) }}
+                                @else
+                                    
+                                @endif
+                            </td>
+                            <td>
+                                @if($ttx->thoigianthanhtoan != NULL)
+                                    {{ date('H:i',strtotime($ttx->thoigianthanhtoan)) }}
+                                @else
+                                    <span class="label label-info"><a href="delivery/logistic/pay/{{$ttx->id}}">Thanh toán ?</a></span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($ttx->thoigianxongDN != NULL)
+                                    {{ date('H:i',strtotime($ttx->thoigianxongDN)) }}
+                                @else
+                                    <span class="label label-info"><a href="delivery/logistic/xongdn/{{$ttx->id}}"> DN ?</a></span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($ttx->thoigianxongPXK != NULL)
+                                    {{ date('H:i',strtotime($ttx->thoigianxongPXK)) }}
+                                @else
+                                    <span class="label label-info"><a href="delivery/logistic/xongpxk/{{$ttx->id}}"> PXK ?</a></span>
+                                @endif
+                            </td>
+                            <td> 
+                                <a href="delivery/logistic/detailco/{{$ttx->id}}">{{ getSoLuongCO($ttx->id) }}</a> 
+                            </td>
+                            <td>
+                                {{ getDeliverySoAnh($ttx->id) }}
+                            </td>
+                            <td>
+                                {!! getDeliveryStatus($ttx->status) !!}
+                            </td>
+                            
                             <td>
                                 <span class="label label-warning">
                                     <a href="delivery2/logistic/edit/{{$ttx->id}}"><span class="glyphicon glyphicon-edit">Sửa</span></a>
                                 </span><span>  </span>
-
+                                
                             </td>
                         </tr>
                         @endforeach

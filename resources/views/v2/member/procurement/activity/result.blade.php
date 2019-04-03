@@ -99,7 +99,7 @@
                                 <div class="form-group has-danger" style="background-color: rgba(0, 102, 0, 1) ;padding: 10px 20px 10px 20px; border-radius: 15px;color: white; ">
                                     <span style="font-size: 20px;" >THỜI GIAN DỰ KIẾN </span>
                                     <BR/>
-                                    <span style="font-size: 40px;text-align: center;" > {{ number_format($run_day + 2,0) }} </span> NGÀY
+                                    <span style="font-size: 40px;text-align: center;" > {{ number_format($run_day + 2,0) }} </span> NGÀY (Số nhân công: {{ number_format($qty_labour) }} người )
                                     <br/>
 
                                     <p>Đã bao gồm 1 ngày setup & 1 ngày thu dọn</p> 

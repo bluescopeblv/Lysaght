@@ -28,16 +28,16 @@
 
                     </ul>
                 </li>
-                <!-- <li>
-                    <a class="active waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-envelope-letter fa-fw"></i> <span class="hide-menu"> Inbox <span class="label label-rounded label-primary pull-right">5</span></span></a>
+                @if(Auth::user()->quyen_preL3)
+                <li>
+                    <a class="active waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-envelope-letter fa-fw"></i> <span class="hide-menu"> PRE L3 <span class="label label-rounded label-primary pull-right">1</span></span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li> <a href="inbox.html">Mail Box</a> </li>
-                        <li> <a href="inbox-detail.html">Mail Details</a> </li>
-                        <li> <a href="compose.html">Compose Mail</a> </li>
-                        <li> <a href="contact.html">Contact</a> </li>
-                        <li> <a href="contact-detail.html">Contact Detail</a> </li>
+                        <li> <a href="kehoach/foreman">FOREMAN</a> </li>
+
+                        
                     </ul>
-                </li> -->
+                </li>
+                @endif
                 @if(Auth::user()->quyen_activity)
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-equalizer fa-fw"></i> <span class="hide-menu"> Hoạt động <!-- <span class="label label-rounded label-danger pull-right">1</span> --></span></a>

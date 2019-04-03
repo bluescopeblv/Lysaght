@@ -255,11 +255,11 @@ Route::post('kehoach','KeHoachController@postKeHoach');
 Route::get('thongke','KeHoachController@getThongKe');
 Route::post('thongke','KeHoachController@postThongKe');
 
-Route::get('chitiet/{CO}/{LItem}/{wc}','KeHoachController@getChiTiet');
+Route::get('chitiet/{CO}/{LItem}/{wc}/{date}/{TT}','KeHoachController@getChiTiet');
 
 Route::get('chitiet/{id}','AjaxController@getChiTietCO');
 Route::get('reportXong/{id}','AjaxController@getReportXong');
-Route::get('chitiet/{CO}/{LItem}/{wc}/reportall','KeHoachController@getReportAll');
+Route::get('chitiet/{CO}/{LItem}/{wc}/{date}/{TT}/reportall','KeHoachController@getReportAll');
 
 Route::post('reportMotPhan/{id}','AjaxController@postReportMotPhan');
 
@@ -269,6 +269,18 @@ Route::post('feedback','KeHoachController@postFeedback');
 Route::get('thongbao_dadoc/{id}','KeHoachController@getThongBaoDaDoc');
 Route::post('feedback_tk','KeHoachController@postFeedbackTimKiem');
 Route::get('feedback_tk','KeHoachController@getFeedbackTimKiem');
+
+//------------------------------------------------------------------
+// V2 - PRE L3 KE HOACH
+//------------------------------------------------------------------
+    Route::group(['prefix' => 'kehoach'], function() {
+        Route::group(['prefix' => 'foreman'], function() {
+            Route::get('/','KeHoach2Controller@getList_FM');
+            Route::post('/','KeHoach2Controller@postList_FM');
+        });
+        
+
+    });
 
 
 Route::group(['prefix' => 'fives'], function() {

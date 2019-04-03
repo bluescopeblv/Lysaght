@@ -22,6 +22,12 @@ class AppServiceProvider extends ServiceProvider
            $view->with('workcenter',$workcenter);
         });
 
+        view()->composer('v2.member.prel3.foreman.list',function($view)
+        {
+           $workcenter = Workcenter::all();
+           $view->with('workcenter',$workcenter);
+        });
+
         view()->composer('pages.feedback',function($view)
         {
            $workcenter = Workcenter::all();

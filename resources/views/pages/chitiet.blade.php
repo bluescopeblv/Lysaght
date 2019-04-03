@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-25">
                 <div class="panel panel-primary">
-				  	<div class="panel-heading">CHI TIẾT CO: <span class="detail_CO " >{{$CO}} </span>  - LITEM: <span class="detail_CO " >{{$Litem}}</span></div>
+				  	<div class="panel-heading">CHI TIẾT CO: <span class="detail_CO " >{{$CO}} </span>  - LITEM: <span class="detail_CO " >{{$Litem}}</span> - NGÀY SẢN XUẤT: <span class="detail_CO " >{{date('d-M-Y', strtotime($DateSX_KH_DMY))}}</span> - THỨ TỰ CHẠY: <span class="detail_CO " >{{$ThuTuCO}}</span></div>
 				  	<div class="panel-body">
 				  		@if(count($errors)>0)
                             <div class="alert alert-danger">
@@ -94,7 +94,7 @@
 				            </div>			   
 				  	</div>
 				  	<div class="panel-footer">
-				  		<a href="chitiet/{{$CO}}/{{$Litem}}/{{$wc}}/reportall">REPORT ALL</a> 
+				  		<a href="chitiet/{{$CO}}/{{$Litem}}/{{$wc}}/{{ $DateSX_KH_DMY }}/{{ $ThuTuCO}}/reportall">REPORT ALL</a> 
 				  	</div>
 				</div>
             </div>

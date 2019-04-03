@@ -131,7 +131,7 @@
 			                    @endif
 		                    </tbody>
 		                </table> <!-- End Thông báo -->
-		                <div>@if(Session('$defect')) {{$defect->links()}} @endif </div>
+		                <!-- <div>@if(Session('$defect')) {{$defect->links()}} @endif </div> -->
 		                <hr>
 				    	
 

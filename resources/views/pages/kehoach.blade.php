@@ -41,6 +41,7 @@
 							            <option style="font-size: 16px; color:blue" value="">--Chọn workcenter--</option>
 								        @foreach($workcenter as $wc)
 								            <option style="font-size: 16px; color:blue" value="{{$wc->name}}">{{ $wc->name }}</option>
+								            
 								        @endforeach
 							        </select>
 							      
@@ -50,7 +51,7 @@
 
 				                    <!-- <input  type="text" id="workcenter" class="form-control" name="workcenter" value="Purlin400" style="display: inline;width: 20%" placeholder="Nhập workcenter"> -->
 				
-				                    <button type="submit" class="btn btn-default">Tìm kiếm</button>
+				                    <button type="submit" class="btn btn-default">Xem kế hoạch </button>
 				                    <hr>
 				                </form>
 
@@ -63,6 +64,7 @@
 				                        <tr align="center">
 				                            <th>ID</th>
 				                            <th>Ngày SX</th>
+				                            <th>TT</th>
 				                            <th>Dự án</th>
 				                            <th>CO</th>
 				                            <th>Type</th>
@@ -78,13 +80,14 @@
 					                        <tr class="odd gradeX" align="center">
 					                            <td>{{$kh->id}}</td>
 					                            <td>{{date('d-M-Y', strtotime($kh->DateSX_KH_DMY))}}</td>
+					                            <td>{{$kh->ThuTuCO}}</td>
 					                            <td>{{$kh->DuAn}}</td>
 					                            <td>{{$kh->CO}}</td>
 					                            <td>{{$kh->Type}}</td>
 					                            <td>{{$kh->Litem}}</td>
 					                            <td>{{$kh->NgayGH}}</td>
 					                            
-					                            <td class="center"><i class="glyphicon glyphicon-th-list"></i> <a href="chitiet/{{$kh->CO}}/{{$kh->Litem}}/{{$wc1}}"> Chi tiết...</a></td>
+					                            <td class="center"><i class="glyphicon glyphicon-th-list"></i> <a href="chitiet/{{$kh->CO}}/{{$kh->Litem}}/{{$wc1}}/{{date('Ymd', strtotime($kh->DateSX_KH_DMY))}}/{{$kh->ThuTuCO}}"> Chi tiết...</a></td>
 					                        </tr>
 					                        @endforeach
 					                    @endif

@@ -376,7 +376,7 @@ class FiveSController extends Controller
                 $defect = DefectList::all();
             else
             {
-                $defect = DefectList::where('workcenter',Auth::user()->workcenter)->paginate(10);
+                $defect = DefectList::where('workcenter',Auth::user()->workcenter)->get();
             }
             return view('pages.5S.5S',compact('loaikhiemkhuyet','defect','arrAll'));
         }
