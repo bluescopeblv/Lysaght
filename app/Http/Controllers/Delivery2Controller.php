@@ -756,6 +756,7 @@ class Delivery2Controller extends Controller
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
                     ->where('thoigiankehoach','>=',"$ngay")
                     ->where('thoigiankehoach','<=',"$ngay2")
+                    ->where('status','!=', 70)
                     ->orderBy('thoigiankehoach')
                     ->get();
         return view('v2.member.delivery.report.export',compact('thongtinxe', 'today','ngay','ngay2'));
@@ -773,6 +774,7 @@ class Delivery2Controller extends Controller
         $thongtinxe = DeliveryThongTinXe::where('status','>=',10)
                     ->where('thoigiankehoach','>=',"$ngay")
                     ->where('thoigiankehoach','<=',"$ngay2")
+                    ->where('status','!=', 70)
                     ->orderBy('thoigiankehoach')
                     ->get();
 
