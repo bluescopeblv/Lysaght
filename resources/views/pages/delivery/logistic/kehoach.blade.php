@@ -112,7 +112,7 @@
                             <td>
                                 @if($ttx->status != 70)
                             	<span class="label label-warning">
-                            		<a href="delivery/giaohang/edit/{{$ttx->id}}"><span class="glyphicon glyphicon-edit">Sửa</span></a>
+                            		<a href="delivery/logistic/edit/{{$ttx->id}}"><span class="glyphicon glyphicon-edit">Sửa</span></a>
                             	</span>
                             	@endif
 				            </td>

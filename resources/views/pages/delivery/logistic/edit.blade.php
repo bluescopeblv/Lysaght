@@ -95,6 +95,80 @@
                             </div>
                         </div>
 
+                        <h4 class="card-title">Dành cho Bộ phận giao hàng</h4>
+                        <hr>
+                        <div class="row p-t-20">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Sản phẩm</label>
+                                    <input type="text" name="sanpham" class="form-control" placeholder="Nhập tên sản phẩm" value="{{ $thongtinxe->sanpham }}">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-2">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Hàng dài nhất (m)</label>
+                                    <input type="text" name="chieudai" class="form-control form-control-danger" placeholder="Chiều dài" value="{{ $thongtinxe->chieudai }}">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-2">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Khối lượng (Tấn)</label>
+                                    <input type="text" name="khoiluong" class="form-control form-control-danger" placeholder="Khối lượng" value="{{ $thongtinxe->khoiluong }}">
+                                    </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-2">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Số kiện</label>
+                                    <input type="text" name="sokien" class="form-control form-control-danger" placeholder="Số kiện hàng đã chất" value="{{ $thongtinxe->sokien }}">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-2">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Số dây ràng</label>
+                                    <input type="text" name="sodayrang" class="form-control form-control-danger" placeholder="Số dây ràng" value="{{ $thongtinxe->sodayrang }}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Ghi chú</label>
+                                    <input type="text" name="noteproduction" class="form-control form-control-danger" placeholder="Ghi chú" value="{{ $thongtinxe->noteproduction }}">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-3">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Thời gian huấn luyện xong tài xế</label>
+                                    <input type="text" name="thoigianhuanluyen" class="form-control form-control-danger" placeholder="Thời gian huấn luyện xong tài xế" value="{{ $thongtinxe->thoigianhuanluyen }}">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-3">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Thời gian bắt đầu chất hàng</label>
+                                    <input type="text" name="thoigianbatdauchathang" class="form-control form-control-danger" placeholder="Thời gian bắt đầu chất hàng" value="{{ $thongtinxe->thoigianbatdauchathang }}">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-3">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Thời gian kết thúc chất hàng</label>
+                                    <input type="text" name="thoigianketthucchathang" class="form-control form-control-danger" placeholder="Thời gian kết thúc chất hàng" value="{{ $thongtinxe->thoigianketthucchathang }}">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-3">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Thời gian bàn giao DN/DO</label>
+                                    <input type="text" name="thoigianbagiaoDN" class="form-control form-control-danger" placeholder="Thời gian bàn giao DN/DO" value="{{ $thongtinxe->thoigianbagiaoDN }}">
+                                </div>
+                            </div>
+                            
+                        </div>
+
                         <h4 class="card-title">Dành cho Logistic</h4>
                         <hr>
                         <div class="row p-t-20">
@@ -234,19 +308,22 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Picking list đính kèm(PDF, Excel): 
-                                    @if($thongtinxe->file_pickinglist)
-                                        <a href="upload/delivery/pickinglist/{{$thongtinxe->file_pickinglist}}">Đã có file pickinglist: {{substr($thongtinxe->file_pickinglist,0,strlen($thongtinxe->file_pickinglist)-19).substr($thongtinxe->file_pickinglist,strlen($thongtinxe->file_pickinglist)-4,4)}}</a>
-                                    @else
-                                        
-                                    @endif
-                                    <!-- //strlen($chiphi->tenchungtu) - 12 -->
-                                </label>
-                                <input type="file" name="file_pickinglist">
+                                <div class="form-group">
+                                    <label>Picking list đính kèm(PDF, Excel): 
+                                        @if($thongtinxe->file_pickinglist)
+                                            <a href="upload/delivery/pickinglist/{{$thongtinxe->file_pickinglist}}">Đã có file pickinglist: {{substr($thongtinxe->file_pickinglist,0,strlen($thongtinxe->file_pickinglist)-19).substr($thongtinxe->file_pickinglist,strlen($thongtinxe->file_pickinglist)-4,4)}}</a>
+                                        @else
+                                            
+                                        @endif
+                                        <!-- //strlen($chiphi->tenchungtu) - 12 -->
+                                    </label>
+                                    <input type="file" name="file_pickinglist">
+                                </div>
                             </div>
                         </div>
-                        </div>
+
+
+
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Sửa</button>

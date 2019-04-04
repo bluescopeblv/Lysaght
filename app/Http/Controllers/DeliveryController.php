@@ -414,6 +414,19 @@ class DeliveryController extends Controller
         $thongtinxe->status =  $request->status;
         $thongtinxe->public_display =  $request->public_display;
 
+        //Khu vuc danh cho Giao hang San xuat
+        $thongtinxe->sanpham =  $request->sanpham;
+        $thongtinxe->chieudai =  $request->chieudai;
+        $thongtinxe->khoiluong =  $request->khoiluong;
+        $thongtinxe->sokien =  $request->sokien;
+        $thongtinxe->sodayrang =  $request->sodayrang;
+
+        $thongtinxe->noteproduction =  $request->noteproduction;
+        $thongtinxe->thoigianhuanluyen =  $request->thoigianhuanluyen;
+        $thongtinxe->thoigianbatdauchathang =  $request->thoigianbatdauchathang;
+        $thongtinxe->thoigianketthucchathang =  $request->thoigianketthucchathang;
+        $thongtinxe->thoigianbagiaoDN =  $request->thoigianbagiaoDN;
+
         $fileNameCu = $request->file_pickinglist;
         //Kiểm tra file
         if ($request->hasFile('file_pickinglist')) {
