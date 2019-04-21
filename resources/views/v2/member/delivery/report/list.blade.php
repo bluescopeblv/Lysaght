@@ -100,7 +100,7 @@ myTable.tbody{
                             <!--  -->
                             
                             <td>
-                                {{ doithoigian(get_Delivery_ThoiGian_ChoChatHang($ttx->thoigianxevao,$ttx->thoigianbatdauchathang)) }}
+                                {{ doithoigian(get_Delivery_ThoiGian_ChoChatHang($ttx->thoigiankehoach, $ttx->thoigianxevao,$ttx->thoigianbatdauchathang)) }}
                             </td>
                             <td>
                                 {{ doithoigian(get_Delivery_ThoiGian_ChatHang($ttx->thoigianbatdauchathang,$ttx->thoigianketthucchathang)) }}
@@ -116,7 +116,7 @@ myTable.tbody{
                             </td>
 
                             <td>
-                                {{ doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
+                                {{ doithoigian(get_Delivery_TongThoiGian( $ttx->thoigiankehoach, $ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
                             </td>
 
                             <!-- Test -->

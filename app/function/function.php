@@ -220,12 +220,19 @@ function get_Delivery_Minute($date) //Car in factory
 // Delivery
 //===================================================================================
 
-	function get_Delivery_ThoiGian_ChoChatHang($time_xevao, $time_batdauchathang) 
+	function get_Delivery_ThoiGian_ChoChatHang($thoigiankehoach, $time_xevao, $time_batdauchathang) 
 	{
-		//return Carbon::parse($date)->diffInMinutes(Carbon::now()); //diffInHours
-		$thoigian = Carbon::parse($time_batdauchathang)->diffInMinutes($time_xevao)/60;
+		if (Carbon::parse($time_xevao)->diffInMinutes($thoigiankehoach) > 0) {
 
-		return $thoigian - checkTimeOff($time_xevao, $time_batdauchathang);
+			$thoigian = Carbon::parse($time_batdauchathang)->diffInMinutes($time_xevao)/60;
+			return $thoigian - checkTimeOff($time_xevao, $time_batdauchathang);
+
+		} else {
+			$thoigian = Carbon::parse($time_batdauchathang)->diffInMinutes($thoigiankehoach)/60;
+			return $thoigian - checkTimeOff($thoigiankehoach, $time_batdauchathang);
+		}
+		
+		
 	}
 
 	function get_Delivery_ThoiGian_ChatHang($time_batdauchathang, $time_xongchathang) 
@@ -273,9 +280,9 @@ function get_Delivery_Minute($date) //Car in factory
 		}
 	}
 
-	function get_Delivery_TongThoiGian($time_xevao, $time_batdauchathang, $time_xongchathang, $thoigianxongDN, $thoigianxongPXK, $thoigianbagiaoDN)
+	function get_Delivery_TongThoiGian($thoigiankehoach, $time_xevao, $time_batdauchathang, $time_xongchathang, $thoigianxongDN, $thoigianxongPXK, $thoigianbagiaoDN)
 	{
-		$kq = get_Delivery_ThoiGian_ChoChatHang($time_xevao, $time_batdauchathang)
+		$kq = get_Delivery_ThoiGian_ChoChatHang($thoigiankehoach, $time_xevao, $time_batdauchathang)
 			+ get_Delivery_ThoiGian_ChatHang($time_batdauchathang, $time_xongchathang)
 			+ get_Delivery_ThoiGian_ChoDN($time_xongchathang, $thoigianxongDN) 
 			+ get_Delivery_ThoiGian_ChoDO_PXK($time_xongchathang, $thoigianxongPXK) 

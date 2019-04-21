@@ -99,7 +99,7 @@
 
                 <!-- 4 -->
                 <td>
-                    {{ doithoigian(get_Delivery_ThoiGian_ChoChatHang($ttx->thoigianxevao,$ttx->thoigianbatdauchathang)) }}
+                    {{ doithoigian(get_Delivery_ThoiGian_ChoChatHang($ttx->thoigiankehoach, $ttx->thoigianxevao,$ttx->thoigianbatdauchathang)) }}
                 </td>
                 <td>
                     {{ doithoigian(get_Delivery_ThoiGian_ChatHang($ttx->thoigianbatdauchathang,$ttx->thoigianketthucchathang)) }}
@@ -115,12 +115,12 @@
                 </td>
 
                 <td style="color: blue">
-                    {{ doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
+                    {{ doithoigian(get_Delivery_TongThoiGian($ttx->thoigiankehoach, $ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
                 </td>
 
                 <!-- 5 -->
                 <td >
-                    {{ doithoigian_hhmmss(get_Delivery_ThoiGian_ChoChatHang($ttx->thoigianxevao,$ttx->thoigianbatdauchathang)) }}
+                    {{ doithoigian_hhmmss(get_Delivery_ThoiGian_ChoChatHang($ttx->thoigiankehoach, $ttx->thoigianxevao,$ttx->thoigianbatdauchathang)) }}
                 </td>
                 <td  >
                     {{ doithoigian_hhmmss(get_Delivery_ThoiGian_ChatHang($ttx->thoigianbatdauchathang,$ttx->thoigianketthucchathang)) }}
@@ -136,16 +136,14 @@
                 </td>
 
                 <td style="color: blue">
-                    {{ doithoigian_hhmmss(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
+                    {{ doithoigian_hhmmss(get_Delivery_TongThoiGian($ttx->thoigiankehoach, $ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN )) }}
                 </td>
 
                 <!-- Đổi ra Giờ -->
                 <!-- <td>
-                    {{ delivery_soGio(doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN ))) }}
                 </td>
                 Đổi ra Phút
                 <td>
-                    {{ delivery_soPhut(doithoigian(get_Delivery_TongThoiGian($ttx->thoigianxevao,$ttx->thoigianbatdauchathang, $ttx->thoigianketthucchathang, $ttx->thoigianxongDN, $ttx->thoigianxongPXK, $ttx->thoigianbagiaoDN ))) }}
                 </td> -->
                 
                 <td>{!! getDeliveryStatus($ttx->status) !!}</td>
