@@ -141,8 +141,12 @@ class KeHoachController extends Controller
         if(Auth::check())
         {
             $workcenter = Auth::user()->workcenter;
-            $thongbao = ThongBao::where('Workcenter', $workcenter)->paginate(10);
-            $feedback = Feedback::where('Workcenter', $workcenter)->paginate(10);
+            $thongbao = ThongBao::where('Workcenter', $workcenter)
+                        ->orderBy('created_at','desc')
+                        ->paginate(10);
+            $feedback = Feedback::where('Workcenter', $workcenter)
+                        ->orderBy('created_at','desc')
+                        ->paginate(10); //->paginate(10);
             //print_r($thongbao);
             return view('pages.feedback',compact('thongbao','feedback'));
         }else{

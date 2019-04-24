@@ -87,7 +87,7 @@
 				                    </tbody>
 
 				                </table> 
-				                <div>@if(Session('thongbao')) {{$thongbao->links()}} @endif </div>
+				                <div style="text-align: center;">@if( isset($thongbao) ) {{$thongbao->links()}} @endif </div>
 						  	</div>
 						@else
 							<h4 style="color: green;text-align: center;" > Bạn không có quyền truy cập vào module này. Để được cấp quyền vui lòng liên hệ foreman hoặc Phúc</h4>
@@ -156,7 +156,7 @@
 					                    @endif
 				                    </tbody>
 				                </table> <!-- End Thông báo -->
-				                <div>@if(Session('feedback')) {{$feedback->links()}} @endif </div>
+				                <div>@if( isset($feedback) ) {{$feedback->links()}} @endif </div>
 				                <hr>
 						    	
 						    	<!-- form -->
