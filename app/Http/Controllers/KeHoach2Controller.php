@@ -374,8 +374,10 @@ class KeHoach2Controller extends Controller
                                 ->orderBy('ThuTuCO')
                                 ->get(['DateSX_KH_DMY','DuAn','CO','Type','Litem','NgayGH','ThuTuCO'])
                                 ->first();
-        //Lấy chi tiết chưa sản xuất
-        $chitietCO = KeHoach::where('CO',"$kehoach1->CO")
+
+        if (isset($kehoach1->CO)) {
+            //Lấy chi tiết chưa sản xuất
+            $chitietCO = KeHoach::where('CO',"$kehoach1->CO")
                             ->where('WorkCenter','like',"$workcenter")
                             ->where('Litem',$kehoach1->Litem)
                             ->where('Plan','like',"OK")
@@ -385,9 +387,12 @@ class KeHoach2Controller extends Controller
                             ->orderBy('Priority1')
                             ->orderBy('ChieuDai','desc')->orderBy('MO') //->paginate(15);
                             ->get();
-                            
-   
-        return view('v2.member.prel3.interface.workcenter', compact('kehoach','kehoach1','chitietCO','workcenter'));
+            return view('v2.member.prel3.interface.workcenter', compact('kehoach','kehoach1','chitietCO','workcenter'));
+        } else {
+            return view('v2.member.prel3.interface.workcenter', compact('kehoach','kehoach1','workcenter'));
+        }
+        
+        
     }
 
 

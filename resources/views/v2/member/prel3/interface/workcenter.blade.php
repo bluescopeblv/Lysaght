@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>SMARTRUSS MACHINE</title>
+    <title>{{ $workcenter }} Machine</title>
     <link rel="shortcut icon" type="image/png" href="image/icon/congty.png"/>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -110,10 +110,13 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
+                @if(isset($kehoach1))
                   <p class="box-title">THÔNG TIN SẢN XUẤT / PRODUCTION INFORMATION == 
                   CHI TIẾT CO: <span class="detail_CO " >{{$kehoach1->CO}} </span>  - LITEM: <span class="detail_CO " >{{$kehoach1->Litem}}</span> - NGÀY SẢN XUẤT: <span class="detail_CO " >{{date('d-M-Y', strtotime($kehoach1->DateSX_KH_DMY))}}</span> - THỨ TỰ CHẠY: <span class="detail_CO " >{{$kehoach1->ThuTuCO}}</span>
                   </p>
+
                   <p class="hour">Today {{date('d-M-Y')}}</p>
+                @endif
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
@@ -140,7 +143,7 @@
                     </thead>
                     <tbody>
                       @if(isset($chitietCO))
-                              @foreach($chitietCO as $ct)
+                          @foreach($chitietCO as $ct)
                           <tr class="odd gradeX" align="center" style="text-align: center;font-size: 20px" >
                               <td hidden=""><input type="checkbox" ></td>
                                   <td hidden="" id="id" class="id">{{$ct->id}}</td>
