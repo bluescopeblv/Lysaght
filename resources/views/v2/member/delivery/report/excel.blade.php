@@ -67,9 +67,9 @@
             @foreach($thongtinxe as $ttx)
             <tr>
                 <!-- 1 -->
-                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigiankehoach)) }}</td>
-                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianxevao)) }}</td>
-                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianxera )) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($ttx->thoigiankehoach)) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($ttx->thoigianxevao)) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($ttx->thoigianxera )) }}</td>
                 <td>{{ $ttx->khachhang }}</td>
                 <td>{{ $ttx->giaohangboi }}</td>
                 <td>{{ $ttx->loaihang }}</td>
@@ -79,15 +79,15 @@
                 <td>{{$ttx->taitrongxe}}</td>
                 <td>{{$ttx->chieudaixe}}</td>
                 <!-- 2 -->
-                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianlogisticConfirm )) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($ttx->thoigianlogisticConfirm )) }}</td>
                 <td>{{ getDeliveryDetail($ttx->id) }}</td>
                 <td>{{ $ttx->notelogistic }}</td>
-                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianhuanluyen )) }}</td>
-                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianbatdauchathang )) }}</td>
-                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianketthucchathang )) }}</td>
-                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianxongDN )) }}</td>
-                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianxongPXK )) }}</td>
-                <td>{{ date('d-m-Y h:i:s',strtotime($ttx->thoigianbagiaoDN )) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($ttx->thoigianhuanluyen )) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($ttx->thoigianbatdauchathang )) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($ttx->thoigianketthucchathang )) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($ttx->thoigianxongDN )) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($ttx->thoigianxongPXK )) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($ttx->thoigianbagiaoDN )) }}</td>
 
                 <!-- 3 -->
                 <td>{{ $ttx->sanpham }}</td>

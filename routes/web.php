@@ -278,10 +278,21 @@ Route::get('feedback_tk','KeHoachController@getFeedbackTimKiem');
             Route::get('/','KeHoach2Controller@getList_FM');
             Route::post('/','KeHoach2Controller@postList_FM');
         });
-        
+
+        Route::group(['prefix' => 'interface'], function() {
+            Route::get('/{wc_id}','KeHoach2Controller@Interface_getWorkcenter');
+            
+
+        });
 
     });
 
+
+
+
+
+
+//------------------------------------------------------------------
 
 Route::group(['prefix' => 'fives'], function() {
     Route::get('/','FiveSController@get5S');

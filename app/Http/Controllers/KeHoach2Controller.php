@@ -16,6 +16,7 @@ use App\ThongBao;
 use App\Feedback;
 use App\LoaiKhiemKhuyet;
 use App\DefectList;
+use App\Workcenter;
 use DB;
 use Mail;
 
@@ -351,5 +352,43 @@ class KeHoach2Controller extends Controller
         }
     }
 
-    
+    public function Interface_getWorkcenter($wc_id)
+    {
+        $workcenter = Workcenter::where('id', $wc_id)->first()->name; //3
+
+        //dd($workcenter);
+        $kehoach = KeHoach::where('WorkCenter','like',"$workcenter")
+                                ->where('Plan','like',"OK")
+                                ->where('DaSX2',null)                                
+                                ->distinct()
+                                ->orderBy('DateSX_KH_DMY')
+                                ->orderBy('ThuTuCO')
+                                ->get(['DateSX_KH_DMY','DuAn','CO','Type','Litem','NgayGH','ThuTuCO'])
+                                ->take(5);
+        //Lấy dòng đầu tiên để lấy chi tiết
+        $kehoach1 = KeHoach::where('WorkCenter','like',"$workcenter")
+                                ->where('Plan','like',"OK")
+                                ->where('DaSX2',null)                                
+                                ->distinct()
+                                ->orderBy('DateSX_KH_DMY')
+                                ->orderBy('ThuTuCO')
+                                ->get(['DateSX_KH_DMY','DuAn','CO','Type','Litem','NgayGH','ThuTuCO'])
+                                ->first();
+        //Lấy chi tiết chưa sản xuất
+        $chitietCO = KeHoach::where('CO',"$kehoach1->CO")
+                            ->where('WorkCenter','like',"$workcenter")
+                            ->where('Litem',$kehoach1->Litem)
+                            ->where('Plan','like',"OK")
+                            ->where('DateSX_KH_DMY',$kehoach1->DateSX_KH_DMY)
+                            ->where('ThuTuCO',$kehoach1->ThuTuCO)
+                            ->where('DaSX2',null)
+                            ->orderBy('Priority1')
+                            ->orderBy('ChieuDai','desc')->orderBy('MO') //->paginate(15);
+                            ->get();
+                            
+   
+        return view('v2.member.prel3.interface.workcenter', compact('kehoach','kehoach1','chitietCO','workcenter'));
+    }
+
+
 }
