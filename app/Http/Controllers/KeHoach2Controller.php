@@ -389,7 +389,7 @@ class KeHoach2Controller extends Controller
                             ->get();
             return view('v2.member.prel3.interface.workcenter', compact('kehoach','kehoach1','chitietCO','workcenter'));
         } else {
-            return view('v2.member.prel3.interface.workcenter', compact('kehoach','kehoach1','workcenter'));
+            return view('v2.member.prel3.interface.welcome', compact('workcenter'));
         }
         
         

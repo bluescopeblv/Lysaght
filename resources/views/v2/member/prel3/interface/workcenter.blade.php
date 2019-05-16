@@ -43,8 +43,9 @@
           <img src="delivery_inteface/img/logo.png">
         </a>
         </div>
-      </header>
+      </header>      
       <!-- Content Wrapper. Contains page content -->
+      
       <div class="content-wrapper">
         <!-- Main content -->
         <section class="content content-table">
@@ -52,7 +53,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <p class="box-title">CHI TIẾT ĐƠN HÀNG / ORDER DETAIL == WORKCENTER: <span class="detail_CO">{{ $workcenter }}</span></p>
+                  <p class="box-title">THÔNG TIN SẢN XUẤT / PRODUCTION INFORMATION == WORKCENTER: <span class="detail_CO">{{ $workcenter }}</span></p>
                   <p class="hour">Today {{date('d-M-Y')}}</p>
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
@@ -111,7 +112,7 @@
               <div class="box">
                 <div class="box-header">
                 @if(isset($kehoach1))
-                  <p class="box-title">THÔNG TIN SẢN XUẤT / PRODUCTION INFORMATION == 
+                  <p class="box-title">CHI TIẾT ĐƠN HÀNG / ORDER DETAIL == 
                   CHI TIẾT CO: <span class="detail_CO " >{{$kehoach1->CO}} </span>  - LITEM: <span class="detail_CO " >{{$kehoach1->Litem}}</span> - NGÀY SẢN XUẤT: <span class="detail_CO " >{{date('d-M-Y', strtotime($kehoach1->DateSX_KH_DMY))}}</span> - THỨ TỰ CHẠY: <span class="detail_CO " >{{$kehoach1->ThuTuCO}}</span>
                   </p>
 
@@ -180,6 +181,7 @@
           </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
+      
       <footer class="main-footer">
         <p>COPPYRIGHT 2019 @ALL RIGHT BY BLUESCOPE LYSAGHT VIETNAM</p>
       </footer>
