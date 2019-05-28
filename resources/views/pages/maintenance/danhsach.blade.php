@@ -113,7 +113,7 @@
 						  	<div class="panel-body">
 						  		<div class="phuc_button"><a href="maint_quanlychiphi" style="color: white">Quản lí chi phí</a></div>
 
-				            
+				            	<div class="phuc_button"><a href="outmaint/activity" style="color: white">Quản lí Outsource</a></div>
 				              
 						  	</div>
 						</div>

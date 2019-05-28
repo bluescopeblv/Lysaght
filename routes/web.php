@@ -224,9 +224,30 @@ Route::group(['prefix' => 'admin','middleware'=> 'adminLogin'], function() {
 
     Route::group(['prefix' => 'ajax'], function() {
     	//admin/loaitin/danh sach
-        Route::get('loaitin/{idTheLoai}','AjaxController@getLoaiTin');
+        Route::get('loaitin/{idTheLoai}','AjaxController@getLoaiTin');	
+    });
 
-    	
+    Route::group(['prefix' => 'outmaint'], function() {
+        Route::group(['prefix' => 'type'], function() {
+            Route::get('/','OutMaintTypeController@getListAdmin');
+
+            Route::get('add','OutMaintTypeController@getAddAdmin');
+            Route::post('add','OutMaintTypeController@postAddAdmin');
+
+            Route::get('edit/{id}','OutMaintTypeController@getEditAdmin');
+            Route::post('edit/{id}','OutMaintTypeController@postEditAdmin');
+        });
+
+        Route::group(['prefix' => 'machine'], function() {
+            Route::get('/','OutMaintMachineController@getListAdmin');
+
+            Route::get('add','OutMaintMachineController@getAddAdmin');
+            Route::post('add','OutMaintMachineController@postAddAdmin');
+
+            Route::get('edit/{id}','OutMaintMachineController@getEditAdmin');
+            Route::post('edit/{id}','OutMaintMachineController@postEditAdmin');
+        });
+        
     });
 });
 
@@ -1008,6 +1029,25 @@ Route::group(['prefix' => 'music'], function() {
     });
 });
 
+//========================================================================
+//      V2 - OUT MAINTENANCE
+//========================================================================
+Route::group(['prefix' => 'outmaint'], function() {
+        Route::group(['prefix' => 'activity'], function() {
+            Route::get('/','OutMaintActivityController@getList');
+
+            Route::get('add','OutMaintActivityController@getAdd');
+            Route::post('add','OutMaintActivityController@postAdd');
+
+            Route::get('edit/{id}','OutMaintActivityController@getEdit');
+            Route::post('edit/{id}','OutMaintActivityController@postEdit');
+        });
+
+        Route::group(['prefix' => 'export'], function() {
+            Route::get('/','OutMaintActivityController@getExportExcel1');
+            Route::post('/','OutMaintActivityController@postExportExcel1');
+        });
+});
 //========================================================================
 //      V2 - PROCUREMENT
 //========================================================================

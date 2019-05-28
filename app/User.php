@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\ProcureActivity','id_user','id');
     }
+
+    public function outs_maint_activity()
+    {
+        return $this->hasMany('App\OutMaintActivity','outs_maint_machine_id','id');
+    }
 }

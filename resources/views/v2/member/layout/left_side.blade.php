@@ -91,10 +91,11 @@
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-settings fa-fw"></i> <span class="hide-menu"> Maintenance<span class="label label-rounded label-success pull-right"></span></span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li> <a href="javascript:void(0);">Các chỉ số</a>
+                        <!-- <li> <a href="javascript:void(0);">Các chỉ số</a>
                         </li>
-                        <li><a href="javascript:void(0);">Quản lí chi phí</a></li>
-                        
+                        <li><a href="javascript:void(0);">Quản lí chi phí</a></li> -->
+                        <li> <a href="outmaint/activity">Outsource</a></li>
+                        <li> <a href="outmaint/export">Outsource -Export</a></li>
                     </ul>
                 </li>
                 @endif

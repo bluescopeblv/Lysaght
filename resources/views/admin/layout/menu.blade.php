@@ -79,6 +79,25 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
+                        <li>
+                            <a href="admin/outmaint/type/"><i class="fa fa-bar-chart-o fa-fw"></i> Outs Maintenance<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="admin/outmaint/type/">Type -List</a>
+                                </li>
+                                <li>
+                                    <a href="admin/outmaint/type/add">Type -Add</a>
+                                </li>
+                                <li>
+                                    <a href="admin/outmaint/machine/">Machine -List</a>
+                                </li>
+                                <li>
+                                    <a href="admin/outmaint/machine/add">Machine -Add</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                         <li>
                             <a href="admin/maintenance/danhsach"><i class="fa fa-bar-chart-o fa-fw"></i> PRE L3<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
